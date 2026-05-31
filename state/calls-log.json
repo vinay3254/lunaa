@@ -1,0 +1,62 @@
+{
+  "calls": [
+    {
+      "id": "a3ad79cb-adce-4a75-aa08-91ff01ca343c",
+      "timestamp": "2026-05-31T06:05:13.035394+00:00",
+      "asset": "^GSPC",
+      "asset_class": "index",
+      "direction": "bearish",
+      "score": -6,
+      "score_breakdown": {
+        "rsi": -2,
+        "macd": -1,
+        "ema_stack": 0,
+        "volume": 0,
+        "bb_position": 0,
+        "sentiment": 0,
+        "catalyst": 0
+      },
+      "price_at_call": 7580.06,
+      "key_level_support": null,
+      "key_level_resistance": null,
+      "regime_at_call": "TRANSITIONING",
+      "outcome_3d": null,
+      "outcome_7d": null,
+      "price_3d": null,
+      "price_7d": null,
+      "result_3d": null,
+      "result_7d": null,
+      "checked_3d": false,
+      "checked_7d": false
+    },
+    {
+      "id": "aae289e4-2640-4a77-a5b2-7a6e1facbebc",
+      "timestamp": "2026-05-31T06:05:13.036437+00:00",
+      "asset": "SPY",
+      "asset_class": "etf",
+      "direction": "bearish",
+      "score": -6,
+      "score_breakdown": {
+        "rsi": -2,
+        "macd": -1,
+        "ema_stack": 0,
+        "volume": 0,
+        "bb_position": 0,
+        "sentiment": 0,
+        "catalyst": 0
+      },
+      "price_at_call": 756.48,
+      "key_level_support": null,
+      "key_level_resistance": null,
+      "regime_at_call": "TRANSITIONING",
+      "outcome_3d": null,
+      "outcome_7d": null,
+      "price_3d": null,
+      "price_7d": null,
+      "result_3d": null,
+      "result_7d": null,
+      "checked_3d": false,
+      "checked_7d": false
+    }
+  ]
+}

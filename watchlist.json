@@ -1,0 +1,52 @@
+{
+  "crypto": [
+    { "id": "bitcoin", "symbol": "BTC" },
+    { "id": "ethereum", "symbol": "ETH" },
+    { "id": "solana", "symbol": "SOL" },
+    { "id": "binancecoin", "symbol": "BNB" },
+    { "id": "ripple", "symbol": "XRP" },
+    { "id": "cardano", "symbol": "ADA" },
+    { "id": "avalanche-2", "symbol": "AVAX" },
+    { "id": "chainlink", "symbol": "LINK" },
+    { "id": "polkadot", "symbol": "DOT" },
+    { "id": "uniswap", "symbol": "UNI" }
+  ],
+  "us_stocks": [
+    "NVDA", "TSLA", "AAPL", "META", "MSFT", "AMZN", "GOOGL",
+    "AMD", "INTC", "NFLX", "JPM", "BAC", "GS", "MS", "V",
+    "MA", "PYPL", "XYZ", "COIN", "HOOD",
+    "XOM", "CVX", "OXY", "SLB",
+    "PFE", "MRNA", "JNJ", "UNH",
+    "PLTR", "SNOW", "NET", "CRWD", "DDOG"
+  ],
+  "indian_stocks": [
+    "RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS", "ICICIBANK.NS",
+    "WIPRO.NS", "BAJFINANCE.NS", "TATAMOTORS.BO", "ADANIENT.NS", "SBIN.NS",
+    "HINDUNILVR.NS", "ASIANPAINT.NS", "MARUTI.NS", "SUNPHARMA.NS", "TITAN.NS",
+    "ONGC.NS", "POWERGRID.NS", "NTPC.NS", "COALINDIA.NS", "BPCL.NS"
+  ],
+  "indices": [
+    "^GSPC", "^NDX", "^DJI", "^RUT",
+    "^FTSE", "^N225", "^HSI", "^STOXX50E",
+    "^NSEI", "^BSESN"
+  ],
+  "commodities": [
+    "GC=F", "SI=F", "CL=F", "NG=F",
+    "HG=F", "ZW=F", "ZC=F", "ZS=F",
+    "PL=F", "PA=F"
+  ],
+  "forex": [
+    "EURUSD=X", "GBPUSD=X", "USDJPY=X", "USDINR=X",
+    "AUDUSD=X", "USDCAD=X", "USDCHF=X", "NZDUSD=X",
+    "EURGBP=X", "DX-Y.NYB"
+  ],
+  "bonds": [
+    "^IRX", "^FVX", "^TNX", "^TYX"
+  ],
+  "etfs": [
+    "SPY", "QQQ", "IWM", "DIA",
+    "GLD", "SLV", "USO", "UNG",
+    "TLT", "HYG", "LQD", "EMB",
+    "XLK", "XLF", "XLE", "XLV", "XLI", "XLP", "XLU", "XLRE", "XLY", "XLB", "XLC"
+  ]
+}

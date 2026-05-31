@@ -1,0 +1,27 @@
+# Credentials
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Logs
+*.log
+state/last-run-console.log
+
+# System / OS
+.DS_Store
+Thumbs.db

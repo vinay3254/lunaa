@@ -1,0 +1,30 @@
+{
+  "last_updated": "2026-05-31T06:03:02.318766+00:00",
+  "calls_evaluated": 0,
+  "underperf_cycles_count": 0,
+  "weights": {
+    "rsi": 2.0,
+    "macd": 2.0,
+    "ema_stack": 2.0,
+    "volume": 1.0,
+    "bb_position": 1.0,
+    "sentiment": 1.0,
+    "catalyst": 1.0
+  },
+  "win_rates": {
+    "rsi": 0.5,
+    "macd": 0.5,
+    "ema_stack": 0.5,
+    "volume": 0.5,
+    "bb_position": 0.5,
+    "sentiment": 0.5,
+    "catalyst": 0.5
+  },
+  "history": [
+    {
+      "timestamp": "2026-05-31T06:03:02.318766+00:00",
+      "change": "System initialisation: weights set to defaults",
+      "calls_basis": 0
+    }
+  ]
+}
