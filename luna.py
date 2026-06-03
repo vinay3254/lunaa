@@ -197,19 +197,25 @@ def _build_research_config(watchlist: dict, config: dict) -> dict:
     assets: list[dict] = []
 
     # Traditional assets: stocks, indices, forex, commodities, bonds, etfs
+    cat_map = {
+        "stocks": "stock", "indices": "index", "forex": "forex",
+        "commodities": "commodity", "bonds": "bond", "etfs": "etf"
+    }
     for category in ("stocks", "indices", "forex", "commodities", "bonds", "etfs"):
+        asset_class = cat_map.get(category, "stock")
         for ticker in watchlist.get(category, []):
             if isinstance(ticker, str):
-                assets.append({"name": ticker, "ticker": ticker})
+                assets.append({"name": ticker, "ticker": ticker, "asset_class": asset_class})
 
     # Crypto: may be a list of CoinGecko IDs (strings) or {id, symbol} dicts
     for item in watchlist.get("crypto", []):
         if isinstance(item, str):
-            assets.append({"name": item, "ticker": item.upper()})
+            assets.append({"name": item, "ticker": item.upper(), "asset_class": "crypto"})
         elif isinstance(item, dict):
             assets.append({
                 "name":   item.get("id", item.get("name", "")),
                 "ticker": item.get("symbol", item.get("id", "")).upper(),
+                "asset_class": "crypto"
             })
 
     return {
@@ -385,11 +391,13 @@ def _build_macro_state_flat(macro_result: dict) -> dict:
         "vix_change_pct":          vix_dict.get("change_pct"),
         "vix_spiked":              vix_dict.get("spiked", False),
         "vix_status":              vix_dict.get("status", ""),
+        "vix_is_stale":            vix_dict.get("is_stale", False),
 
         # DXY
         "dxy":                     dollar_dict.get("level"),
         "dxy_trend":               dollar_dict.get("trend", "unknown"),
         "dxy_change_5d_pct":       dollar_dict.get("change_5d_pct"),
+        "dxy_change_7d_pct":       dollar_dict.get("change_7d_pct", 0.0),
         "dxy_impact":              dollar_dict.get("impact", ""),
 
         # Yields
@@ -864,6 +872,38 @@ def _log_done(step: str, t0: float) -> None:
     logger.info("   ✓ %s completed in %.2fs", step, time.monotonic() - t0)
 
 
+def run_continuous_learning_loop() -> None:
+    """Execute the Continuous Learning Loop:
+    1. Check past prediction outcomes (via calls_tracker and ml_engine.update_labels).
+    2. Retrain ML models if at least 20 new labeled records are available.
+    """
+    logger.info("Executing continuous learning loop check...")
+    try:
+        from calls_tracker import check_pending_outcomes
+        check_pending_outcomes()
+    except Exception as exc:
+        logger.error("Continuous learning: check_pending_outcomes failed: %s", exc)
+
+    try:
+        import ml_engine
+        new_labels = ml_engine.update_labels()
+        if new_labels > 0:
+            logger.info("Continuous learning: updated %d historical record labels in feature store.", new_labels)
+    except Exception as exc:
+        logger.error("Continuous learning: update_labels failed: %s", exc)
+
+    try:
+        import ml_engine
+        new_rec_count = ml_engine.new_records_since_last_train()
+        logger.info("Continuous learning: %d new labeled records discovered since last model training.", new_rec_count)
+        if new_rec_count >= 20:
+            logger.info("Continuous learning: Triggering model retraining...")
+            accuracies = ml_engine.train_models()
+            logger.info("Continuous learning: Models retrained successfully. New accuracies: %s", accuracies)
+    except Exception as exc:
+        logger.error("Continuous learning: model retraining failed: %s", exc)
+
+
 # ---------------------------------------------------------------------------
 # Run cycles
 # ---------------------------------------------------------------------------
@@ -900,17 +940,13 @@ def run_full_cycle(config: dict) -> None:
         _log_done("Load watchlist", t0)
 
         # Step 2 — Last state
-        t0 = _log_step("Load last state", 2, TOTAL_STEPS)
+        t0 = _log_step("Load last state & run continuous learning loop", 2, TOTAL_STEPS)
         last_state = load_state()
         
-        # Check pending call outcomes (Module 6 outcome checks & weight tuning)
-        try:
-            from calls_tracker import check_pending_outcomes
-            check_pending_outcomes()
-        except Exception as exc:
-            logger.error("Failed to check pending outcomes: %s", exc)
+        # Execute continuous learning loop check and retrain models if necessary
+        run_continuous_learning_loop()
             
-        _log_done("Load last state", t0)
+        _log_done("Load last state & run continuous learning loop", t0)
 
         # Step 3 — Market data
         t0 = _log_step("Fetch all market data", 3, TOTAL_STEPS)
@@ -988,7 +1024,7 @@ def run_full_cycle(config: dict) -> None:
         t0 = _log_step("Run full scan (score + rank + patterns)", 7, TOTAL_STEPS)
         calendar  = research.get("calendar", [])
         regime = macro_state.get("regime", "UNKNOWN")
-        ranked    = run_full_scan(enriched_data, calendar, regime=regime)
+        ranked    = run_full_scan(enriched_data, calendar, regime=regime, macro_state=macro_state)
         opps_list = _opportunities_to_list(ranked)
         logger.info("   %d opportunities ranked (%d bullish, %d bearish).",
                     len(opps_list),
@@ -1339,10 +1375,10 @@ def run_scan_only(config: dict) -> None:
         research        = _build_research_for_report(research_raw)
         calendar        = research.get("calendar", [])
 
-        ranked    = run_full_scan(enriched_data, calendar)
-        opps_list = _opportunities_to_list(ranked)
-
         macro_state = last_state.get("macro_state", {})
+        regime = macro_state.get("regime", "RISK-ON")
+        ranked    = run_full_scan(enriched_data, calendar, regime=regime, macro_state=macro_state)
+        opps_list = _opportunities_to_list(ranked)
 
         # Update opportunities + daily brief only
         report_market_data = cached_market if cached_market else {}
@@ -1425,9 +1461,6 @@ def _run_daily_brief(config: dict) -> None:
         research        = _build_research_for_report(research_raw)
         calendar        = research.get("calendar", [])
 
-        ranked    = run_full_scan(enriched_data, calendar)
-        opps_list = _opportunities_to_list(ranked)
-
         treasury_data = fetch_treasury_data()
         fred_data     = research_raw.get("fred") or {}
         macro_result  = analyze_macro(
@@ -1437,6 +1470,10 @@ def _run_daily_brief(config: dict) -> None:
             last_state    = load_state() or {},
         )
         macro_state = _build_macro_state_flat(macro_result)
+        regime = macro_state.get("regime", "RISK-ON")
+
+        ranked    = run_full_scan(enriched_data, calendar, regime=regime, macro_state=macro_state)
+        opps_list = _opportunities_to_list(ranked)
 
         notify_daily_summary(
             market_data   = {t: {"price": a.get("price"), "pct_change": a.get("change_24h_pct")}
@@ -1523,11 +1560,25 @@ def main() -> None:
     mode_group.add_argument("--portfolio",   action="store_true", help="Generate the investment portfolio status report.")
     mode_group.add_argument("--ask", type=str, metavar="QUESTION", help="Ask a natural language question against all loaded data.")
     mode_group.add_argument("--dashboard",   action="store_true", help="Launch the interactive LUNA web dashboard server.")
+    mode_group.add_argument("--backtest",    action="store_true", help="Run historical backtesting simulation.")
+
+    # Additional options for backtesting
+    parser.add_argument("--asset", type=str, help="Target asset symbol (e.g. NVDA) for backtesting.")
+    parser.add_argument("--all",   action="store_true", help="Run backtesting on all watchlist assets.")
+    parser.add_argument("--days",  type=int, default=90, help="Number of days to backtest (default: 90).")
 
     args   = parser.parse_args()
     config = load_config()
 
-    if not any([args.run, args.quick, args.macro, args.scan, args.alert_check, args.schedule, args.daily_brief, args.check_outcomes, args.performance, args.portfolio, args.ask, args.dashboard]):
+    # Auto-bootstrap ML engine if needed
+    if any([args.run, args.quick, args.scan, args.schedule, args.dashboard, args.backtest]):
+        try:
+            import ml_engine
+            ml_engine.bootstrap_feature_store(force=False)
+        except Exception as exc:
+            logger.error("Failed to auto-bootstrap ML engine on startup: %s", exc)
+
+    if not any([args.run, args.quick, args.macro, args.scan, args.alert_check, args.schedule, args.daily_brief, args.check_outcomes, args.performance, args.portfolio, args.ask, args.dashboard, args.backtest]):
         print_welcome_screen()
         return
 
@@ -1583,6 +1634,16 @@ def main() -> None:
         logger.info("Mode: INTERACTIVE WEB DASHBOARD")
         from dashboard import start_dashboard_server
         start_dashboard_server()
+
+    elif args.backtest:
+        logger.info("Mode: BACKTESTING")
+        import backtest
+        if args.all or args.asset == "all":
+            backtest.run_backtest_all(days=args.days)
+        elif args.asset:
+            backtest.run_backtest(args.asset, days=args.days)
+        else:
+            logger.error("Please specify a target asset using --asset <TICKER> or use --all to backtest all assets in watchlist.")
 
 
 if __name__ == "__main__":

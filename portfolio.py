@@ -271,11 +271,9 @@ def calculate_portfolio_status(market_data: dict | None = None, silent: bool = F
     # If VIX is NaN, try real-time fetch fallback
     if np.isnan(vix_val):
         try:
-            import yfinance as yf
-            vix_ticker = yf.Ticker("^VIX")
-            vix_history = vix_ticker.history(period="1d")
-            if not vix_history.empty:
-                vix_val = float(vix_history["Close"].iloc[-1])
+            from market_data import fetch_vix_data_with_fallbacks
+            vix_df = fetch_vix_data_with_fallbacks()
+            vix_val = float(vix_df["Close"].iloc[-1])
         except Exception:
             pass
 

@@ -173,7 +173,25 @@ def fetch_regime_assets() -> dict[str, pd.DataFrame]:
         failure for that ticker.
     """
     logger.info("Fetching regime assets: %s", REGIME_ASSETS)
-    data = _fetch_yfinance(REGIME_ASSETS, period="3mo", interval="1d")
+    from market_data import fetch_vix_data_with_fallbacks
+    
+    # 1. Fetch VIX using robust fallback chain
+    vix_df = fetch_vix_data_with_fallbacks()
+    if "Close" not in vix_df.columns and "close" in vix_df.columns:
+        vix_df["Close"] = vix_df["close"]
+    
+    # 2. Fetch DX-Y.NYB separately with period="60d" (more reliable)
+    dxy_dict = _fetch_yfinance(["DX-Y.NYB"], period="60d", interval="1d")
+    
+    # 3. Fetch other regime assets with period="6mo" (upgraded from "3mo")
+    other_assets = [t for t in REGIME_ASSETS if t not in ("DX-Y.NYB", "^VIX")]
+    other_dict = _fetch_yfinance(other_assets, period="6mo", interval="1d")
+    
+    data = {
+        "^VIX": vix_df,
+        **dxy_dict,
+        **other_dict
+    }
 
     # Validate each ticker
     for ticker in REGIME_ASSETS:
@@ -203,7 +221,7 @@ def fetch_treasury_data() -> dict[str, pd.DataFrame]:
         Values: DataFrames with 'Close' column representing yield in percent.
     """
     logger.info("Fetching treasury yield data: %s", TREASURY_TICKERS)
-    return _fetch_yfinance(TREASURY_TICKERS, period="3mo", interval="1d")
+    return _fetch_yfinance(TREASURY_TICKERS, period="6mo", interval="1d")
 
 
 # ===========================================================================
@@ -232,11 +250,16 @@ def get_vix_status(vix_data: pd.DataFrame) -> dict:
         "change_pct": float("nan"),
         "spiked": False,
         "status": "VIX data unavailable",
+        "is_stale": False,
     }
 
     if vix_data is None or vix_data.empty or "Close" not in vix_data.columns:
         logger.warning("VIX data missing or malformed.")
         return default
+
+    is_stale = False
+    if "is_stale" in vix_data.columns:
+        is_stale = bool(vix_data["is_stale"].iloc[-1])
 
     close = vix_data["Close"].dropna()
     if len(close) < 2:
@@ -264,6 +287,7 @@ def get_vix_status(vix_data: pd.DataFrame) -> dict:
         "change_pct": round(change_pct, 2),
         "spiked": spiked,
         "status": status,
+        "is_stale": is_stale,
     }
 
 
@@ -286,13 +310,15 @@ def analyze_dollar_cycle(dxy_data: pd.DataFrame) -> dict:
         level          (float) — latest DXY close
         trend          (str)   — 'rising' | 'falling' | 'flat'
         change_5d_pct  (float) — 5-day percentage change
+        change_7d_pct  (float) — 7-day percentage change
         impact         (str)   — 1-sentence market implication
     """
     default = {
-        "level": float("nan"),
-        "trend": "unknown",
-        "change_5d_pct": float("nan"),
-        "impact": "USD data unavailable; dollar cycle analysis skipped.",
+        "level": 100.0,
+        "trend": "flat",
+        "change_5d_pct": 0.0,
+        "change_7d_pct": 0.0,
+        "impact": "USD data unavailable; using safe defaults.",
     }
 
     if dxy_data is None or dxy_data.empty or "Close" not in dxy_data.columns:
@@ -308,12 +334,28 @@ def analyze_dollar_cycle(dxy_data: pd.DataFrame) -> dict:
     if change_5d is None:
         change_5d = 0.0
 
-    if change_5d > 0.3:
-        trend = "rising"
-    elif change_5d < -0.3:
-        trend = "falling"
+    change_7d = _pct_change_nd(close, 7)
+    if change_7d is None:
+        change_7d = 0.0
+
+    # 20-day EMA comparison logic
+    if len(close) >= 20:
+        ema20 = _ema(close, 20)
+        current_ema = ema20.iloc[-1]
+        pct_diff = (level - current_ema) / current_ema * 100
+        if abs(pct_diff) <= 0.3:
+            trend = "flat"
+        elif level > current_ema:
+            trend = "rising"
+        else:
+            trend = "falling"
     else:
-        trend = "flat"
+        if change_5d > 0.3:
+            trend = "rising"
+        elif change_5d < -0.3:
+            trend = "falling"
+        else:
+            trend = "flat"
 
     if trend == "rising" and change_5d > DXY_SHARP_GAIN_THRESHOLD_PCT:
         impact = (
@@ -341,6 +383,7 @@ def analyze_dollar_cycle(dxy_data: pd.DataFrame) -> dict:
         "level": round(level, 3),
         "trend": trend,
         "change_5d_pct": round(change_5d, 3),
+        "change_7d_pct": round(change_7d, 3),
         "impact": impact,
     }
 

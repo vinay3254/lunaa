@@ -570,7 +570,241 @@ def _collect_signals(components: dict, score: int) -> list[str]:
     return signals
 
 
-def score_asset(asset: dict, calendar: list, regime: str | None = None) -> dict:
+def generate_tactical_card(asset: dict, score_result: dict, macro_state: dict) -> dict:
+    """Generate tactical card details including confidence, supporting evidence, and entry/stop zones."""
+    price = asset.get("price", 0.0)
+    direction = score_result.get("direction", "neutral")
+    ml_pred = score_result.get("ml_prediction", {})
+    regime = macro_state.get("regime", "RISK-ON")
+    ticker = asset.get("ticker", "UNKNOWN")
+    
+    # 1. Confidence Score & Stars
+    is_fallback = ml_pred.get("fallback", True)
+    if not is_fallback:
+        prob = ml_pred.get("bullish_probability", 0.0) if direction == "bullish" else ml_pred.get("bearish_probability", 0.0)
+        confidence = prob
+    else:
+        # Heuristic from rule-based score
+        confidence = abs(score_result.get("score", 0.0)) / 10.0
+        
+    if confidence >= 0.8:
+        stars = "★★★★★ HIGH CONFIDENCE"
+    elif confidence >= 0.7:
+        stars = "★★★★☆ HIGH CONFIDENCE"
+    elif confidence >= 0.6:
+        stars = "★★★☆☆ MEDIUM CONFIDENCE"
+    elif confidence >= 0.5:
+        stars = "★★☆☆☆ MEDIUM CONFIDENCE"
+    else:
+        stars = "★☆☆☆☆ LOW CONFIDENCE"
+        
+    # 2. Supporting Evidence (Factors Aligned)
+    evidence = []
+    aligned_count = 0
+    total_factors = 6
+    
+    # RSI factor
+    rsi = asset.get("rsi")
+    if rsi is not None and not np.isnan(rsi):
+        if direction == "bullish":
+            if rsi < 40:
+                evidence.append(f"✅ RSI {rsi:.1f} — oversold bounce setup")
+                aligned_count += 1
+            elif rsi > 70:
+                evidence.append(f"❌ RSI {rsi:.1f} — overbought conditions")
+            else:
+                evidence.append(f"⚠️ RSI {rsi:.1f} — neutral zone")
+        elif direction == "bearish":
+            if rsi > 65:
+                evidence.append(f"✅ RSI {rsi:.1f} — overbought rejection setup")
+                aligned_count += 1
+            elif rsi < 30:
+                evidence.append(f"❌ RSI {rsi:.1f} — oversold conditions")
+            else:
+                evidence.append(f"⚠️ RSI {rsi:.1f} — neutral zone")
+    else:
+        evidence.append("⚠️ RSI data unavailable")
+        
+    # MACD factor
+    macd_data = asset.get("macd", {})
+    if macd_data and isinstance(macd_data, dict):
+        cross = macd_data.get("crossover")
+        if direction == "bullish":
+            if cross == "bullish":
+                evidence.append("✅ MACD bullish cross confirmed")
+                aligned_count += 1
+            elif cross == "bearish":
+                evidence.append("❌ MACD bearish cross active")
+            else:
+                evidence.append("⚠️ MACD momentum neutral")
+        elif direction == "bearish":
+            if cross == "bearish":
+                evidence.append("✅ MACD bearish cross confirmed")
+                aligned_count += 1
+            elif cross == "bullish":
+                evidence.append("❌ MACD bullish cross active")
+            else:
+                evidence.append("⚠️ MACD momentum neutral")
+    else:
+        evidence.append("⚠️ MACD data unavailable")
+        
+    # Volume factor
+    vol_data = asset.get("volume_anomaly", {})
+    vol_ratio = 1.0
+    if vol_data:
+        vol_avg = vol_data.get("avg_20d", 0.0)
+        vol_curr = vol_data.get("current", 0.0)
+        if vol_avg > 0:
+            vol_ratio = vol_curr / vol_avg
+            
+    if vol_ratio > 1.5:
+        evidence.append(f"✅ Volume {vol_ratio:.1f}x average — institutional conviction")
+        aligned_count += 1
+    elif vol_ratio < 0.7:
+        evidence.append(f"❌ Volume {vol_ratio:.1f}x average — low participation")
+    else:
+        evidence.append(f"⚠️ Volume {vol_ratio:.1f}x average — standard activity")
+        
+    # Catalyst factor
+    cat_score = score_result.get("breakdown", {}).get("Cat", 0)
+    if cat_score > 0 and direction == "bullish":
+        evidence.append("✅ Near term bullish catalyst identified")
+        aligned_count += 1
+    elif cat_score < 0 and direction == "bearish":
+        evidence.append("✅ Near term bearish catalyst identified")
+        aligned_count += 1
+    else:
+        evidence.append("⚠️ No immediate calendar catalysts")
+        
+    # Regime factor
+    if direction == "bullish":
+        if regime == "RISK-ON":
+            evidence.append(f"✅ Regime RISK-ON — strong market tailwinds")
+            aligned_count += 1
+        elif regime == "TRANSITIONING":
+            evidence.append(f"⚠️ Regime TRANSITIONING — reduces conviction")
+        else:
+            evidence.append(f"❌ Regime RISK-OFF — overall market headwinds")
+    elif direction == "bearish":
+        if regime == "RISK-OFF":
+            evidence.append(f"✅ Regime RISK-OFF — market conditions support shorts")
+            aligned_count += 1
+        elif regime == "TRANSITIONING":
+            evidence.append(f"⚠️ Regime TRANSITIONING — reduces conviction")
+        else:
+            evidence.append(f"❌ Regime RISK-ON — overall market headwind for shorts")
+            
+    # EMA Stack / Trend factor
+    ema_score = score_result.get("breakdown", {}).get("EMA", 0)
+    if direction == "bullish":
+        if ema_score > 0:
+            evidence.append("✅ Bullish EMA stack confirmed")
+            aligned_count += 1
+        else:
+            evidence.append("❌ EMA 200 above price — long term trend bearish")
+    elif direction == "bearish":
+        if ema_score < 0:
+            evidence.append("✅ Bearish EMA stack confirmed")
+            aligned_count += 1
+        else:
+            evidence.append("❌ EMA 200 below price — long term trend bullish")
+            
+    # 3. Model Info
+    if not is_fallback:
+        confidence_str = ml_pred.get("model_confidence", "MEDIUM")
+        model_info = f"Model: Ensemble ({ml_pred.get('model_type', 'General')}) | Confidence: {confidence_str}"
+        accuracy_info = f"Model accuracy last 30 days: {ml_pred.get('model_accuracy_last_30d', 0.5)*100:.0f}% | Sample size: {ml_pred.get('sample_size', 0)}"
+    else:
+        model_info = "Model: Rule-Based Fallback active"
+        accuracy_info = "Model accuracy last 30 days: N/A"
+        
+    # 4. Backtest Win Rate
+    backtest_info = "Backtest win rate (180d): N/A"
+    try:
+        import backtest
+        perf = backtest.load_backtest_performance()
+        if ticker in perf:
+            t_perf = perf[ticker]
+            if direction in ("bullish", "bearish"):
+                win_rate = t_perf.get(direction, {}).get("win_rate", 0.0)
+                tot_sigs = t_perf.get(direction, {}).get("total_signals", 0)
+                if tot_sigs > 0:
+                    backtest_info = f"Backtest win rate ({t_perf.get('days', 90)}d): {win_rate*100:.1f}% ({tot_sigs} signals)"
+    except Exception:
+        pass
+        
+    # 5. Entry Zone & Stop Loss Invalidation Zone & Time Horizon
+    if price > 0:
+        if direction == "bullish":
+            entry_zone = f"${0.99*price:.2f} - ${1.01*price:.2f}"
+            
+            # Stop loss logic (support level or 0.95*price or EMA50)
+            ema50 = asset.get("ema50")
+            support = asset.get("support")
+            
+            if ema50 and ema50 < price:
+                stop_val = ema50
+                stop_reason = "closes below EMA50"
+            elif support:
+                sup_list = support if isinstance(support, list) else [support]
+                valid_sups = [s for s in sup_list if s < price]
+                if valid_sups:
+                    stop_val = max(valid_sups)
+                    stop_reason = f"closes below support ${stop_val:.2f}"
+                else:
+                    stop_val = 0.95 * price
+                    stop_reason = "5% default stop"
+            else:
+                stop_val = 0.95 * price
+                stop_reason = "5% default stop"
+                
+            stop_invalidation = f"Below ${stop_val:.2f} ({stop_reason})"
+        elif direction == "bearish":
+            entry_zone = f"${0.99*price:.2f} - ${1.01*price:.2f}"
+            
+            # Stop loss logic
+            ema50 = asset.get("ema50")
+            resistance = asset.get("resistance")
+            
+            if ema50 and ema50 > price:
+                stop_val = ema50
+                stop_reason = "closes above EMA50"
+            elif resistance:
+                res_list = resistance if isinstance(resistance, list) else [resistance]
+                valid_res = [r for r in res_list if r > price]
+                if valid_res:
+                    stop_val = min(valid_res)
+                    stop_reason = f"closes above resistance ${stop_val:.2f}"
+                else:
+                    stop_val = 1.05 * price
+                    stop_reason = "5% default stop"
+            else:
+                stop_val = 1.05 * price
+                stop_reason = "5% default stop"
+                
+            stop_invalidation = f"Above ${stop_val:.2f} ({stop_reason})"
+        else:
+            entry_zone = "N/A"
+            stop_invalidation = "N/A"
+    else:
+        entry_zone = "N/A"
+        stop_invalidation = "N/A"
+        
+    return {
+        "confidence_score": round(confidence, 2),
+        "confidence_stars": stars,
+        "aligned_factors": f"{aligned_count}/{total_factors}",
+        "evidence": evidence,
+        "model_info": model_info,
+        "accuracy_info": accuracy_info,
+        "backtest_info": backtest_info,
+        "entry_zone": entry_zone,
+        "stop_invalidation": stop_invalidation,
+        "time_horizon": "3-7 days"
+    }
+
+
+def score_asset(asset: dict, calendar: list, regime: str | None = None, macro_state: dict | None = None) -> dict:
     """
     Compute the composite opportunity score for a single asset.
 
@@ -590,6 +824,7 @@ def score_asset(asset: dict, calendar: list, regime: str | None = None) -> dict:
                      - sentiment     : float
         calendar : List of upcoming event dicts (see score_catalyst).
         regime   : Optional market regime string.
+        macro_state : Optional flat macro state dict.
 
     Returns:
         dict with keys:
@@ -663,7 +898,74 @@ def score_asset(asset: dict, calendar: list, regime: str | None = None) -> dict:
     direction = _determine_direction(clamped_score)
     signals = _collect_signals(raw_components, clamped_score)
 
-    logger.debug("Scored %s | %s", ticker, breakdown_str)
+    # ---- ML Scoring & Fallback Ladder Integration ----
+    import ml_engine
+    
+    # Resolve macro_state if None (attempt loading latest saved state)
+    if macro_state is None:
+        try:
+            import json, os
+            if os.path.exists("state/last-run.json"):
+                with open("state/last-run.json", "r", encoding="utf-8") as f:
+                    macro_state = json.load(f).get("macro_state", {})
+        except Exception:
+            pass
+    if macro_state is None:
+        macro_state = {"regime": regime or "RISK-ON", "vix": 15.0}
+
+    # Run ML prediction
+    prediction = ml_engine.predict_opportunity(asset, macro_state)
+    
+    # Record features for continuous learning loop
+    try:
+        # Save features to feature-store.json
+        ml_engine.record_asset_run(
+            asset, 
+            macro_state, 
+            sentiment_score=asset.get("sentiment", 0.0), 
+            news_volume=asset.get("news_volume", 0)
+        )
+    except Exception as exc:
+        logger.error("Continuous learning record failed for %s: %s", ticker, exc)
+
+    use_ml = False
+    if not prediction.get("fallback", True):
+        acc = prediction.get("model_accuracy_last_30d", 1.0)
+        if acc >= 0.50:
+            use_ml = True
+        else:
+            logger.warning("ML Model accuracy is %.2f (< 50%%). Falling back to rule-based scoring.", acc)
+
+    if use_ml:
+        # Override score with ensemble probability-driven rating
+        clamped_score = round((prediction["bullish_probability"] - prediction["bearish_probability"]) * 10.0, 2)
+        direction = _determine_direction(clamped_score)
+        breakdown_str = f"ML ({prediction['model_type']}): Bull {prediction['bullish_probability']:.2f} | Bear {prediction['bearish_probability']:.2f}"
+        logger.info("Scored %s via ML pipeline | Bull: %.2f Bear: %.2f -> Score: %s", 
+                    ticker, prediction["bullish_probability"], prediction["bearish_probability"], clamped_score)
+    else:
+        logger.debug("Scored %s via Rule-Based Scorer | %s", ticker, breakdown_str)
+
+    # ---- Backtest-based Signal Suppression ----
+    try:
+        import backtest
+        if direction in ("bullish", "bearish") and backtest.is_signal_suppressed(ticker, direction):
+            logger.warning("AUTO-SUPPRESSION: Suppressing %s %s signal (low historical win rate).", ticker, direction.upper())
+            signals.append(f"⚠️ Signal SUPPRESSED — {direction.upper()} historical win rate is < 45% in backtesting.")
+            clamped_score = 0.0
+            direction = "neutral"
+            breakdown_str = f"[SUPPRESSED] {breakdown_str}"
+    except Exception as exc:
+        logger.error("Failed to check signal suppression for %s: %s", ticker, exc)
+
+    # ---- Tactical Card Generation ----
+    score_result = {
+        "score": clamped_score,
+        "direction": direction,
+        "breakdown": raw_components,
+        "ml_prediction": prediction
+    }
+    tactical_card = generate_tactical_card(asset, score_result, macro_state)
 
     return {
         "ticker": ticker,
@@ -676,7 +978,9 @@ def score_asset(asset: dict, calendar: list, regime: str | None = None) -> dict:
         "support": asset.get("support"),
         "resistance": asset.get("resistance"),
         "price": asset.get("price"),
-        "asset_class": asset.get("asset_class", "stock")
+        "asset_class": asset.get("asset_class", "stock"),
+        "ml_prediction": prediction,
+        "tactical_card": tactical_card
     }
 
 
@@ -684,7 +988,7 @@ def score_asset(asset: dict, calendar: list, regime: str | None = None) -> dict:
 # SCAN ALL ASSETS
 # ===========================================================================
 
-def scan_all_assets(enriched_data: dict, calendar: list, regime: str | None = None) -> dict:
+def scan_all_assets(enriched_data: dict, calendar: list, regime: str | None = None, macro_state: dict | None = None) -> dict:
     """
     Score every asset in the enriched_data dictionary.
 
@@ -694,6 +998,7 @@ def scan_all_assets(enriched_data: dict, calendar: list, regime: str | None = No
                         contain a 'assets' key whose value is the mapping.
         calendar      : List of upcoming event dicts.
         regime        : Optional market regime string.
+        macro_state   : Optional flat macro state dict.
 
     Returns:
         dict with keys:
@@ -707,7 +1012,6 @@ def scan_all_assets(enriched_data: dict, calendar: list, regime: str | None = No
         logger.warning("scan_all_assets: received empty or invalid enriched_data")
         return {"scores": {}, "bullish": [], "bearish": [], "neutral": [], "all_ranked": []}
 
-    # Support both flat {ticker: asset_dict} and {'assets': {ticker: asset_dict}}
     assets_map = enriched_data.get("assets", enriched_data)
     if not isinstance(assets_map, dict):
         logger.warning("scan_all_assets: could not locate assets mapping in enriched_data")
@@ -718,10 +1022,9 @@ def scan_all_assets(enriched_data: dict, calendar: list, regime: str | None = No
         if not isinstance(asset, dict):
             logger.debug("scan_all_assets: skipping non-dict entry for ticker '%s'", ticker)
             continue
-        # Ensure ticker is set in the asset dict
         if "ticker" not in asset:
             asset = {**asset, "ticker": ticker}
-        result = score_asset(asset, calendar, regime=regime)
+        result = score_asset(asset, calendar, regime=regime, macro_state=macro_state)
         scores[ticker] = result
 
     all_ranked = sorted(scores.values(), key=lambda r: r["score"], reverse=True)
@@ -1439,7 +1742,7 @@ def rank_opportunities(scan_results: dict) -> dict:
 # CONVENIENCE: FULL PIPELINE
 # ===========================================================================
 
-def run_full_scan(enriched_data: dict, calendar: list, regime: str | None = None) -> dict:
+def run_full_scan(enriched_data: dict, calendar: list, regime: str | None = None, macro_state: dict | None = None) -> dict:
     """
     Convenience function that runs the complete scan pipeline in one call:
         1. score_asset for every asset  (via scan_all_assets)
@@ -1450,6 +1753,7 @@ def run_full_scan(enriched_data: dict, calendar: list, regime: str | None = None
         enriched_data : Dict mapping ticker → asset dict.
         calendar      : List of upcoming catalyst event dicts.
         regime        : Optional market regime string.
+        macro_state   : Optional flat macro state dict.
 
     Returns:
         The ranked opportunity dict from rank_opportunities, with all
@@ -1458,7 +1762,7 @@ def run_full_scan(enriched_data: dict, calendar: list, regime: str | None = None
     logger.info("run_full_scan: starting full scan pipeline")
 
     # Step 1: Score all assets
-    base_results = scan_all_assets(enriched_data, calendar, regime=regime)
+    base_results = scan_all_assets(enriched_data, calendar, regime=regime, macro_state=macro_state)
 
     # Step 2: Pattern detectors (run independently on enriched_data)
     base_results["breakouts"] = detect_breakout_candidates(enriched_data)

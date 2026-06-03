@@ -25,3 +25,7 @@ state/last-run-console.log
 # System / OS
 .DS_Store
 Thumbs.db
+
+# Reports
+reports/
+

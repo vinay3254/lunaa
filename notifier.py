@@ -720,7 +720,10 @@ def render_bloomberg_terminal(macro_state: dict, opportunities: list, alerts: li
         dxy_val    = macro_state.get("dxy")
         rates_trend = macro_state.get("rates_trend", "flat")
 
+        vix_is_stale = macro_state.get("vix_is_stale", False)
         vix_str = f"{vix_val:.2f}" if (vix_val is not None and not np.isnan(vix_val)) else "N/A"
+        if vix_is_stale and vix_str != "N/A":
+            vix_str += " [STALE]"
         dxy_str = f"{dxy_val:.2f}" if (dxy_val is not None and not np.isnan(dxy_val)) else "N/A"
         vix_color = "bold bright_red" if (vix_val or 0) > 30 else ("bold yellow" if (vix_val or 0) > 20 else "bold bright_green")
         rates_color = "bright_red" if rates_trend == "rising" else ("bright_green" if rates_trend == "falling" else "yellow")

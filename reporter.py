@@ -167,7 +167,7 @@ def build_opportunity_block(opp: dict) -> str:
     Expected keys:
         name, ticker, asset_class, price, change_24h, score,
         score_breakdown, support, resistance, reasoning,
-        catalyst, invalidation_level
+        catalyst, invalidation_level, tactical_card
     """
     name        = opp.get("name", opp.get("ticker", "Unknown"))
     ticker      = opp.get("ticker", "?")
@@ -185,7 +185,7 @@ def build_opportunity_block(opp: dict) -> str:
     fetch_time_str = opp.get("fetch_time")
     time_disp, stale_tag = check_stale(fetch_time_str)
 
-    score_str = f"{score:+.1f}" if score is not None else "N/A"
+    score_str = f"{score:+.2f}" if score is not None else "N/A"
 
     block = (
         f"### {name} ({ticker}) — Score: {score_str}/10\n"
@@ -197,7 +197,25 @@ def build_opportunity_block(opp: dict) -> str:
         f"- **Catalyst:** {catalyst}\n"
         f"- **Invalidation:** Below {invalid_lvl} this setup fails\n"
     )
-    return block
+
+    tc = opp.get("tactical_card")
+    if tc and isinstance(tc, dict):
+        evidence_lines = "\n>   ".join(tc.get("evidence", []))
+        block += (
+            f"\n#### 🎯 LUNA TACTICAL ANALYSIS\n"
+            f"> [!NOTE]\n"
+            f"> **{tc.get('confidence_stars', 'N/A')}**\n"
+            f"> - **Supporting Evidence** ({tc.get('aligned_factors', '0/0')} factors aligned):\n"
+            f">   {evidence_lines}\n"
+            f"> - **Model Consensus:** {tc.get('model_info', 'N/A')}\n"
+            f">   - *{tc.get('accuracy_info', 'N/A')}*\n"
+            f">   - *{tc.get('backtest_info', 'N/A')}*\n"
+            f"> - **Trade Setup Parameters:**\n"
+            f">   - **Entry Zone:** {tc.get('entry_zone', 'N/A')}\n"
+            f">   - **Stop Invalidation:** {tc.get('stop_invalidation', 'N/A')}\n"
+            f">   - **Time Horizon:** {tc.get('time_horizon', '3-7 days')}\n"
+        )
+    return block + "\n"
 
 
 # ---------------------------------------------------------------------------
@@ -230,9 +248,10 @@ def generate_daily_brief(
     ts_str    = now_ist.strftime("%Y-%m-%d %H:%M:%S")
 
     regime  = macro_state.get("regime", "Unknown")
-    vix_val = macro_state.get("vix")
-    dxy_val = macro_state.get("dxy")
+    vix_is_stale = macro_state.get("vix_is_stale", False)
     vix_str = f"{vix_val:.2f}" if vix_val is not None else "N/A"
+    if vix_is_stale and vix_str != "N/A":
+        vix_str += " [STALE]"
     dxy_str = f"{dxy_val:.2f}" if dxy_val is not None else "N/A"
     yc_inv  = macro_state.get("yield_curve_inverted", False)
 
@@ -545,9 +564,10 @@ def generate_macro_dashboard(
     ts_str   = ts_ist.strftime("%Y-%m-%d %H:%M:%S")
 
     regime  = macro_state.get("regime", "Unknown")
-    vix_val = macro_state.get("vix")
-    dxy_val = macro_state.get("dxy")
+    vix_is_stale = macro_state.get("vix_is_stale", False)
     vix_str = f"{vix_val:.2f}" if vix_val is not None else "N/A"
+    if vix_is_stale and vix_str != "N/A":
+        vix_str += " [STALE]"
     dxy_str = f"{dxy_val:.2f}" if dxy_val is not None else "N/A"
     yc_inv  = macro_state.get("yield_curve_inverted", False)
     yc_spread = macro_state.get("yield_curve_spread")

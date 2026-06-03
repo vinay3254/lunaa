@@ -29,6 +29,7 @@ from typing import Any
 
 import feedparser
 import requests
+import numpy as np
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
@@ -361,6 +362,73 @@ def fetch_cryptopanic_news(api_key: str | None) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# NLP Sentiment Scoring Pipeline (FinBERT + VADER Fallback)
+# ---------------------------------------------------------------------------
+
+FINBERT_PIPE = None
+VADER_ANALYZER = None
+NLP_MODEL_LOADED = False
+
+def init_nlp_sentiment():
+    """Initialize FinBERT or VADER model for high-fidelity news sentiment analysis."""
+    global FINBERT_PIPE, VADER_ANALYZER, NLP_MODEL_LOADED
+    # 1. Try Loading FinBERT via transformers
+    try:
+        from transformers import pipeline
+        import torch
+        logger.info("Initializing FinBERT model (ProsusAI/finbert)...")
+        # pipeline automatically handles CPU/GPU device selection
+        device = 0 if torch.cuda.is_available() else -1
+        FINBERT_PIPE = pipeline("sentiment-analysis", model="ProsusAI/finbert", device=device)
+        NLP_MODEL_LOADED = True
+        logger.info("FinBERT successfully loaded and ready for inference.")
+    except Exception as e:
+        logger.warning("HuggingFace transformers or ProsusAI/finbert not loaded/available: %s. Falling back to VADER.", e)
+        
+    # 2. Setup VADER as fallback
+    if not NLP_MODEL_LOADED:
+        try:
+            from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+            VADER_ANALYZER = SentimentIntensityAnalyzer()
+            logger.info("VADER Sentiment Analyzer loaded successfully.")
+        except Exception as e:
+            logger.error("VADER Sentiment Analyzer not available: %s. Falling back to rule-based keyword match.", e)
+
+
+def get_headline_nlp_sentiment(headline: str) -> float:
+    """Analyze single headline sentiment using FinBERT, VADER, or keyword matching."""
+    global FINBERT_PIPE, VADER_ANALYZER, NLP_MODEL_LOADED
+    
+    if not NLP_MODEL_LOADED and VADER_ANALYZER is None:
+        init_nlp_sentiment()
+        
+    if NLP_MODEL_LOADED and FINBERT_PIPE is not None:
+        try:
+            res = FINBERT_PIPE(headline[:512])[0]
+            label = res["label"].lower()
+            confidence = float(res["score"])
+            if label == "positive":
+                return confidence
+            elif label == "negative":
+                return -confidence
+            else:
+                return 0.0
+        except Exception as exc:
+            logger.warning("FinBERT inference failed for headline '%s': %s. Falling back to VADER.", headline, exc)
+            
+    # Fallback to VADER
+    if VADER_ANALYZER is not None:
+        try:
+            res = VADER_ANALYZER.polarity_scores(headline)
+            return float(res.get("compound", 0.0))
+        except Exception as exc:
+            logger.error("VADER inference failed for headline '%s': %s. Falling back to Keyword Matching.", headline, exc)
+            
+    # Fallback to Keyword Matching
+    return scale_sentiment([headline])
+
+
+# ---------------------------------------------------------------------------
 # Sentiment scoring
 # ---------------------------------------------------------------------------
 
@@ -507,10 +575,12 @@ def calculate_asset_sentiment(
     ticker: str,
     news_list: list[dict],
     return_dict: bool = False,
+    asset_class: str = "stock",
 ) -> float | dict:
     """
     Filter ``news_list`` to articles relevant to *asset_name* / *ticker*,
-    then return a credibility-weighted sentiment score in [-1.0, +1.0].
+    then return a credibility-weighted sentiment score in [-1.0, +1.0] using NLP.
+    Also fetches and integrates Reddit PRAW sentiment if configured.
     """
     name_lower = asset_name.lower()
     ticker_lower = ticker.lower()
@@ -530,7 +600,6 @@ def calculate_asset_sentiment(
             pub_str = article.get("published", "")
             try:
                 pub_dt = datetime.fromisoformat(pub_str)
-                # handle timezone
                 if pub_dt.tzinfo is None:
                     pub_dt = pub_dt.replace(tzinfo=timezone.utc)
                 age_hours = (now - pub_dt).total_seconds() / 3600.0
@@ -549,8 +618,49 @@ def calculate_asset_sentiment(
             if name_lower in combined or ticker_lower in combined:
                 relevant_articles.append(article)
 
+    # --- Reddit PRAW Integration ---
+    reddit_client_id = os.getenv("REDDIT_CLIENT_ID")
+    reddit_client_secret = os.getenv("REDDIT_CLIENT_SECRET")
+    if reddit_client_id and reddit_client_secret:
+        try:
+            import praw
+            reddit = praw.Reddit(
+                client_id=reddit_client_id,
+                client_secret=reddit_client_secret,
+                user_agent=os.getenv("REDDIT_USER_AGENT", "TradingResearchAgent/1.0"),
+                requestor_kwargs={"timeout": 10}
+            )
+            
+            subreddits = ["stocks", "investing"]
+            if asset_class == "crypto":
+                subreddits = ["CryptoCurrency", "Bitcoin"]
+            elif asset_class == "stock":
+                subreddits = ["wallstreetbets", "stocks", "investing"]
+                
+            query = f"{ticker} OR {asset_name}"
+            logger.info("Searching Reddit subreddits %s for '%s'...", subreddits, query)
+            
+            for sub_name in subreddits:
+                subreddit = reddit.subreddit(sub_name)
+                for post in subreddit.search(query, time_filter="day", limit=10):
+                    title = post.title
+                    selftext = post.selftext or ""
+                    ups = post.score
+                    # Append as relevant article with special flag
+                    relevant_articles.append({
+                        "title": title,
+                        "summary": selftext[:300],
+                        "source": f"r/{sub_name}",
+                        "link": f"https://reddit.com{post.permalink}",
+                        "published": datetime.fromtimestamp(post.created_utc, timezone.utc).isoformat(),
+                        "is_reddit": True,
+                        "upvotes": ups
+                    })
+        except Exception as exc:
+            logger.warning("Reddit PRAW fetch failed for %s: %s", ticker, exc)
+
     logger.info(
-        "Asset sentiment for %s (%s): %d relevant articles",
+        "Asset sentiment for %s (%s): %d relevant articles (including social)",
         asset_name,
         ticker,
         len(relevant_articles),
@@ -568,11 +678,17 @@ def calculate_asset_sentiment(
 
     for article in relevant_articles:
         title = article.get("title", "")
-        raw_sentiment = scale_sentiment([title])
+        raw_sentiment = get_headline_nlp_sentiment(title)  # Upgraded high-fidelity NLP
         source = article.get("source", "unknown")
         link = article.get("link", "")
         
         weight = get_credibility_weight(source, link)
+        if article.get("is_reddit"):
+            # Scale Reddit weight by upvotes using log-scale multiplier
+            upvotes = max(1, article.get("upvotes", 1))
+            upvote_mult = float(np.log1p(upvotes))
+            weight = weight * upvote_mult
+            
         if weight > 0.4:
             all_sources_low_credibility = False
             
@@ -580,7 +696,10 @@ def calculate_asset_sentiment(
         weight_sum += weight
         
         sign = "+" if raw_sentiment >= 0 else ""
-        breakdown_parts.append(f"{source} {sign}{raw_sentiment:.1f} × {weight:.1f}")
+        if article.get("is_reddit"):
+            breakdown_parts.append(f"{source} (ups={article.get('upvotes')}) {sign}{raw_sentiment:.1f} × {weight:.1f}")
+        else:
+            breakdown_parts.append(f"{source} {sign}{raw_sentiment:.1f} × {weight:.1f}")
 
     final_sentiment = weighted_sum / weight_sum if weight_sum > 0 else 0.0
     final_sentiment = round(final_sentiment, 4)
@@ -1196,7 +1315,8 @@ def fetch_all_research(config: dict) -> dict:
         if name:
             key = f"{name} ({ticker})" if ticker else name
             asset_sentiment[key] = calculate_asset_sentiment(
-                name, ticker, all_articles, return_dict=config.get("return_dict", False)
+                name, ticker, all_articles, return_dict=config.get("return_dict", False),
+                asset_class=asset.get("asset_class", "stock")
             )
 
     # -- 4. Overall market sentiment from all headlines -----------------------

@@ -30,7 +30,7 @@ import logging
 import time
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Any
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -39,6 +39,7 @@ import pandas as pd
 import requests
 import yfinance as yf
 from tqdm import tqdm
+from bs4 import BeautifulSoup
 
 # Ensure UTF-8 output on Windows console
 if hasattr(sys.stdout, 'reconfigure'):
@@ -141,6 +142,229 @@ def _pct_change_from_ohlcv(ohlcv: pd.DataFrame | None, days: int) -> float:
         return float("nan")
     return float((new_price - old_price) / old_price * 100)
 
+
+def _format_price_with_tag(price: float, is_stale: bool = False) -> str:
+    """Format price, appending [STALE] if data is stale."""
+    if np.isnan(price):
+        return "NaN [UNAVAILABLE]"
+    tag = " [STALE]" if is_stale else ""
+    return f"{price:.2f}{tag}"
+
+
+def validate_asset(asset: dict) -> bool:
+    """Validate that price > 0, volume > 0 (for stocks/crypto), and ohlcv has at least 50 rows."""
+    price = asset.get("price")
+    if price is None or np.isnan(price) or price <= 0:
+        return False
+        
+    asset_class = asset.get("asset_class", "stock")
+    if asset_class in ("stock", "crypto"):
+        vol = asset.get("volume")
+        if vol is None or np.isnan(vol) or vol <= 0:
+            return False
+            
+    ohlcv = asset.get("ohlcv")
+    if ohlcv is None or not isinstance(ohlcv, pd.DataFrame) or len(ohlcv) < 50:
+        return False
+        
+    return True
+
+
+def fallback_to_cache(ticker: str, asset_class: str, cache_path: str = "state/last-run.json") -> dict | None:
+    """Attempt to fallback to previously cached state from state/last-run.json on validation failure."""
+    try:
+        if os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                d = json.load(f)
+            
+            cached_asset = None
+            market_data = d.get("market_data", {})
+            
+            if ticker in market_data.get("traditional", {}):
+                cached_asset = market_data["traditional"][ticker]
+            elif ticker in market_data.get("crypto", {}):
+                cached_asset = market_data["crypto"][ticker]
+            else:
+                for item in market_data.get("global_snapshot", []):
+                    if item.get("ticker") == ticker:
+                        cached_asset = item
+                        break
+            
+            if cached_asset:
+                price = cached_asset.get("price", float("nan"))
+                if price is not None and not np.isnan(price) and price > 0:
+                    dummy_ohlcv = pd.DataFrame(
+                        {
+                            "open": [price] * 50,
+                            "high": [price] * 50,
+                            "low": [price] * 50,
+                            "close": [price] * 50,
+                            "volume": [cached_asset.get("volume", 1000.0)] * 50
+                        },
+                        index=pd.date_range(end=pd.Timestamp.now(tz=timezone.utc), periods=50, freq="D")
+                    )
+                    return {
+                        "ticker":         ticker,
+                        "name":           cached_asset.get("name", ticker),
+                        "asset_class":    asset_class,
+                        "price":          price,
+                        "change_24h_pct": cached_asset.get("change_24h_pct", float("nan")),
+                        "change_7d_pct":  cached_asset.get("change_7d_pct", float("nan")),
+                        "change_30d_pct": cached_asset.get("change_30d_pct", float("nan")),
+                        "volume":         cached_asset.get("volume", float("nan")),
+                        "market_cap":     cached_asset.get("market_cap", float("nan")),
+                        "high_52w":       cached_asset.get("high_52w", float("nan")),
+                        "low_52w":        cached_asset.get("low_52w", float("nan")),
+                        "ohlcv":          dummy_ohlcv,
+                        "fetch_time":     _now_iso(),
+                        "is_stale":       True,
+                        "error":          "Fetched data failed validation. Fallback to cached state.",
+                    }
+    except Exception as exc:
+        logger.error("Failed to load cached asset %s: %s", ticker, exc)
+    return None
+
+
+def log_data_quality(ticker: str, asset: dict):
+    """Log data quality score per asset."""
+    ohlcv = asset.get("ohlcv")
+    if ohlcv is None or not isinstance(ohlcv, pd.DataFrame) or ohlcv.empty:
+        logger.info("%s: data quality 0%% (All candles missing)", ticker)
+        return
+        
+    total_rows = len(ohlcv)
+    asset_class = asset.get("asset_class", "stock")
+    
+    cols_to_check = ["open", "high", "low", "close"]
+    if asset_class in ("stock", "crypto"):
+        cols_to_check.append("volume")
+        
+    missing = 0
+    for idx, row in ohlcv.iterrows():
+        is_missing = False
+        for col in cols_to_check:
+            if col in row:
+                val = row[col]
+                if val is None or np.isnan(val):
+                    is_missing = True
+                    break
+            else:
+                is_missing = True
+                break
+        if is_missing:
+            missing += 1
+            
+    quality_score = round((total_rows - missing) / total_rows * 100)
+    logger.info("%s: data quality %d%% (%d missing candle%s)", ticker, quality_score, missing, "" if missing == 1 else "s")
+
+
+def fetch_vix_data_with_fallbacks() -> pd.DataFrame:
+    """Fetch VIX data using primary and fallback channels.
+    Primary: yf.download("^VIX", period="5d", interval="1d")
+    Fallback 1: yf.Ticker("^VIX").fast_info
+    Fallback 2: Scrape current VIX from https://www.cboe.com/tradable_products/vix/
+    Fallback 3: Calculate synthetic VIX proxy from SPY options chain
+    Fallback 4: Cache load from state/last-run.json
+    Fallback 5: Safe default (15.0)
+    """
+    logger.info("Attempting to fetch VIX data...")
+    is_stale = False
+    vix_val = float("nan")
+    
+    # 1. Primary: yf.download
+    try:
+        df = yf.download("^VIX", period="5d", interval="1d", auto_adjust=True, progress=False, threads=False)
+        if df is not None and not df.empty and "Close" in df.columns:
+            val = df["Close"].dropna().iloc[-1]
+            if val is not None and not np.isnan(val) and val > 0:
+                logger.info("VIX primary fetch successful: %.2f", val)
+                df = df.rename(columns={"adj close": "Close", "close": "Close"})
+                df = df[["Close"]].copy()
+                df["is_stale"] = False
+                return df
+    except Exception as exc:
+        logger.warning("VIX Primary yf.download failed: %s", exc)
+        
+    # 2. Fallback 1: fast_info
+    try:
+        t = yf.Ticker("^VIX")
+        if hasattr(t, "fast_info") and "lastPrice" in t.fast_info:
+            val = t.fast_info["lastPrice"]
+            if val is not None and not np.isnan(val) and val > 0:
+                logger.info("VIX Fallback 1 (fast_info) successful: %.2f", val)
+                vix_val = float(val)
+    except Exception as exc:
+        logger.warning("VIX Fallback 1 (fast_info) failed: %s", exc)
+        
+    # 3. Fallback 2: scrape CBOE
+    if np.isnan(vix_val):
+        try:
+            r = requests.get("https://www.cboe.com/tradable_products/vix/", headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
+            if r.status_code == 200:
+                soup = BeautifulSoup(r.text, 'html.parser')
+                for p in soup.find_all("p"):
+                    if p.text and "VIX Spot Price" in p.text:
+                        parent = p.parent
+                        if parent:
+                            h2 = parent.find("h2")
+                            if h2:
+                                val_str = h2.text.replace("$", "").strip()
+                                val = float(val_str)
+                                if val > 0:
+                                    logger.info("VIX Fallback 2 (CBOE scraping) successful: %.2f", val)
+                                    vix_val = val
+                                    break
+        except Exception as exc:
+            logger.warning("VIX Fallback 2 (CBOE scraping) failed: %s", exc)
+            
+    # 4. Fallback 3: synthetic VIX from SPY options
+    if np.isnan(vix_val):
+        try:
+            spy = yf.Ticker("SPY")
+            if spy.options:
+                today = datetime.now(timezone.utc).date()
+                target = today + timedelta(days=30)
+                exp_dates = [datetime.strptime(d, "%Y-%m-%d").date() for d in spy.options]
+                closest = min(exp_dates, key=lambda d: abs(d - target))
+                opt = spy.option_chain(closest.strftime("%Y-%m-%d"))
+                spy_price = spy.fast_info.get("lastPrice", 520.0)
+                calls_near = opt.calls[abs(opt.calls["strike"] - spy_price) / spy_price <= 0.02]
+                puts_near = opt.puts[abs(opt.puts["strike"] - spy_price) / spy_price <= 0.02]
+                ivs = calls_near["impliedVolatility"].dropna().tolist() + puts_near["impliedVolatility"].dropna().tolist()
+                if ivs:
+                    val = sum(ivs) / len(ivs) * 100.0
+                    logger.info("VIX Fallback 3 (Synthetic SPY options IV) successful: %.2f", val)
+                    vix_val = val
+        except Exception as exc:
+            logger.warning("VIX Fallback 3 (Synthetic options) failed: %s", exc)
+            
+    # 5. Fallback 4: Cache load from last-run.json
+    if np.isnan(vix_val):
+        is_stale = True
+        try:
+            cache_path = "state/last-run.json"
+            if os.path.exists(cache_path):
+                with open(cache_path, "r", encoding="utf-8") as f:
+                    d = json.load(f)
+                val = d.get("macro_state", {}).get("vix")
+                if val is not None and not np.isnan(val):
+                    logger.info("VIX Fallback 4 (Cache load) successful: %.2f [STALE]", val)
+                    vix_val = float(val)
+        except Exception as exc:
+            logger.warning("VIX Fallback 4 (Cache load) failed: %s", exc)
+            
+    # 6. Fallback 5: Hardcoded default
+    if np.isnan(vix_val):
+        is_stale = True
+        vix_val = 15.0
+        logger.info("VIX Fallback 5 (Hardcoded default) active: %.2f [STALE]", vix_val)
+        
+    idx = pd.date_range(end=pd.Timestamp.now(tz=timezone.utc), periods=5, freq="D")
+    df = pd.DataFrame({"Close": [vix_val] * 5}, index=idx)
+    df["is_stale"] = is_stale
+    return df
+
+
 # ---------------------------------------------------------------------------
 # Core network utility — request_with_backoff
 # ---------------------------------------------------------------------------
@@ -209,17 +433,30 @@ def request_with_backoff(
 # Batched yfinance fetches
 # ---------------------------------------------------------------------------
 
-def fetch_traditional_batch(batch: list[str], asset_class_map: dict[str, str]) -> dict[str, dict]:
-    """Download OHLCV data for a batch of 50 traditional tickers using a single yfinance request."""
+def fetch_traditional_batch(
+    batch: list[str],
+    asset_class_map: dict[str, str],
+    period: str | None = None,
+    is_retry: bool = False,
+) -> dict[str, dict]:
+    """Download OHLCV data for a batch of 50 traditional tickers using a single yfinance request.
+    
+    PHASE 1 UPGRADE: Uses 1y for stocks/crypto (EMA200 needs 200+ candles), 6mo for others.
+    """
     results = {}
     if not batch:
         return results
 
+    # Determine period dynamically if not specified: 1y for stocks/crypto, 6mo for others
+    if period is None:
+        has_stock_or_crypto = any(asset_class_map.get(t, "stock") in ("stock", "crypto") for t in batch)
+        period = "1y" if has_stock_or_crypto else "6mo"
+
     try:
-        logger.info("Executing yfinance batch download for %d tickers...", len(batch))
+        logger.info("Executing yfinance batch download for %d tickers with period=%s...", len(batch), period)
         df = yf.download(
             batch,
-            period="1y",
+            period=period,
             group_by="ticker",
             auto_adjust=True,
             progress=False,
@@ -235,67 +472,125 @@ def fetch_traditional_batch(batch: list[str], asset_class_map: dict[str, str]) -
 
         for t in batch:
             asset_class = asset_class_map.get(t, "stock")
+            candidate = None
             try:
-                if is_multi:
+                if t == "^VIX":
+                    vix_df = fetch_vix_data_with_fallbacks()
+                    price = float(vix_df["Close"].iloc[-1])
+                    is_stale = bool(vix_df.get("is_stale", pd.Series([False]*len(vix_df))).iloc[-1])
+                    
+                    chg_24h = 0.0
+                    if len(vix_df) >= 2:
+                        prev_vix = vix_df["Close"].iloc[-2]
+                        chg_24h = (price - prev_vix) / prev_vix * 100.0 if prev_vix != 0 else 0.0
+                        
+                    std_ohlcv = vix_df.rename(columns={"Close": "close"})
+                    std_ohlcv.columns = [c.lower() for c in std_ohlcv.columns]
+                    for col in ["open", "high", "low", "volume"]:
+                        if col not in std_ohlcv.columns:
+                            std_ohlcv[col] = float("nan")
+                    std_ohlcv = std_ohlcv[["open", "high", "low", "close", "volume"]].copy()
+                    
+                    candidate = {
+                        "ticker":         t,
+                        "name":           t,
+                        "asset_class":    asset_class,
+                        "price":          price,
+                        "change_24h_pct": chg_24h,
+                        "change_7d_pct":  0.0,
+                        "change_30d_pct": 0.0,
+                        "volume":         0.0,
+                        "market_cap":     float("nan"),
+                        "high_52w":       price,
+                        "low_52w":        price,
+                        "ohlcv":          std_ohlcv,
+                        "fetch_time":     _now_iso(),
+                        "is_stale":       is_stale,
+                        "error":          "STALE VIX" if is_stale else None,
+                    }
+                elif is_multi:
                     if t not in df.columns.levels[0]:
-                        results[t] = _empty_asset(t, asset_class, error="Ticker not returned in batch")
-                        continue
-                    ticker_df = df[t].dropna(how="all")
+                        candidate = _empty_asset(t, asset_class, error="Ticker not returned in batch")
+                    else:
+                        ticker_df = df[t].dropna(how="all")
                 else:
                     ticker_df = df.dropna(how="all")
 
-                if ticker_df.empty:
-                    results[t] = _empty_asset(t, asset_class, error="OHLCV is empty")
-                    continue
+                if candidate is None:
+                    if ticker_df.empty:
+                        candidate = _empty_asset(t, asset_class, error="OHLCV is empty")
+                    else:
+                        ticker_df.columns = [c.lower() for c in ticker_df.columns]
+                        ticker_df = ticker_df.rename(columns={"adj close": "close"})
 
-                ticker_df.columns = [c.lower() for c in ticker_df.columns]
+                        # Pad missing columns with nan
+                        for col in ["open", "high", "low", "close", "volume"]:
+                            if col not in ticker_df.columns:
+                                ticker_df[col] = float("nan")
 
-                # Rename Adj Close to close if present
-                ticker_df = ticker_df.rename(columns={"adj close": "close"})
+                        ticker_df = ticker_df[["open", "high", "low", "close", "volume"]].copy()
 
-                # Pad missing columns with nan
-                for col in ["open", "high", "low", "close", "volume"]:
-                    if col not in ticker_df.columns:
-                        ticker_df[col] = float("nan")
+                        if ticker_df.index.tzinfo is None:
+                            ticker_df.index = ticker_df.index.tz_localize("UTC")
+                        else:
+                            ticker_df.index = ticker_df.index.tz_convert("UTC")
 
-                ticker_df = ticker_df[["open", "high", "low", "close", "volume"]].copy()
+                        price = _safe_float(ticker_df["close"].iloc[-1])
+                        volume = _safe_float(ticker_df["volume"].iloc[-1])
 
-                if ticker_df.index.tzinfo is None:
-                    ticker_df.index = ticker_df.index.tz_localize("UTC")
-                else:
-                    ticker_df.index = ticker_df.index.tz_convert("UTC")
+                        chg_24h = _pct_change_from_ohlcv(ticker_df, 1)
+                        chg_7d = _pct_change_from_ohlcv(ticker_df, 5)
+                        chg_30d = _pct_change_from_ohlcv(ticker_df, 21)
 
-                price = _safe_float(ticker_df["close"].iloc[-1])
-                volume = _safe_float(ticker_df["volume"].iloc[-1])
+                        high_52w = _safe_float(ticker_df["high"].max())
+                        low_52w = _safe_float(ticker_df["low"].min())
 
-                chg_24h = _pct_change_from_ohlcv(ticker_df, 1)
-                chg_7d = _pct_change_from_ohlcv(ticker_df, 5)
-                chg_30d = _pct_change_from_ohlcv(ticker_df, 21)
-
-                high_52w = _safe_float(ticker_df["high"].max())
-                low_52w = _safe_float(ticker_df["low"].min())
-
-                results[t] = {
-                    "ticker":         t,
-                    "name":           t,
-                    "asset_class":    asset_class,
-                    "price":          price,
-                    "change_24h_pct": chg_24h,
-                    "change_7d_pct":  chg_7d,
-                    "change_30d_pct": chg_30d,
-                    "volume":         volume,
-                    "market_cap":     float("nan"),
-                    "high_52w":       high_52w,
-                    "low_52w":        low_52w,
-                    "ohlcv":          ticker_df,
-                    "fetch_time":     _now_iso(),
-                    "is_stale":       np.isnan(price),
-                    "error":          None if not np.isnan(price) else "Price is NaN",
-                }
+                        candidate = {
+                            "ticker":         t,
+                            "name":           t,
+                            "asset_class":    asset_class,
+                            "price":          price,
+                            "change_24h_pct": chg_24h,
+                            "change_7d_pct":  chg_7d,
+                            "change_30d_pct": chg_30d,
+                            "volume":         volume,
+                            "market_cap":     float("nan"),
+                            "high_52w":       high_52w,
+                            "low_52w":        low_52w,
+                            "ohlcv":          ticker_df,
+                            "fetch_time":     _now_iso(),
+                            "is_stale":       np.isnan(price),
+                            "error":          None if not np.isnan(price) else "Price is NaN",
+                        }
 
             except Exception as exc:
                 logger.error("Error processing %s in batch: %s", t, exc)
-                results[t] = _empty_asset(t, asset_class, error=str(exc))
+                candidate = _empty_asset(t, asset_class, error=str(exc))
+
+            # --- Validation Pass ---
+            is_valid = validate_asset(candidate)
+            if not is_valid:
+                if not is_retry:
+                    logger.warning("%s failed validation (price=%s, volume=%s, rows=%d). Retrying once...", 
+                                   t, candidate.get("price"), candidate.get("volume"), len(candidate.get("ohlcv", [])))
+                    candidate = fetch_traditional_asset(t, asset_class, period=period, is_retry=True)
+                    is_valid = validate_asset(candidate)
+                
+                if not is_valid:
+                    logger.warning("%s failed validation after retry. Falling back to cache...", t)
+                    cached = fallback_to_cache(t, asset_class)
+                    if cached:
+                        candidate = cached
+                        is_valid = True
+                    else:
+                        logger.error("%s failed all validation and cache attempts. Marking as stale.", t)
+                        candidate = _empty_asset(t, asset_class, error="Data validation failed")
+                        is_valid = False
+
+            if is_valid:
+                log_data_quality(t, candidate)
+
+            results[t] = candidate
 
     except Exception as exc:
         logger.error("Failed to execute yfinance batch: %s", exc)
@@ -411,7 +706,7 @@ def fetch_crypto_markets(coin_ids: list[str]) -> list[dict]:
     return all_market_data
 
 
-def fetch_crypto_ohlcv(coin_id: str, days: int = 90) -> pd.DataFrame | None:
+def fetch_crypto_ohlcv(coin_id: str, days: int = 365) -> pd.DataFrame | None:
     """Fetch cryptocurrency OHLCV price history from CoinGecko.
 
     Uses a hard cap of COINGECKO_OHLCV_MAX_RETRIES (3) retries — much lower than the
@@ -514,7 +809,7 @@ def fetch_all_crypto(crypto_list: list[Any]) -> dict:
 
     for cid in tqdm(ohlcv_eligible, desc="Fetching Crypto OHLCV (top 5)", unit="coin"):
         try:
-            ohlcv_results[cid] = fetch_crypto_ohlcv(cid)  # delay + 3-retry already inside
+            ohlcv_results[cid] = fetch_crypto_ohlcv(cid, days=365)  # Fetch 1y lookback
         except Exception as exc:
             logger.error("Crypto OHLCV fetch raised exception for %s: %s", cid, exc)
             ohlcv_results[cid] = None
@@ -577,6 +872,38 @@ def fetch_all_crypto(crypto_list: list[Any]) -> dict:
             # OHLCV was intentionally skipped (not in top-N)
             asset["ohlcv_unavailable"] = True
 
+        # --- Validation Pass for Crypto ---
+        if ohlcv_was_attempted:
+            is_valid = validate_asset(asset)
+            if not is_valid:
+                logger.warning("%s failed validation (price=%s, volume=%s, rows=%d). Retrying crypto OHLCV once...", 
+                               symbol, asset.get("price"), asset.get("volume"), len(asset.get("ohlcv", [])))
+                try:
+                    retry_ohlcv = fetch_crypto_ohlcv(cid, days=365)
+                    if retry_ohlcv is not None and not retry_ohlcv.empty:
+                        asset["ohlcv"] = retry_ohlcv
+                        asset["ohlcv_unavailable"] = False
+                        is_valid = validate_asset(asset)
+                except Exception as exc:
+                    logger.error("%s: retry OHLCV fetch failed: %s", symbol, exc)
+                
+                if not is_valid:
+                    logger.warning("%s failed validation after retry. Falling back to cache...", symbol)
+                    cached = fallback_to_cache(symbol, "crypto")
+                    if cached:
+                        asset = cached
+                        is_valid = True
+                    else:
+                        logger.error("%s failed validation and cache. Marking as stale.", symbol)
+                        asset["ohlcv_unavailable"] = True
+                        asset["is_stale"] = True
+                        if not asset.get("error"):
+                            asset["error"] = "Data validation failed"
+                        is_valid = False
+            
+            if is_valid:
+                log_data_quality(symbol, asset)
+
         results[coin_symbols.get(cid, cid.upper())] = asset
 
     return results
@@ -585,9 +912,14 @@ def fetch_all_crypto(crypto_list: list[Any]) -> dict:
 # Traditional asset fetch (reused fallback/inspect)
 # ---------------------------------------------------------------------------
 
-def fetch_traditional_asset(ticker: str, asset_class: str) -> dict:
+def fetch_traditional_asset(
+    ticker: str,
+    asset_class: str,
+    period: str | None = None,
+    is_retry: bool = False,
+) -> dict:
     """Fetch a single traditional asset (reused as single-symbol fallback)."""
-    batch_res = fetch_traditional_batch([ticker], {ticker: asset_class})
+    batch_res = fetch_traditional_batch([ticker], {ticker: asset_class}, period=period, is_retry=is_retry)
     return batch_res.get(ticker, _empty_asset(ticker, asset_class, error="Fetch failed"))
 
 # ---------------------------------------------------------------------------
