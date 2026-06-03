@@ -20,3 +20,4 @@ torch>=2.0.0
 pytz>=2023.3
 colorama>=0.4.6
 tabulate>=0.9.0
+

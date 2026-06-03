@@ -3,6 +3,8 @@ scanner.py — Autonomous Trading Research Agent: Opportunity Scanner & Scorer
 =============================================================================
 Scans all enriched assets, scores them on a -10 to +10 scale, and detects
 pattern-based opportunity categories (breakouts, squeezes, crossovers, etc.).
+
+PHASE 2+ UPGRADE: Integrated ML predictions and confidence scoring.
 """
 
 from __future__ import annotations
@@ -13,6 +15,18 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+
+try:
+    import ml_engine
+    ML_AVAILABLE = True
+except ImportError:
+    ML_AVAILABLE = False
+
+try:
+    import sentiment_engine
+    SENTIMENT_AVAILABLE = True
+except ImportError:
+    SENTIMENT_AVAILABLE = False
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -1742,29 +1756,183 @@ def rank_opportunities(scan_results: dict) -> dict:
 # CONVENIENCE: FULL PIPELINE
 # ===========================================================================
 
-def run_full_scan(enriched_data: dict, calendar: list, regime: str | None = None, macro_state: dict | None = None) -> dict:
+def compute_enhanced_score_with_confidence(
+    asset: dict,
+    base_score: float,
+    macro_state: dict | None = None,
+    sentiment_score: float = 0.0,
+) -> dict:
     """
-    Convenience function that runs the complete scan pipeline in one call:
-        1. score_asset for every asset  (via scan_all_assets)
-        2. All pattern detectors
-        3. rank_opportunities
-
-    Args:
-        enriched_data : Dict mapping ticker → asset dict.
-        calendar      : List of upcoming catalyst event dicts.
-        regime        : Optional market regime string.
-        macro_state   : Optional flat macro state dict.
-
-    Returns:
-        The ranked opportunity dict from rank_opportunities, with all
-        pattern lists embedded.
+    PHASE 2+ UPGRADE: Enhance base rule-based score with ML predictions and confidence.
+    
+    Returns enhanced prediction with:
+    - Combined ML + rule-based probability
+    - Model confidence level
+    - Supporting evidence
+    - Entry/exit zones
+    - Stop loss invalidation
     """
-    logger.info("run_full_scan: starting full scan pipeline")
+    ticker = asset.get("ticker", "UNKNOWN")
+    
+    result = {
+        "ticker": ticker,
+        "base_rule_score": float(base_score),
+        "bullish_probability": 0.5,     # Default neutral
+        "bearish_probability": 0.5,
+        "neutral_probability": 0.0,
+        "model_confidence": "LOW",
+        "confidence_stars": "★☆☆☆☆",
+        "evidence": [],
+        "top_features": [],
+        "entry_zone_low": None,
+        "entry_zone_high": None,
+        "stop_loss": None,
+        "time_horizon": "3-7 days",
+        "ml_fallback": True,  # Started as fallback
+        "model_accuracy_30d": 0.50,
+        "sample_size": 0,
+        "backtest_win_rate": 0.0,
+    }
+    
+    if not macro_state:
+        macro_state = {"regime": "RISK-ON", "vix": 15.0}
+    
+    price = asset.get("price", 0.0)
+    if price <= 0:
+        return result
+    
+    # Try to get ML prediction
+    if ML_AVAILABLE:
+        try:
+            ml_pred = ml_engine.predict_opportunity(asset, macro_state)
+            if ml_pred and not ml_pred.get("fallback", True):
+                result["ml_fallback"] = False
+                result["bullish_probability"] = ml_pred.get("bullish_probability", 0.5)
+                result["bearish_probability"] = ml_pred.get("bearish_probability", 0.3)
+                result["neutral_probability"] = ml_pred.get("neutral_probability", 0.2)
+                result["model_confidence"] = ml_pred.get("model_confidence", "LOW")
+                result["top_features"] = ml_pred.get("top_features", [])
+                result["model_accuracy_30d"] = ml_pred.get("model_accuracy_last_30d", 0.5)
+                result["sample_size"] = ml_pred.get("sample_size", 0)
+                
+                # Map confidence to stars
+                if result["model_confidence"] == "HIGH":
+                    result["confidence_stars"] = "★★★★★"
+                elif result["model_confidence"] == "MEDIUM":
+                    result["confidence_stars"] = "★★★☆☆"
+                else:
+                    result["confidence_stars"] = "★★☆☆☆"
+        except Exception as exc:
+            logger.debug("ML prediction failed for %s: %s", ticker, exc)
+    
+    # Rule-based evidence
+    rsi = asset.get("rsi", 50.0)
+    ema20 = asset.get("ema20", price)
+    ema50 = asset.get("ema50", price)
+    ema200 = asset.get("ema200", price)
+    
+    evidence_count = 0
+    if rsi < 35:
+        result["evidence"].append(f"✅ RSI {rsi:.0f} — oversold bounce setup")
+        evidence_count += 1
+    elif rsi > 65:
+        result["evidence"].append(f"⚠️  RSI {rsi:.0f} — overbought caution")
+        evidence_count += 1
+    
+    if price > ema20 and price < ema50:
+        result["evidence"].append("✅ Price between EMA20 and EMA50 — bullish structure")
+        evidence_count += 1
+    
+    if price > ema200:
+        result["evidence"].append("✅ Price above EMA200 — long-term trend bullish")
+        evidence_count += 1
+    elif price < ema200:
+        result["evidence"].append("❌ Price below EMA200 — long-term trend bearish")
+    
+    vol_data = asset.get("volume_anomaly", {})
+    if vol_data.get("ratio", 1.0) > 1.5:
+        result["evidence"].append(f"✅ Volume {vol_data.get('ratio', 1):.1f}x avg — institutional buying")
+        evidence_count += 1
+    
+    sentiment_score = sentiment_score or asset.get("sentiment", 0.0)
+    if sentiment_score > 0.3:
+        result["evidence"].append(f"✅ Sentiment {sentiment_score:+.2f} — bullish narrative")
+        evidence_count += 1
+    elif sentiment_score < -0.3:
+        result["evidence"].append(f"❌ Sentiment {sentiment_score:+.2f} — bearish narrative")
+    
+    macro_regime = macro_state.get("regime", "RISK-ON")
+    if macro_regime == "RISK-OFF":
+        result["evidence"].append("⚠️  Regime RISK-OFF — reduces conviction")
+    
+    # Calculate evidence ratio (0-6 factors)
+    max_factors = 6
+    evidence_pct = min(100, (evidence_count / max_factors) * 100)
+    
+    # Adjust probabilities based on evidence
+    if evidence_count >= 4:
+        result["bullish_probability"] = min(1.0, result["bullish_probability"] + 0.15)
+        result["bearish_probability"] = max(0.0, result["bearish_probability"] - 0.10)
+    elif evidence_count <= 1:
+        result["bullish_probability"] = max(0.0, result["bullish_probability"] - 0.20)
+        result["bearish_probability"] = min(1.0, result["bearish_probability"] + 0.15)
+    
+    # Normalize
+    total = result["bullish_probability"] + result["bearish_probability"] + result["neutral_probability"]
+    if total > 0:
+        result["bullish_probability"] = round(result["bullish_probability"] / total, 2)
+        result["bearish_probability"] = round(result["bearish_probability"] / total, 2)
+        result["neutral_probability"] = round(1.0 - result["bullish_probability"] - result["bearish_probability"], 2)
+    
+    # Entry zones
+    pct_to_ema20 = ((price - ema20) / ema20 * 100.0) if ema20 else 0.0
+    if result["bullish_probability"] > 0.6:
+        # Entry: 2-3% pullback from current
+        result["entry_zone_low"] = round(price * 0.97, 2)
+        result["entry_zone_high"] = round(price * 1.00, 2)
+        # Stop: below EMA50
+        result["stop_loss"] = round(ema50 * 0.98, 2)
+    elif result["bearish_probability"] > 0.6:
+        result["entry_zone_low"] = round(price * 1.00, 2)
+        result["entry_zone_high"] = round(price * 1.03, 2)
+        result["stop_loss"] = round(ema50 * 1.02, 2)
+    
+    return result
 
-    # Step 1: Score all assets
+
+def run_full_scan_with_ml(enriched_data: dict, calendar: list, regime: str | None = None, macro_state: dict | None = None) -> dict:
+    """
+    PHASE 2+ UPGRADE: Full scan with ML predictions and confidence scoring.
+    
+    Same as run_full_scan but includes:
+    - ML-powered predictions
+    - Confidence levels
+    - Entry/exit zones
+    - Feature importance
+    """
+    logger.info("run_full_scan_with_ml: starting ML-enhanced scan pipeline")
+    
+    if not macro_state:
+        macro_state = {"regime": regime or "RISK-ON", "vix": 15.0}
+    
+    # Step 1: Score all assets (rule-based)
     base_results = scan_all_assets(enriched_data, calendar, regime=regime, macro_state=macro_state)
-
-    # Step 2: Pattern detectors (run independently on enriched_data)
+    
+    # Step 2: Enhance with ML + confidence
+    enhanced_results = []
+    for opp in base_results.get("opportunities", []):
+        ticker = opp.get("ticker")
+        asset = enriched_data.get(ticker)
+        if asset:
+            sentiment = opp.get("sentiment", 0.0)
+            enhanced = compute_enhanced_score_with_confidence(
+                asset, opp.get("score", 0.0), macro_state, sentiment
+            )
+            enhanced_results.append(enhanced)
+    
+    base_results["enhanced_predictions"] = enhanced_results
+    
+    # Step 3: Pattern detectors (unchanged)
     base_results["breakouts"] = detect_breakout_candidates(enriched_data)
     base_results["breakdowns"] = detect_breakdown_candidates(enriched_data)
     base_results["squeezes"] = detect_bb_squeezes(enriched_data)
@@ -1773,10 +1941,11 @@ def run_full_scan(enriched_data: dict, calendar: list, regime: str | None = None
     base_results["mean_reversion"] = detect_mean_reversion_plays(enriched_data)
     base_results["correlation_breaks"] = detect_correlation_breaks(enriched_data)
     base_results["oversold"] = detect_oversold_bounces(enriched_data)
-
-    # Step 3: Rank and consolidate
+    
+    # Step 4: Rank
     ranked = rank_opportunities(base_results)
-    logger.info("run_full_scan: pipeline complete")
+    logger.info("run_full_scan_with_ml: pipeline complete with %d enhanced predictions", len(enhanced_results))
+    
     return ranked
 
 

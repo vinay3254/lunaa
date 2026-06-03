@@ -33,7 +33,7 @@ from dotenv import load_dotenv
 from market_data import fetch_all_market_data
 from indicators import enrich_all_assets
 from researcher import fetch_all_research
-from scanner import run_full_scan
+from scanner import run_full_scan, run_full_scan_with_ml
 from macro import analyze_macro, fetch_treasury_data
 from reporter import (
     generate_all_reports,
@@ -43,6 +43,15 @@ from reporter import (
     STATE_DIR,
 )
 from notifier import notify_run_complete, notify_alert, notify_daily_summary
+
+# ML, Sentiment, and Continuous Learning modules
+try:
+    from continuous_learning import run_continuous_learning_cycle
+except ImportError:
+    logger = logging.getLogger(__name__)
+    logger.warning("continuous_learning module not available")
+    def run_continuous_learning_cycle():
+        return {}
 
 # ---------------------------------------------------------------------------
 # Logging setup
@@ -944,7 +953,12 @@ def run_full_cycle(config: dict) -> None:
         last_state = load_state()
         
         # Execute continuous learning loop check and retrain models if necessary
-        run_continuous_learning_loop()
+        try:
+            learning_result = run_continuous_learning_cycle()
+            if learning_result.get("phases", {}).get("retrain_models", {}).get("models_retrained"):
+                logger.info("✓ Models retrained in continuous learning cycle")
+        except Exception as exc:
+            logger.warning("Continuous learning cycle failed: %s", exc)
             
         _log_done("Load last state & run continuous learning loop", t0)
 
