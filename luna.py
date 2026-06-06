@@ -1,18 +1,19 @@
 """
-agent.py
---------
+luna.py
+-------
 Main orchestration entry point for the autonomous trading research agent.
 Coordinates all modules: market data, indicators, research, scanning, macro
-analysis, reporting, alert detection, and notifications.
+analysis, reporting, alert detection, notifications, and chart analysis.
 
 Usage:
-    python agent.py --run           # single full cycle
-    python agent.py --quick         # price + alerts only
-    python agent.py --macro         # macro dashboard update only
-    python agent.py --scan          # opportunity scan only
-    python agent.py --alert-check   # price refresh + alert check
-    python agent.py --schedule      # continuous scheduled mode
-    python agent.py --daily-brief   # push daily digest immediately
+    python luna.py --run                          # single full cycle
+    python luna.py --quick                        # price + alerts only
+    python luna.py --macro                        # macro dashboard update only
+    python luna.py --scan                         # opportunity scan only
+    python luna.py --alert-check                  # price refresh + alert check
+    python luna.py --schedule                     # continuous scheduled mode
+    python luna.py --daily-brief                  # push daily digest immediately
+    python luna.py --chart "C:/charts/NVDA_4h.png"  # institutional chart analysis
 """
 
 import argparse
@@ -1529,6 +1530,7 @@ def print_welcome_screen() -> None:
   \033[36mluna --macro\033[0m          Update the macro dashboard and yield spreads
   \033[36mluna --check-outcomes\033[0m Check active call outcomes and auto-tune weights
   \033[36mluna --quick\033[0m          Execute a fast price and watchlist alert scan
+  \033[36mluna --chart <path>\033[0m   Institutional-grade chart analysis (vision AI)
 """
     print(logo)
 
@@ -1545,19 +1547,22 @@ def main() -> None:
     --alert-check   Fetch current prices and check for triggered alerts.
     --schedule      Continuous mode: run all tasks on defined schedule.
     --daily-brief   Send the daily digest immediately (for testing).
+    --chart <path>  Institutional-grade chart analysis via vision AI.
     """
     parser = argparse.ArgumentParser(
-        description="Autonomous Trading Research Agent",
+        description="LUNA — Autonomous Trading Research & Chart Analysis Agent",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=textwrap.dedent("""
             Examples:
-              python agent.py --run            # Full analysis cycle
-              python agent.py --quick          # Fast price + alert pass
-              python agent.py --macro          # Update macro dashboard
-              python agent.py --scan           # Re-scan opportunities
-              python agent.py --alert-check    # Check for triggered alerts
-              python agent.py --schedule       # Start continuous scheduler
-              python agent.py --daily-brief    # Push today's daily brief now
+              python luna.py --run                              # Full analysis cycle
+              python luna.py --quick                           # Fast price + alert pass
+              python luna.py --macro                           # Update macro dashboard
+              python luna.py --scan                            # Re-scan opportunities
+              python luna.py --alert-check                     # Check for triggered alerts
+              python luna.py --schedule                        # Start continuous scheduler
+              python luna.py --daily-brief                     # Push today's daily brief now
+              python luna.py --chart "C:/charts/NVDA_4h.png"  # Institutional chart analysis
+              python luna.py --chart "C:/charts/BTCUSDT_1d.png"
         """),
     )
 
@@ -1575,6 +1580,16 @@ def main() -> None:
     mode_group.add_argument("--ask", type=str, metavar="QUESTION", help="Ask a natural language question against all loaded data.")
     mode_group.add_argument("--dashboard",   action="store_true", help="Launch the interactive LUNA web dashboard server.")
     mode_group.add_argument("--backtest",    action="store_true", help="Run historical backtesting simulation.")
+    mode_group.add_argument(
+        "--chart",
+        type=str,
+        metavar="IMAGE_PATH",
+        help=(
+            "Institutional-grade chart analysis using vision AI. "
+            "Provide the full path to a chart image. "
+            "Example: python luna.py --chart \"C:/charts/NVDA_4h.png\""
+        ),
+    )
 
     # Additional options for backtesting
     parser.add_argument("--asset", type=str, help="Target asset symbol (e.g. NVDA) for backtesting.")
@@ -1592,7 +1607,7 @@ def main() -> None:
         except Exception as exc:
             logger.error("Failed to auto-bootstrap ML engine on startup: %s", exc)
 
-    if not any([args.run, args.quick, args.macro, args.scan, args.alert_check, args.schedule, args.daily_brief, args.check_outcomes, args.performance, args.portfolio, args.ask, args.dashboard, args.backtest]):
+    if not any([args.run, args.quick, args.macro, args.scan, args.alert_check, args.schedule, args.daily_brief, args.check_outcomes, args.performance, args.portfolio, args.ask, args.dashboard, args.backtest, args.chart]):
         print_welcome_screen()
         return
 
@@ -1658,6 +1673,11 @@ def main() -> None:
             backtest.run_backtest(args.asset, days=args.days)
         else:
             logger.error("Please specify a target asset using --asset <TICKER> or use --all to backtest all assets in watchlist.")
+
+    elif args.chart:
+        logger.info("Mode: CHART ANALYSIS — %s", args.chart)
+        from chart_engine import run_chart_mode
+        run_chart_mode(args.chart, config)
 
 
 if __name__ == "__main__":
