@@ -1949,6 +1949,11 @@ def run_full_scan_with_ml(enriched_data: dict, calendar: list, regime: str | Non
     return ranked
 
 
+# Backward-compatible alias — luna.py imports run_full_scan which was the
+# original name before it was upgraded to run_full_scan_with_ml.
+run_full_scan = run_full_scan_with_ml
+
+
 # ===========================================================================
 # MODULE SELF-TEST (python scanner.py)
 # ===========================================================================
