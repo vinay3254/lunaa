@@ -144,3 +144,73 @@ def open_new_positions(ranked: dict, portfolio: dict, market_data: dict) -> dict
         )
 
     return portfolio
+
+
+def check_exits(portfolio: dict, market_data: dict) -> dict:
+    """
+    Close simulated open positions whose live price has crossed stop-loss
+    or take-profit, or that have been held past MAX_HOLD_DAYS. Mutates and
+    returns `portfolio`; caller must call portfolio.save_portfolio().
+    """
+    if not PAPER_TRADING:
+        return portfolio
+
+    from portfolio import get_current_price
+
+    today = datetime.now(timezone.utc).date()
+    still_open = []
+    closed_positions = portfolio.setdefault("closed_positions", [])
+
+    for pos in portfolio.get("positions", []):
+        if pos.get("status", "open").lower() != "open":
+            still_open.append(pos)
+            continue
+
+        ticker = pos.get("asset")
+        current_price = get_current_price(ticker, market_data)
+        if current_price is None or np.isnan(current_price):
+            still_open.append(pos)
+            continue
+
+        stop_loss = pos.get("stop_loss")
+        take_profit = pos.get("take_profit")
+
+        try:
+            entry_date = datetime.strptime(pos.get("entry_date", ""), "%Y-%m-%d").date()
+            days_held = (today - entry_date).days
+        except (TypeError, ValueError):
+            days_held = 0
+
+        exit_reason = None
+        exit_price = None
+        if stop_loss is not None and current_price <= stop_loss:
+            exit_reason, exit_price = "stop_loss", stop_loss
+        elif take_profit is not None and current_price >= take_profit:
+            exit_reason, exit_price = "take_profit", take_profit
+        elif days_held > MAX_HOLD_DAYS:
+            exit_reason, exit_price = "max_hold", current_price
+
+        if exit_reason is None:
+            still_open.append(pos)
+            continue
+
+        qty = pos.get("quantity", 0.0)
+        proceeds = qty * exit_price
+        pnl = proceeds - (qty * pos.get("entry_price", 0.0))
+
+        closed_pos = dict(pos)
+        closed_pos.update({
+            "status": "closed",
+            "exit_price": exit_price,
+            "exit_date": today.strftime("%Y-%m-%d"),
+            "exit_reason": exit_reason,
+        })
+        closed_positions.append(closed_pos)
+        portfolio["cash_balance"] = portfolio.get("cash_balance", 0.0) + proceeds
+        logger.info(
+            "Paper SELL: %.6f %s @ $%.2f (%s) P&L=$%.2f",
+            qty, ticker, exit_price, exit_reason, pnl,
+        )
+
+    portfolio["positions"] = still_open
+    return portfolio

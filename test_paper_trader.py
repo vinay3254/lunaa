@@ -175,3 +175,88 @@ def test_open_new_positions_preserves_fractional_quantities(monkeypatch):
     assert pos["entry_price"] == 101.0
     assert pos["stop_loss"] == 98.0
     assert pos["take_profit"] == 110.0
+
+
+def _open_position(asset="NVDA", qty=10.0, entry_price=100.0, stop_loss=90.0,
+                    take_profit=120.0, entry_date="2026-07-01"):
+    return {
+        "asset": asset, "quantity": qty, "entry_price": entry_price,
+        "stop_loss": stop_loss, "take_profit": take_profit,
+        "entry_date": entry_date, "status": "open", "source": "paper_trader",
+        "signal_score": 8.0, "uuid": "test-uuid",
+    }
+
+
+def _market_data_with_price(ticker, price):
+    return {"traditional": {ticker: {"price": price}}, "crypto": {}, "global_snapshot": []}
+
+
+def test_check_exits_closes_on_stop_loss_hit():
+    portfolio = {"positions": [_open_position(stop_loss=90.0)], "closed_positions": [], "cash_balance": 0.0}
+    result = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 88.0))
+
+    assert result["positions"] == []
+    assert len(result["closed_positions"]) == 1
+    closed = result["closed_positions"][0]
+    assert closed["exit_reason"] == "stop_loss"
+    assert closed["exit_price"] == 90.0
+    # proceeds = 10 * 90 = 900
+    assert result["cash_balance"] == 900.0
+
+
+def test_check_exits_closes_on_take_profit_hit():
+    portfolio = {"positions": [_open_position(take_profit=120.0)], "closed_positions": [], "cash_balance": 0.0}
+    result = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 125.0))
+
+    closed = result["closed_positions"][0]
+    assert closed["exit_reason"] == "take_profit"
+    assert closed["exit_price"] == 120.0
+    assert result["cash_balance"] == 1200.0
+
+
+def test_check_exits_leaves_position_open_between_sl_and_tp():
+    portfolio = {"positions": [_open_position(stop_loss=90.0, take_profit=120.0)],
+                 "closed_positions": [], "cash_balance": 0.0}
+    result = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 105.0))
+
+    assert len(result["positions"]) == 1
+    assert result["closed_positions"] == []
+
+
+def test_check_exits_closes_on_max_hold_days():
+    from datetime import datetime, timezone, timedelta
+
+    # Use a date relative to "now" so the test doesn't depend on mocking
+    # datetime.now() — 45 days ago always exceeds MAX_HOLD_DAYS=30 regardless
+    # of when the test suite runs.
+    stale_entry_date = (datetime.now(timezone.utc) - timedelta(days=45)).strftime("%Y-%m-%d")
+    portfolio = {
+        "positions": [_open_position(entry_date=stale_entry_date, stop_loss=50.0, take_profit=200.0)],
+        "closed_positions": [], "cash_balance": 0.0,
+    }
+    result = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 105.0))
+
+    closed = result["closed_positions"][0]
+    assert closed["exit_reason"] == "max_hold"
+    assert closed["exit_price"] == 105.0
+
+
+def test_check_exits_skips_position_when_price_unavailable():
+    portfolio = {"positions": [_open_position()], "closed_positions": [], "cash_balance": 0.0}
+    # No matching ticker anywhere in market_data -> get_current_price returns NaN
+    result = paper_trader.check_exits(portfolio, {"traditional": {}, "crypto": {}, "global_snapshot": []})
+
+    assert len(result["positions"]) == 1
+    assert result["closed_positions"] == []
+
+
+def test_check_exits_ignores_already_closed_positions():
+    closed_already = _open_position()
+    closed_already["status"] = "closed"
+    portfolio = {"positions": [closed_already], "closed_positions": [], "cash_balance": 500.0}
+    result = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 50.0))
+
+    # Untouched: still in positions list, cash unchanged, nothing newly closed
+    assert len(result["positions"]) == 1
+    assert result["closed_positions"] == []
+    assert result["cash_balance"] == 500.0
