@@ -260,3 +260,51 @@ def test_check_exits_ignores_already_closed_positions():
     assert len(result["positions"]) == 1
     assert result["closed_positions"] == []
     assert result["cash_balance"] == 500.0
+
+
+def test_end_to_end_multi_day_simulation(monkeypatch):
+    """
+    Day 1: scan finds one HIGH-confidence bullish setup -> paper trader buys it.
+    Day 2: price still between SL/TP -> position stays open, no change.
+    Day 3: price drops through stop-loss -> position closes, cash realizes the loss.
+    Asserts final cash_balance and closed_positions match hand-calculated values.
+    """
+    import portfolio as portfolio_module
+    monkeypatch.setattr(portfolio_module, "calculate_portfolio_status",
+                         lambda market_data, silent=False: {"total_portfolio_value": 100_000.0, "portfolio_heat": 0.0})
+
+    portfolio = {"positions": [], "closed_positions": [], "cash_balance": 0.0, "currency": "USD"}
+
+    # --- Day 1: entry ---
+    ranked = {"bullish": [_opportunity("NVDA", price=120.0, stop_loss=110.0, resistance=[140.0])]}
+    portfolio = paper_trader.open_new_positions(ranked, portfolio, market_data={})
+
+    assert len(portfolio["positions"]) == 1
+    # dollar_risk = 100_000 * 0.02 = 2000; risk_per_share = 10 -> qty = 200
+    assert portfolio["positions"][0]["quantity"] == 200.0
+    cash_after_entry = 100_000.0 - (200.0 * 120.0)  # = 76,000.0
+    assert portfolio["cash_balance"] == cash_after_entry
+
+    # --- Day 2: no exit trigger ---
+    portfolio = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 118.0))
+    assert len(portfolio["positions"]) == 1
+    assert portfolio["closed_positions"] == []
+    assert portfolio["cash_balance"] == cash_after_entry  # unchanged
+
+    # --- Day 3: stop-loss hit ---
+    portfolio = paper_trader.check_exits(portfolio, _market_data_with_price("NVDA", 108.0))
+
+    assert portfolio["positions"] == []
+    assert len(portfolio["closed_positions"]) == 1
+    closed = portfolio["closed_positions"][0]
+    assert closed["exit_reason"] == "stop_loss"
+    assert closed["exit_price"] == 110.0
+
+    proceeds = 200.0 * 110.0  # = 22,000.0
+    expected_final_cash = cash_after_entry + proceeds  # = 98,000.0
+    assert portfolio["cash_balance"] == expected_final_cash
+
+    # Net result: entered at 120, stopped out at 110 on 200 units -> -2000 realized loss
+    realized_loss = (200.0 * 110.0) - (200.0 * 120.0)
+    assert realized_loss == -2000.0
+    assert expected_final_cash == 100_000.0 + realized_loss
