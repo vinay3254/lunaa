@@ -1089,6 +1089,18 @@ def run_full_cycle(config: dict) -> None:
         )
         _log_done("Generate all reports", t0)
 
+        # Paper-trading engine: open new simulated positions from bullish,
+        # HIGH-confidence opportunities. Never touches real money or any
+        # broker — see paper_trader.py module docstring.
+        try:
+            import paper_trader
+            from portfolio import load_portfolio, save_portfolio
+            paper_portfolio = load_portfolio()
+            paper_portfolio = paper_trader.open_new_positions(ranked, paper_portfolio, report_market_data)
+            save_portfolio(paper_portfolio)
+        except Exception as exc:
+            logger.error("Paper trader open_new_positions failed: %s", exc)
+
         # Precalculate portfolio status before notification
         portfolio_status = None
         try:
@@ -1253,6 +1265,18 @@ def run_alert_check(config: dict) -> None:
         if not market_data:
             logger.warning("No market data for alert check — skipping.")
             return
+
+        # Paper-trading engine: check open simulated positions against live
+        # prices for stop-loss/take-profit/max-hold exits.
+        try:
+            import paper_trader
+            from portfolio import load_portfolio, save_portfolio, calculate_portfolio_status
+            paper_portfolio = load_portfolio()
+            paper_portfolio = paper_trader.check_exits(paper_portfolio, market_data)
+            save_portfolio(paper_portfolio)
+            calculate_portfolio_status(market_data=market_data, silent=True)  # refresh portfolio-status.md
+        except Exception as exc:
+            logger.error("Paper trader check_exits failed: %s", exc)
 
         flat_data     = _build_enriched_flat(market_data)
         enriched_data = enrich_all_assets(flat_data)
