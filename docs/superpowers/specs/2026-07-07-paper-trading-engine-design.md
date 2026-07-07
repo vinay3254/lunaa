@@ -80,24 +80,50 @@ Closed positions append `exit_price`, `exit_date`, `exit_reason`
 (`"stop_loss" | "take_profit" | "max_hold"`), matching what `portfolio.py`'s
 `calculate_portfolio_status()` already expects for the closed-positions table.
 
+## 3.1 Correction from initial spec draft — actual data shape
+
+Tracing the real call path (`luna.py::run_full_cycle` → `scanner.run_full_scan`,
+which is an alias for `run_full_scan_with_ml` → `rank_opportunities`) showed the
+opportunities actually consumed by `luna.py` (`ranked["bullish"]` /
+`ranked["bearish"]`) do **not** carry a top-level `model_confidence` or `stop_loss`
+field — those only exist as human-readable strings buried inside a nested
+`tactical_card` dict (e.g. `stop_invalidation: "Below $112.00 (closes below
+support $112.00)"`, `confidence_stars: "★★★★☆ HIGH CONFIDENCE"`). Parsing display
+strings for numeric decisions would be fragile.
+
+Instead, Task 1 of the implementation plan makes a small, additive change to
+`scanner.py::generate_tactical_card()` (scanner.py:807-818) to also return the raw
+values it already computes internally but currently discards:
+- `stop_loss` (float | None) — the exact `stop_val` already computed for
+  bullish/bearish directions (support/EMA50-based logic, scanner.py:755-798).
+- `confidence_tier` (`"HIGH" | "MEDIUM" | "LOW"`) — derived from the same
+  `confidence` float already computed (scanner.py:604-613), using the existing
+  breakpoints (`>=0.7` → HIGH, `>=0.5` → MEDIUM, else LOW).
+
+This does not remove or rename `stop_invalidation` / `confidence_stars` — existing
+consumers (report rendering) are unaffected.
+
+Every field reference below (`opp["tactical_card"]["stop_loss"]`, etc.) reflects
+this corrected, verified shape.
+
 ## 4. Entry Logic (`open_new_positions`)
 
 Called once per day, after `run_full_scan()` in `run_full_cycle()`.
 
-1. **Candidate filter:** from the ranked opportunities, take those with
-   `direction == "bullish"` and `model_confidence == "HIGH"`.
+1. **Candidate filter:** from `ranked["bullish"]`, take opportunities where
+   `opp["tactical_card"]["confidence_tier"] == "HIGH"`. (`ranked["bearish"]` is not
+   used — see long-only rationale below.)
 2. **Skip existing:** skip any ticker that already has an `open` position.
 3. **Long-only rationale:** the existing `stop_loss`/entry math throughout
    `portfolio.py` assumes price falls for risk are long positions (`capital_risk =
    (entry_price - sl_val) * qty`). Supporting bearish/short calls would need new
    risk math and is scoped out of this spec — can be a fast-follow if the long-only
    version proves out.
-4. **Stop-loss:** use the opportunity's existing `stop_loss` field directly (already
-   computed by `compute_enhanced_score_with_confidence` in `scanner.py`).
-5. **Take-profit:** the scanner does not currently compute a take-profit target.
-   Use the nearest resistance level from `opportunity["support_resistance"]["resistance"][0]`
-   if present (same field `calls_tracker.py` already reads for `key_level_resistance`);
-   otherwise fall back to a fixed **2:1 reward:risk** target:
+4. **Stop-loss:** use `opp["tactical_card"]["stop_loss"]` (see §3.1). Skip the
+   candidate if this is `None` or `>= price` (bad/missing data).
+5. **Take-profit:** use the nearest resistance level from `opp["resistance"]`
+   (a list already present on every opportunity dict) where the level is above
+   entry price, if any; otherwise fall back to a fixed **2:1 reward:risk** target:
    `take_profit = entry_price + 2 * (entry_price - stop_loss)`.
 6. **Position sizing — risk 2% of virtual capital per trade:**
    ```
@@ -169,7 +195,7 @@ Following `superpowers:test-driven-development`:
 - Starting virtual capital: **$100,000**.
 - Risk per trade: **2%** of capital.
 - Portfolio heat cap: **20%**.
-- Entry confidence threshold: `model_confidence == "HIGH"` only (excludes MEDIUM/LOW).
+- Entry confidence threshold: `tactical_card["confidence_tier"] == "HIGH"` only (excludes MEDIUM/LOW).
 - Max hold period: **30 days**.
 
 If any of these numbers should be different, this is the place to say so before
