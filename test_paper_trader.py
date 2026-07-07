@@ -153,3 +153,25 @@ def test_open_new_positions_skips_when_cash_insufficient(monkeypatch):
     result = paper_trader.open_new_positions(ranked, portfolio, market_data={})
     assert result["positions"] == []
     assert result["cash_balance"] == 10.0
+
+
+def test_open_new_positions_preserves_fractional_quantities(monkeypatch):
+    import portfolio as portfolio_module
+    monkeypatch.setattr(portfolio_module, "calculate_portfolio_status",
+                         lambda market_data, silent=False: {"total_portfolio_value": 100_000.0, "portfolio_heat": 0.0})
+
+    # dollar_risk = 100_000 * 0.02 = 2000; risk_per_share = 101-98 = 3; qty = round(2000/3, 6) = 666.666667
+    # This test ensures that fractional quantities are preserved (not floored/truncated to integers)
+    ranked = {"bullish": [_opportunity("BTC", price=101.0, stop_loss=98.0, resistance=[110.0])]}
+    portfolio = _empty_portfolio()
+
+    result = paper_trader.open_new_positions(ranked, portfolio, market_data={})
+
+    assert len(result["positions"]) == 1
+    pos = result["positions"][0]
+    # The key assertion: qty must be the exact fractional value, not an integer
+    assert pos["quantity"] == 666.666667
+    assert pos["asset"] == "BTC"
+    assert pos["entry_price"] == 101.0
+    assert pos["stop_loss"] == 98.0
+    assert pos["take_profit"] == 110.0
