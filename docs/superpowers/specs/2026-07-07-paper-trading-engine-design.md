@@ -60,25 +60,40 @@ untouched ledger), `paper_trader.py` initializes it to the starting virtual capi
 This is a one-time bootstrap, not a reset-on-every-run — once `cash_balance` is
 non-zero or positions exist, it's left alone.
 
-Each position entry (matches the schema `portfolio.py` already reads):
+Each position entry **must match the exact field names `calculate_portfolio_status()`
+reads** (portfolio.py:298-311) — verified directly against the source, since these
+don't match the field names an earlier draft of this spec assumed:
+- `quantity` (not `qty` — `pos.get("quantity", 0.0)` at portfolio.py:300; a
+  mismatched key silently defaults to `0.0` with no error, zeroing every P&L
+  calculation for that position).
+- `entry_date` / `exit_date` as **plain `YYYY-MM-DD` date strings**, parsed with
+  `datetime.strptime(entry_date_str, "%Y-%m-%d")` (portfolio.py:308) — not a full
+  ISO timestamp. This also means day-level granularity only, consistent with how
+  `days_held`/stale-trade checks already work elsewhere in `portfolio.py`.
+
 ```json
 {
   "asset": "NVDA",
-  "qty": 42,
+  "quantity": 16.910299,
   "entry_price": 118.30,
   "stop_loss": 112.00,
   "take_profit": 131.00,
-  "entry_date": "2026-07-08T01:15:00+00:00",
+  "entry_date": "2026-07-08",
   "status": "open",
   "source": "paper_trader",
   "signal_score": 8.4,
-  "signal_confidence": "HIGH"
+  "uuid": "b3f1...-uuid4"
 }
 ```
+`source`, `signal_score`, `uuid` are extra bookkeeping fields `portfolio.py` doesn't
+read but doesn't choke on either (it only reads keys it knows via `.get()`).
 
-Closed positions append `exit_price`, `exit_date`, `exit_reason`
-(`"stop_loss" | "take_profit" | "max_hold"`), matching what `portfolio.py`'s
-`calculate_portfolio_status()` already expects for the closed-positions table.
+Closed positions carry all the same fields plus `exit_price` and `exit_date`
+(same `YYYY-MM-DD` format), matching what `calculate_portfolio_status()` already
+expects for the closed-positions table (portfolio.py:404-435). `exit_reason`
+(`"stop_loss" | "take_profit" | "max_hold"`) is an extra field for our own
+auditing — not read by `portfolio.py`, but useful in `reports/portfolio-status.md`
+review and in tests.
 
 ## 3.1 Correction from initial spec draft — actual data shape
 
@@ -129,10 +144,13 @@ Called once per day, after `run_full_scan()` in `run_full_cycle()`.
    ```
    risk_per_share = entry_price - stop_loss
    dollar_risk    = cash_balance_at_start_of_day * 0.02
-   qty            = floor(dollar_risk / risk_per_share)
+   qty            = round(dollar_risk / risk_per_share, 6)
    ```
-   Skip the trade if `risk_per_share <= 0` (bad data) or `qty < 1` (position too
-   small to size, e.g. tiny risk gap on a high-price asset).
+   Quantity is **fractional**, not whole-share — this is virtual money with no
+   real lot-size restriction, and a whole-share floor would silently zero out
+   almost every crypto candidate (e.g. BTC's risk gap is often thousands of
+   dollars, so `floor($2,000 / $5,000)` = 0 every time). Skip the trade if
+   `risk_per_share <= 0` (bad data) or `qty <= 0` after rounding.
 7. **Portfolio heat cap — 20% max:** before adding a new position, compute portfolio
    heat using `portfolio.py`'s exact existing formula — `total_capital_at_risk /
    total_portfolio_value * 100`, where `total_portfolio_value = cash_balance +
