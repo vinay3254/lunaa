@@ -1,74 +1,74 @@
 {
-  "last_updated": "2026-06-01T04:00:27.808951+00:00",
+  "last_updated": "2026-07-07T15:49:07.646349+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.7541,
-      "correlation_7d": -0.4055,
+      "correlation_30d": -0.8951,
+      "correlation_7d": -0.6306,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
     },
     "^TNX_^GSPC": {
       "expected": "negative",
-      "correlation_30d": 0.6816,
-      "correlation_7d": -0.9721,
+      "correlation_30d": -0.0519,
+      "correlation_7d": 0.7384,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "10Y yield and S&P 500 moving together (normally inverse) — yields and stocks decoupling. High yields not currently hurting stock sentiment."
     },
     "CL=F_^GSPC": {
       "expected": "positive",
-      "correlation_30d": -0.05,
-      "correlation_7d": -0.9286,
+      "correlation_30d": 0.2584,
+      "correlation_7d": -0.2411,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and S&P 500 diverging (normally positive) — rising energy costs might be worrying equity markets, or demand concerns are decoupling them."
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": -0.0551,
-      "correlation_7d": -0.9079,
+      "correlation_30d": 0.3891,
+      "correlation_7d": -0.5205,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "BTC diverging from NASDAQ (normally positive) — crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": 0.454,
-      "correlation_7d": -0.0758,
+      "correlation_30d": -0.4079,
+      "correlation_7d": -0.5326,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Gold and VIX decoupling (normally positive in fear) — gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
     },
     "HYG_^GSPC": {
       "expected": "positive",
-      "correlation_30d": 0.0059,
-      "correlation_7d": 0.9765,
-      "anomaly": true,
-      "anomaly_since": "2026-05-31",
-      "interpretation": "High-yield bonds and stocks decoupling (normally positive) — credit markets showing stress that hasn't fully registered in equity markets yet."
+      "correlation_30d": 0.5736,
+      "correlation_7d": 0.8121,
+      "anomaly": false,
+      "anomaly_since": null,
+      "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.7759,
-      "correlation_7d": 0.0331,
+      "correlation_30d": 0.9081,
+      "correlation_7d": 0.373,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": 0.7235,
-      "correlation_7d": 0.612,
-      "anomaly": false,
-      "anomaly_since": null,
-      "interpretation": "Normal aligned relationship (positive correlation)."
+      "correlation_30d": -0.4193,
+      "correlation_7d": -0.5631,
+      "anomaly": true,
+      "anomaly_since": "2026-07-07",
+      "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.3444,
-      "correlation_7d": 0.3997,
+      "correlation_30d": 0.6735,
+      "correlation_7d": -0.6351,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
