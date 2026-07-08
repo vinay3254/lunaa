@@ -1,16 +1,16 @@
 {
   "NVDA": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.9129,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.96,
     "rsi_history_7d": [
       49.44,
       49.44,
-      49.44,
       49.41,
       49.41,
       49.41,
-      49.41
+      49.41,
+      43.53
     ],
     "significant_levels_hit": [
       {
@@ -74,8 +74,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -92,17 +92,17 @@
     ]
   },
   "TSLA": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.9052,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.8562,
     "rsi_history_7d": [
       60.2,
       60.2,
-      60.2,
       60.04,
       60.04,
       60.04,
-      60.04
+      60.04,
+      49.6
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -115,7 +115,7 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
+    "consecutive_red_days": 12,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -123,16 +123,16 @@
   },
   "AAPL": {
     "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.0262,
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.5776,
     "rsi_history_7d": [
       79.45,
       79.45,
-      79.45,
       79.0,
       79.0,
       79.0,
-      79.0
+      79.0,
+      60.67
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -145,7 +145,7 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
+    "consecutive_red_days": 12,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -153,18 +153,24 @@
   },
   "META": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.2802,
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.3128,
     "rsi_history_7d": [
       55.44,
       55.44,
-      55.44,
       55.36,
       55.36,
       55.36,
-      55.36
+      55.36,
+      57.48
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 623.776845,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
       0.0,
       0.0,
@@ -175,24 +181,26 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $623.78"
+    ]
   },
   "MSFT": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.4747,
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.1376,
     "rsi_history_7d": [
       70.39,
       70.39,
-      70.39,
       70.09,
       70.09,
       70.09,
-      70.09
+      70.09,
+      49.2
     ],
     "significant_levels_hit": [
       {
@@ -257,7 +265,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_green_days": 12,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -275,16 +283,16 @@
   },
   "AMZN": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.1924,
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.7532,
     "rsi_history_7d": [
       59.88,
       59.88,
-      59.88,
       59.7,
       59.7,
       59.7,
-      59.7
+      59.7,
+      51.72
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -297,105 +305,30 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "GOOGL": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.4252,
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.5422,
     "rsi_history_7d": [
       53.0,
       53.0,
-      53.0,
       52.9,
       52.9,
       52.9,
-      52.9
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "RELIANCE.NS": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.1162,
-    "rsi_history_7d": [
-      38.49,
-      38.49,
-      38.49,
-      38.42,
-      38.42,
-      38.42,
-      41.15
+      52.9,
+      54.04
     ],
     "significant_levels_hit": [
       {
         "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "support_break",
-        "level": 1335.5,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "support_break",
-        "level": 1335.5,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "support_break",
-        "level": 1335.5,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 1352.300049,
-        "date": "2026-05-31"
+        "level": 372.079987,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
@@ -413,6 +346,89 @@
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
+      "2026-07-08: rejected resistance level at $372.08"
+    ]
+  },
+  "RELIANCE.NS": {
+    "trend_7d": "ranging",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.8207,
+    "rsi_history_7d": [
+      38.49,
+      38.49,
+      38.42,
+      38.42,
+      38.42,
+      41.15,
+      48.01
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "support_break",
+        "level": 1335.5,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "support_break",
+        "level": 1335.5,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "support_break",
+        "level": 1335.5,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1352.300049,
+        "date": "2026-05-31"
+      }
+    ],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": [
       "2026-05-31: rejected resistance level at $1,352.30",
       "2026-05-31: rejected resistance level at $1,352.30",
       "2026-05-31: rejected resistance level at $1,352.30",
@@ -426,17 +442,17 @@
     ]
   },
   "TCS.NS": {
-    "trend_7d": "downtrend",
+    "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.0889,
+    "avg_daily_move_30d": 1.8111,
     "rsi_history_7d": [
       37.3,
       37.3,
-      37.3,
       37.13,
       37.13,
       37.13,
-      44.41
+      44.41,
+      45.21
     ],
     "significant_levels_hit": [
       {
@@ -501,7 +517,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_green_days": 2,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -519,16 +535,16 @@
   },
   "INFY.NS": {
     "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.5506,
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.9725,
     "rsi_history_7d": [
       44.29,
       44.29,
-      44.29,
       43.91,
       43.91,
       43.91,
-      52.16
+      52.16,
+      47.97
     ],
     "significant_levels_hit": [
       {
@@ -593,7 +609,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_green_days": 12,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -611,16 +627,16 @@
   },
   "HDFCBANK.NS": {
     "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.0716,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.8717,
     "rsi_history_7d": [
       38.85,
       38.85,
-      38.85,
       38.75,
       38.75,
       38.75,
-      39.45
+      39.45,
+      74.23
     ],
     "significant_levels_hit": [
       {
@@ -669,9 +685,9 @@
         "date": "2026-05-31"
       },
       {
-        "type": "support_break",
-        "level": 747.0,
-        "date": "2026-05-31"
+        "type": "resistance_reject",
+        "level": 835.088113,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
@@ -684,372 +700,85 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": [
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00",
-      "2026-05-31: broke key support at $747.00"
-    ]
-  },
-  "WIPRO.NS": {
-    "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.0225,
-    "rsi_history_7d": [
-      58.69,
-      58.69,
-      58.69,
-      58.1,
-      58.1,
-      58.1,
-      60.99
-    ],
-    "significant_levels_hit": [
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      },
-      {
-        "type": "resistance_reject",
-        "level": 205.814995,
-        "date": "2026-05-31"
-      }
-    ],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": [
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81",
-      "2026-05-31: rejected resistance level at $205.81"
-    ]
-  },
-  "^GSPC": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.542,
-    "rsi_history_7d": [
-      73.77,
-      73.77,
-      73.77,
-      73.53,
-      73.53,
-      73.53,
-      73.53
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "^NDX": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.8773,
-    "rsi_history_7d": [
-      77.27,
-      77.27,
-      77.27,
-      77.02,
-      77.02,
-      77.02,
-      77.02
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "^DJI": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.527,
-    "rsi_history_7d": [
-      68.45,
-      68.45,
-      68.45,
-      68.2,
-      68.2,
-      68.2,
-      68.2
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "^FTSE": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.6776,
-    "rsi_history_7d": [
-      51.18,
-      51.18,
-      51.18,
-      51.36,
-      51.36,
-      51.36,
-      51.36
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
+    "consecutive_red_days": 1,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-05-31: broke key support at $747.00",
+      "2026-07-08: rejected resistance level at $835.09"
+    ]
   },
-  "^N225": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.3054,
-    "rsi_history_7d": [
-      70.93,
-      70.93,
-      70.93,
-      70.87,
-      70.87,
-      70.87,
-      72.69
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "^NSEI": {
+  "WIPRO.NS": {
     "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.6312,
+    "avg_daily_move_30d": 1.3416,
     "rsi_history_7d": [
-      43.49,
-      43.49,
-      43.49,
-      43.36,
-      43.36,
-      43.36,
-      45.34
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "^HSI": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.8084,
-    "rsi_history_7d": [
-      39.6,
-      39.6,
-      39.6,
-      39.64,
-      39.64,
-      39.64,
-      43.92
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "EURUSD=X": {
-    "trend_7d": "uptrend",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.2191,
-    "rsi_history_7d": [
-      48.67,
-      48.67,
-      48.67,
-      48.63,
-      48.63,
-      48.63,
-      47.0
+      58.69,
+      58.69,
+      58.1,
+      58.1,
+      58.1,
+      60.99,
+      36.08
     ],
     "significant_levels_hit": [
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_break",
-        "level": 1.164804,
+        "type": "resistance_reject",
+        "level": 205.814995,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 205.814995,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 205.814995,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 205.814995,
         "date": "2026-05-31"
       }
     ],
@@ -1068,57 +797,30 @@
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
-      "2026-05-31: broke above key resistance at $1.16",
-      "2026-05-31: broke above key resistance at $1.16",
-      "2026-05-31: broke above key resistance at $1.16",
-      "2026-05-31: broke above key resistance at $1.16",
-      "2026-05-31: broke above key resistance at $1.16",
-      "2026-05-31: broke above key resistance at $1.16",
-      "2026-05-31: broke above key resistance at $1.16"
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81",
+      "2026-05-31: rejected resistance level at $205.81"
     ]
   },
-  "GBPUSD=X": {
-    "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.3048,
-    "rsi_history_7d": [
-      48.68,
-      48.68,
-      48.68,
-      48.59,
-      48.59,
-      48.59,
-      48.64
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "USDJPY=X": {
+  "^GSPC": {
     "trend_7d": "uptrend",
     "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.2488,
+    "avg_daily_move_30d": 0.6849,
     "rsi_history_7d": [
-      56.88,
-      56.88,
-      56.88,
-      56.88,
-      56.88,
-      56.88,
-      58.99
+      73.77,
+      73.77,
+      73.53,
+      73.53,
+      73.53,
+      73.53,
+      55.4
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -1131,54 +833,24 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "USDINR=X": {
-    "trend_7d": "ranging",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.3315,
-    "rsi_history_7d": [
-      48.01,
-      48.01,
-      48.01,
-      48.04,
-      48.04,
-      48.04,
-      45.52
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
+    "consecutive_red_days": 1,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
-  "AUDUSD=X": {
+  "^NDX": {
     "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.404,
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.4705,
     "rsi_history_7d": [
-      53.29,
-      53.29,
-      53.29,
-      53.32,
-      53.32,
-      53.32,
-      52.79
+      77.27,
+      77.27,
+      77.02,
+      77.02,
+      77.02,
+      77.02,
+      47.13
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -1191,26 +863,62 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
-  "DX-Y.NYB": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.2429,
+  "^DJI": {
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.5904,
     "rsi_history_7d": [
-      51.17,
-      51.17,
-      51.17,
-      51.27,
-      51.27,
-      51.27,
-      53.6
+      68.45,
+      68.45,
+      68.2,
+      68.2,
+      68.2,
+      68.2,
+      68.88
     ],
     "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "^FTSE": {
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.4769,
+    "rsi_history_7d": [
+      51.18,
+      51.18,
+      51.36,
+      51.36,
+      51.36,
+      51.36,
+      63.86
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 10685.800293,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
       0.0,
       0.0,
@@ -1225,20 +933,350 @@
     "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
+    "notes": [
+      "2026-07-08: rejected resistance level at $10,685.80"
+    ]
+  },
+  "^N225": {
+    "trend_7d": "ranging",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.7218,
+    "rsi_history_7d": [
+      70.93,
+      70.93,
+      70.87,
+      70.87,
+      70.87,
+      72.69,
+      50.46
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 12,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "^NSEI": {
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.5635,
+    "rsi_history_7d": [
+      43.49,
+      43.49,
+      43.36,
+      43.36,
+      43.36,
+      45.34,
+      63.02
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "^HSI": {
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.0882,
+    "rsi_history_7d": [
+      39.6,
+      39.6,
+      39.64,
+      39.64,
+      39.64,
+      43.92,
+      41.52
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "EURUSD=X": {
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.2249,
+    "rsi_history_7d": [
+      48.67,
+      48.67,
+      48.63,
+      48.63,
+      48.63,
+      47.0,
+      39.34
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 1.164804,
+        "date": "2026-05-31"
+      },
+      {
+        "type": "support_break",
+        "level": 1.143741,
+        "date": "2026-07-08"
+      }
+    ],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 2,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": [
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-05-31: broke above key resistance at $1.16",
+      "2026-07-08: broke key support at $1.14"
+    ]
+  },
+  "GBPUSD=X": {
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.2552,
+    "rsi_history_7d": [
+      48.68,
+      48.68,
+      48.59,
+      48.59,
+      48.59,
+      48.64,
+      52.15
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "USDJPY=X": {
+    "trend_7d": "ranging",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.1573,
+    "rsi_history_7d": [
+      56.88,
+      56.88,
+      56.88,
+      56.88,
+      56.88,
+      58.99,
+      66.82
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 2,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "USDINR=X": {
+    "trend_7d": "uptrend",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 0.3936,
+    "rsi_history_7d": [
+      48.01,
+      48.01,
+      48.04,
+      48.04,
+      48.04,
+      45.52,
+      55.95
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 95.330588,
+        "date": "2026-07-08"
+      }
+    ],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": [
+      "2026-07-08: broke above key resistance at $95.33"
+    ]
+  },
+  "AUDUSD=X": {
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.3255,
+    "rsi_history_7d": [
+      53.29,
+      53.29,
+      53.32,
+      53.32,
+      53.32,
+      52.79,
+      40.58
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "DX-Y.NYB": {
+    "trend_7d": "downtrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.2133,
+    "rsi_history_7d": [
+      51.17,
+      51.17,
+      51.27,
+      51.27,
+      51.27,
+      53.6,
+      61.85
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 2,
+    "last_golden_cross": null,
+    "last_death_cross": null,
     "notes": []
   },
   "GC=F": {
-    "trend_7d": "ranging",
+    "trend_7d": "uptrend",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.9424,
+    "avg_daily_move_30d": 1.3852,
     "rsi_history_7d": [
       48.85,
       48.85,
-      48.85,
       49.12,
       49.12,
       49.12,
-      45.73
+      45.73,
+      42.2
     ],
     "significant_levels_hit": [
       {
@@ -1257,26 +1295,27 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 1,
+    "consecutive_red_days": 2,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
-    "last_death_cross": null,
+    "last_death_cross": "2026-07-08",
     "notes": [
-      "2026-06-01: rejected resistance level at $4,562.35"
+      "2026-06-01: rejected resistance level at $4,562.35",
+      "2026-07-08: Death Cross detected (50 EMA crossed below 200 EMA)"
     ]
   },
   "SI=F": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 2.4786,
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.2381,
     "rsi_history_7d": [
       46.83,
       46.83,
-      46.83,
       46.99,
       46.99,
       46.99,
-      47.09
+      47.09,
+      37.5
     ],
     "significant_levels_hit": [
       {
@@ -1325,9 +1364,9 @@
         "date": "2026-05-31"
       },
       {
-        "type": "resistance_reject",
-        "level": 76.879997,
-        "date": "2026-05-31"
+        "type": "support_break",
+        "level": 61.09,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
@@ -1340,8 +1379,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -1354,21 +1393,21 @@
       "2026-05-31: rejected resistance level at $76.88",
       "2026-05-31: rejected resistance level at $76.88",
       "2026-05-31: rejected resistance level at $76.88",
-      "2026-05-31: rejected resistance level at $76.88"
+      "2026-07-08: broke key support at $61.09"
     ]
   },
   "CL=F": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 2.8269,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.5771,
     "rsi_history_7d": [
       37.77,
       37.77,
-      37.77,
       37.91,
       37.91,
       37.91,
-      40.96
+      40.96,
+      37.03
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -1382,7 +1421,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_green_days": 2,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
@@ -1390,15 +1429,15 @@
   "NG=F": {
     "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 2.3769,
+    "avg_daily_move_30d": 2.2971,
     "rsi_history_7d": [
       68.82,
       68.82,
-      68.82,
       68.08,
       68.08,
       68.08,
-      70.21
+      70.21,
+      55.96
     ],
     "significant_levels_hit": [
       {
@@ -1463,7 +1502,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_green_days": 12,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -1481,16 +1520,16 @@
   },
   "HG=F": {
     "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.3853,
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.2828,
     "rsi_history_7d": [
       58.65,
       58.65,
-      58.65,
       58.57,
       58.57,
       58.57,
-      60.37
+      60.37,
+      47.47
     ],
     "significant_levels_hit": [
       {
@@ -1509,8 +1548,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -1518,17 +1557,17 @@
     ]
   },
   "ZW=F": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.7138,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.2096,
     "rsi_history_7d": [
       43.12,
       43.12,
-      43.12,
       43.26,
       43.26,
       43.26,
-      43.88
+      43.88,
+      57.93
     ],
     "significant_levels_hit": [
       {
@@ -1578,8 +1617,55 @@
       },
       {
         "type": "resistance_reject",
-        "level": 625.0,
-        "date": "2026-05-31"
+        "level": 617.8125,
+        "date": "2026-07-08"
+      }
+    ],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 2,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": [
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-05-31: rejected resistance level at $625.00",
+      "2026-07-08: rejected resistance level at $617.81"
+    ]
+  },
+  "^TNX": {
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.6919,
+    "rsi_history_7d": [
+      49.84,
+      49.84,
+      49.78,
+      49.78,
+      49.78,
+      49.78,
+      57.97
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 4.5155,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
@@ -1597,60 +1683,21 @@
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00",
-      "2026-05-31: rejected resistance level at $625.00"
+      "2026-07-08: broke above key resistance at $4.52"
     ]
   },
-  "^TNX": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.8101,
-    "rsi_history_7d": [
-      49.84,
-      49.84,
-      49.84,
-      49.78,
-      49.78,
-      49.78,
-      49.78
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
   "^FVX": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.9721,
+    "trend_7d": "ranging",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 0.7704,
     "rsi_history_7d": [
       53.38,
       53.38,
-      53.38,
       53.3,
       53.3,
       53.3,
-      53.3
+      53.3,
+      56.99
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -1663,31 +1710,26 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "^TYX": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.5718,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.5361,
     "rsi_history_7d": [
       47.83,
       47.83,
-      47.83,
       47.78,
       47.78,
       47.78,
-      47.78
+      47.78,
+      61.28
     ],
     "significant_levels_hit": [
-      {
-        "type": "resistance_break",
-        "level": 4.9925,
-        "date": "2026-05-31"
-      },
       {
         "type": "resistance_break",
         "level": 4.9925,
@@ -1732,6 +1774,11 @@
         "type": "resistance_break",
         "level": 4.9925,
         "date": "2026-06-01"
+      },
+      {
+        "type": "resistance_break",
+        "level": 4.9925,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
@@ -1745,7 +1792,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_green_days": 12,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -1757,22 +1804,22 @@
       "2026-05-31: broke above key resistance at $4.99",
       "2026-05-31: broke above key resistance at $4.99",
       "2026-05-31: broke above key resistance at $4.99",
-      "2026-05-31: broke above key resistance at $4.99",
-      "2026-06-01: broke above key resistance at $4.99"
+      "2026-06-01: broke above key resistance at $4.99",
+      "2026-07-08: broke above key resistance at $4.99"
     ]
   },
   "^IRX": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.1579,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.3572,
     "rsi_history_7d": [
       49.65,
       49.65,
-      49.65,
       49.67,
       49.67,
       49.67,
-      49.67
+      49.67,
+      64.6
     ],
     "significant_levels_hit": [
       {
@@ -1809,6 +1856,11 @@
         "type": "support_break",
         "level": 3.588625,
         "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_break",
+        "level": 3.695,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
@@ -1821,8 +1873,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -1832,21 +1884,22 @@
       "2026-05-31: broke key support at $3.59",
       "2026-05-31: broke key support at $3.59",
       "2026-05-31: broke key support at $3.59",
-      "2026-05-31: broke key support at $3.59"
+      "2026-05-31: broke key support at $3.59",
+      "2026-07-08: broke above key resistance at $3.69"
     ]
   },
   "SPY": {
     "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.5322,
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 0.733,
     "rsi_history_7d": [
       74.44,
       74.44,
-      74.44,
       74.19,
       74.19,
       74.19,
-      74.19
+      74.19,
+      55.28
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -1859,24 +1912,24 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "QQQ": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.8713,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.5112,
     "rsi_history_7d": [
       77.45,
       77.45,
-      77.45,
       77.2,
       77.2,
       77.2,
-      77.2
+      77.2,
+      47.25
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -1889,24 +1942,24 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "GLD": {
-    "trend_7d": "downtrend",
+    "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.0448,
+    "avg_daily_move_30d": 1.3533,
     "rsi_history_7d": [
       44.93,
       44.93,
-      44.93,
       45.3,
       45.3,
       45.3,
-      45.3
+      45.3,
+      42.32
     ],
     "significant_levels_hit": [
       {
@@ -1970,10 +2023,10 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
-    "last_death_cross": null,
+    "last_death_cross": "2026-07-08",
     "notes": [
       "2026-05-31: rejected resistance level at $418.42",
       "2026-05-31: rejected resistance level at $418.42",
@@ -1983,22 +2036,22 @@
       "2026-05-31: rejected resistance level at $418.42",
       "2026-05-31: rejected resistance level at $418.42",
       "2026-05-31: rejected resistance level at $418.42",
-      "2026-05-31: rejected resistance level at $418.42",
-      "2026-06-01: rejected resistance level at $418.42"
+      "2026-06-01: rejected resistance level at $418.42",
+      "2026-07-08: Death Cross detected (50 EMA crossed below 200 EMA)"
     ]
   },
   "SLV": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 2.6815,
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.3867,
     "rsi_history_7d": [
       46.51,
       46.51,
-      46.51,
       46.68,
       46.68,
       46.68,
-      46.68
+      46.68,
+      38.15
     ],
     "significant_levels_hit": [
       {
@@ -2062,7 +2115,7 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
+    "consecutive_red_days": 12,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -2080,47 +2133,17 @@
     ]
   },
   "USO": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 2.8856,
-    "rsi_history_7d": [
-      41.78,
-      41.78,
-      41.78,
-      41.9,
-      41.9,
-      41.9,
-      41.9
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "TLT": {
-    "trend_7d": "uptrend",
+    "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.4558,
+    "avg_daily_move_30d": 2.4424,
     "rsi_history_7d": [
-      55.2,
-      55.2,
-      55.2,
-      55.24,
-      55.24,
-      55.24,
-      55.24
+      41.78,
+      41.78,
+      41.9,
+      41.9,
+      41.9,
+      41.9,
+      38.97
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -2134,23 +2157,53 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "TLT": {
+    "trend_7d": "downtrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.4322,
+    "rsi_history_7d": [
+      55.2,
+      55.2,
+      55.24,
+      55.24,
+      55.24,
+      55.24,
+      39.56
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "HYG": {
     "trend_7d": "uptrend",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.2025,
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 0.1797,
     "rsi_history_7d": [
       59.9,
       59.9,
-      59.9,
       59.84,
       59.84,
       59.84,
-      59.84
+      59.84,
+      56.01
     ],
     "significant_levels_hit": [
       {
@@ -2214,8 +2267,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -2232,17 +2285,17 @@
     ]
   },
   "IWM": {
-    "trend_7d": "uptrend",
+    "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.9384,
+    "avg_daily_move_30d": 0.9599,
     "rsi_history_7d": [
       64.22,
       64.22,
-      64.22,
       64.12,
       64.12,
       64.12,
-      64.12
+      64.12,
+      55.28
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -2255,24 +2308,24 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
+    "consecutive_red_days": 12,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "XLK": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.3504,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 2.1642,
     "rsi_history_7d": [
       79.98,
       79.98,
-      79.98,
       79.74,
       79.74,
       79.74,
-      79.74
+      79.74,
+      46.13
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -2285,24 +2338,24 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "XLF": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.5457,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.7208,
     "rsi_history_7d": [
       51.64,
       51.64,
-      51.64,
       51.44,
       51.44,
       51.44,
-      51.44
+      51.44,
+      74.89
     ],
     "significant_levels_hit": [
       {
@@ -2366,8 +2419,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 11,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -2384,17 +2437,17 @@
     ]
   },
   "XLE": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.2738,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.2435,
     "rsi_history_7d": [
       41.13,
       41.13,
-      41.13,
       41.39,
       41.39,
       41.39,
-      41.39
+      41.39,
+      47.85
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -2407,24 +2460,24 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "XLV": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.7245,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.085,
     "rsi_history_7d": [
       57.65,
       57.65,
-      57.65,
       57.63,
       57.63,
       57.63,
-      57.63
+      57.63,
+      70.72
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
@@ -2437,8 +2490,8 @@
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 11,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
@@ -2531,191 +2584,231 @@
   },
   "XLI": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.9068,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.0832,
     "rsi_history_7d": [
       52.5,
       52.5,
       52.5,
-      52.5
+      52.5,
+      56.08
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "XLP": {
-    "trend_7d": "downtrend",
+    "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.7071,
+    "avg_daily_move_30d": 0.9174,
     "rsi_history_7d": [
       43.15,
       43.15,
       43.15,
-      43.15
+      43.15,
+      55.26
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 84.56843,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: broke above key resistance at $84.57"
+    ]
   },
   "XLU": {
     "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.852,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.9378,
     "rsi_history_7d": [
       41.68,
       41.68,
       41.68,
-      41.68
+      41.68,
+      56.43
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 46.045972,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $46.05"
+    ]
   },
   "XLRE": {
     "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.6896,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.9126,
     "rsi_history_7d": [
       49.65,
       49.65,
       49.65,
-      49.65
+      49.65,
+      55.71
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 44.507798,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: broke above key resistance at $44.51"
+    ]
   },
   "XLY": {
     "trend_7d": "uptrend",
     "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.7259,
+    "avg_daily_move_30d": 1.1154,
     "rsi_history_7d": [
       59.71,
       59.71,
       59.71,
-      59.71
+      59.71,
+      52.4
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "XLB": {
-    "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.854,
+    "trend_7d": "ranging",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.9901,
     "rsi_history_7d": [
       51.46,
       51.46,
       51.46,
-      51.46
+      51.46,
+      51.83
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "XLC": {
-    "trend_7d": "ranging",
+    "trend_7d": "uptrend",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.5772,
+    "avg_daily_move_30d": 0.8392,
     "rsi_history_7d": [
       47.98,
       47.98,
       47.98,
-      47.98
+      47.98,
+      52.75
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "AMD": {
-    "trend_7d": "uptrend",
+    "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 4.3553,
+    "avg_daily_move_30d": 4.4981,
     "rsi_history_7d": [
       75.98,
       75.98,
       75.98,
-      75.98
+      75.98,
+      51.17
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -2724,12 +2817,13 @@
   "INTC": {
     "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 4.6426,
+    "avg_daily_move_30d": 4.7668,
     "rsi_history_7d": [
       59.19,
       59.19,
       59.19,
-      59.19
+      59.19,
+      43.33
     ],
     "significant_levels_hit": [
       {
@@ -2757,10 +2851,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -2772,41 +2867,45 @@
     ]
   },
   "NFLX": {
-    "trend_7d": "downtrend",
+    "trend_7d": "uptrend",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.1605,
+    "avg_daily_move_30d": 1.6799,
     "rsi_history_7d": [
       37.12,
       37.12,
       37.12,
-      37.12
+      37.12,
+      44.24
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "JPM": {
     "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.0852,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.1572,
     "rsi_history_7d": [
       45.8,
       45.8,
       45.8,
-      45.8
+      45.8,
+      68.03
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -2814,44 +2913,47 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "BAC": {
     "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.9953,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.0553,
     "rsi_history_7d": [
       51.17,
       51.17,
       51.17,
-      51.17
+      51.17,
+      73.86
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "GS": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.3176,
+    "trend_7d": "ranging",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 1.6908,
     "rsi_history_7d": [
       71.43,
       71.43,
       71.43,
-      71.43
+      71.43,
+      51.77
     ],
     "significant_levels_hit": [
       {
@@ -2879,11 +2981,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -2894,38 +2997,41 @@
     ]
   },
   "MS": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.105,
+    "trend_7d": "ranging",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 1.5602,
     "rsi_history_7d": [
       74.41,
       74.41,
       74.41,
-      74.41
+      74.41,
+      60.37
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "V": {
-    "trend_7d": "downtrend",
+    "trend_7d": "uptrend",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.068,
+    "avg_daily_move_30d": 1.2246,
     "rsi_history_7d": [
       54.35,
       54.35,
       54.35,
-      54.35
+      54.35,
+      64.82
     ],
     "significant_levels_hit": [
       {
@@ -2953,11 +3059,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -2968,41 +3075,59 @@
     ]
   },
   "MA": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.0773,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.2749,
     "rsi_history_7d": [
       45.6,
       45.6,
       45.6,
-      45.6
+      45.6,
+      65.72
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 534.210022,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $534.21"
+    ]
   },
   "PYPL": {
     "trend_7d": "uptrend",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.1753,
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 1.6084,
     "rsi_history_7d": [
       42.63,
       42.63,
       42.63,
-      42.63
+      42.63,
+      59.96
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 45.933001,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -3010,20 +3135,23 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $45.93"
+    ]
   },
   "XYZ": {
-    "trend_7d": "ranging",
+    "trend_7d": "uptrend",
     "trend_30d": "ranging",
-    "avg_daily_move_30d": 2.0728,
+    "avg_daily_move_30d": 2.5071,
     "rsi_history_7d": [
       63.57,
       63.57,
       63.57,
-      63.57
+      63.57,
+      57.78
     ],
     "significant_levels_hit": [
       {
@@ -3045,35 +3173,43 @@
         "type": "resistance_break",
         "level": 75.230003,
         "date": "2026-06-01"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 79.010002,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
       "2026-05-31: broke above key resistance at $75.23",
       "2026-05-31: broke above key resistance at $75.23",
       "2026-05-31: broke above key resistance at $75.23",
-      "2026-06-01: broke above key resistance at $75.23"
+      "2026-06-01: broke above key resistance at $75.23",
+      "2026-07-08: rejected resistance level at $79.01"
     ]
   },
   "COIN": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 3.5987,
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 3.6515,
     "rsi_history_7d": [
       48.64,
       48.64,
       48.64,
-      48.64
+      48.64,
+      49.43
     ],
     "significant_levels_hit": [
       {
@@ -3101,11 +3237,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -3116,14 +3253,15 @@
     ]
   },
   "HOOD": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 3.4925,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 4.503,
     "rsi_history_7d": [
       69.08,
       69.08,
       69.08,
-      69.08
+      69.08,
+      64.1
     ],
     "significant_levels_hit": [
       {
@@ -3151,11 +3289,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -3166,113 +3305,19 @@
     ]
   },
   "XOM": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.4392,
-    "rsi_history_7d": [
-      39.53,
-      39.53,
-      39.53,
-      39.53
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "CVX": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.2113,
-    "rsi_history_7d": [
-      42.29,
-      42.29,
-      42.29,
-      42.29
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "OXY": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.9232,
-    "rsi_history_7d": [
-      45.89,
-      45.89,
-      45.89,
-      45.89
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "SLB": {
     "trend_7d": "ranging",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.3831,
-    "rsi_history_7d": [
-      46.35,
-      46.35,
-      46.35,
-      46.35
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "PFE": {
-    "trend_7d": "uptrend",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.7267,
+    "avg_daily_move_30d": 1.3308,
     "rsi_history_7d": [
-      52.66,
-      52.66,
-      52.66,
-      52.66
+      39.53,
+      39.53,
+      39.53,
+      39.53,
+      48.95
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -3280,20 +3325,125 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "CVX": {
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.358,
+    "rsi_history_7d": [
+      42.29,
+      42.29,
+      42.29,
+      42.29,
+      45.68
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "OXY": {
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.7368,
+    "rsi_history_7d": [
+      45.89,
+      45.89,
+      45.89,
+      45.89,
+      45.76
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "SLB": {
+    "trend_7d": "downtrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.8419,
+    "rsi_history_7d": [
+      46.35,
+      46.35,
+      46.35,
+      46.35,
+      33.53
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "PFE": {
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.1665,
+    "rsi_history_7d": [
+      52.66,
+      52.66,
+      52.66,
+      52.66,
+      39.75
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "MRNA": {
-    "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 2.6491,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 3.8709,
     "rsi_history_7d": [
       44.34,
       44.34,
       44.34,
-      44.34
+      44.34,
+      77.02
     ],
     "significant_levels_hit": [
       {
@@ -3321,10 +3471,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -3336,65 +3487,51 @@
     ]
   },
   "JNJ": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.0123,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.4296,
     "rsi_history_7d": [
       44.23,
       44.23,
       44.23,
-      44.23
+      44.23,
+      72.64
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "UNH": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.3579,
-    "rsi_history_7d": [
-      57.78,
-      57.78,
-      57.78,
-      57.78
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "PLTR": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 2.2873,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.4188,
     "rsi_history_7d": [
-      67.42,
-      67.42,
-      67.42,
-      67.42
+      57.78,
+      57.78,
+      57.78,
+      57.78,
+      64.19
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 427.929993,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -3402,23 +3539,61 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: broke above key resistance at $427.93"
+    ]
+  },
+  "PLTR": {
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 3.4022,
+    "rsi_history_7d": [
+      67.42,
+      67.42,
+      67.42,
+      67.42,
+      55.83
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 136.100006,
+        "date": "2026-07-08"
+      }
+    ],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 5,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": [
+      "2026-07-08: rejected resistance level at $136.10"
+    ]
   },
   "SNOW": {
     "trend_7d": "uptrend",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 3.9369,
+    "avg_daily_move_30d": 3.7789,
     "rsi_history_7d": [
       86.92,
       86.92,
       86.92,
-      86.92
+      86.92,
+      69.55
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -3426,7 +3601,7 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
@@ -3434,12 +3609,13 @@
   "NET": {
     "trend_7d": "uptrend",
     "trend_30d": "ranging",
-    "avg_daily_move_30d": 3.5568,
+    "avg_daily_move_30d": 3.3159,
     "rsi_history_7d": [
       63.48,
       63.48,
       63.48,
-      63.48
+      63.48,
+      67.62
     ],
     "significant_levels_hit": [
       {
@@ -3461,62 +3637,73 @@
         "type": "resistance_break",
         "level": 229.149994,
         "date": "2026-06-01"
+      },
+      {
+        "type": "resistance_break",
+        "level": 252.348999,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
       "2026-05-31: broke above key resistance at $229.15",
       "2026-05-31: broke above key resistance at $229.15",
       "2026-05-31: broke above key resistance at $229.15",
-      "2026-06-01: broke above key resistance at $229.15"
+      "2026-06-01: broke above key resistance at $229.15",
+      "2026-07-08: broke above key resistance at $252.35"
     ]
   },
   "CRWD": {
     "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 2.8271,
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 2.7451,
     "rsi_history_7d": [
       83.8,
       83.8,
       83.8,
-      83.8
+      83.8,
+      68.4
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "DDOG": {
-    "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 3.3471,
+    "trend_7d": "ranging",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 2.7753,
     "rsi_history_7d": [
       87.51,
       87.51,
       87.51,
-      87.51
+      87.51,
+      65.04
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -3524,20 +3711,21 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "ICICIBANK.NS": {
     "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.0281,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.9494,
     "rsi_history_7d": [
       45.8,
       45.8,
       45.8,
-      44.92
+      44.92,
+      69.95
     ],
     "significant_levels_hit": [
       {
@@ -3565,10 +3753,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -3580,14 +3769,15 @@
     ]
   },
   "BAJFINANCE.NS": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.0651,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.2645,
     "rsi_history_7d": [
       45.08,
       45.08,
       45.08,
-      43.84
+      43.84,
+      76.27
     ],
     "significant_levels_hit": [
       {
@@ -3610,11 +3800,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -3626,36 +3817,39 @@
   "ADANIENT.NS": {
     "trend_7d": "uptrend",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.7394,
+    "avg_daily_move_30d": 1.4458,
     "rsi_history_7d": [
       76.61,
       76.61,
       76.61,
-      76.86
+      76.86,
+      58.63
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "SBIN.NS": {
-    "trend_7d": "uptrend",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.0838,
+    "trend_7d": "downtrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.7843,
     "rsi_history_7d": [
       39.76,
       39.76,
       39.76,
-      39.72
+      39.72,
+      56.43
     ],
     "significant_levels_hit": [
       {
@@ -3672,23 +3866,30 @@
         "type": "resistance_reject",
         "level": 972.5,
         "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 1046.16713,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
       "2026-05-31: rejected resistance level at $972.50",
       "2026-05-31: rejected resistance level at $972.50",
-      "2026-05-31: rejected resistance level at $972.50"
+      "2026-05-31: rejected resistance level at $972.50",
+      "2026-07-08: rejected resistance level at $1,046.17"
     ]
   },
   "HINDUNILVR.NS": {
@@ -3749,16 +3950,24 @@
   },
   "MARUTI.NS": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.0366,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.1273,
     "rsi_history_7d": [
       47.25,
       47.25,
       47.25,
-      49.42
+      49.42,
+      68.97
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 14549.0,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -3766,34 +3975,46 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_green_days": 2,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $14,549.00"
+    ]
   },
   "SUNPHARMA.NS": {
-    "trend_7d": "downtrend",
+    "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.2385,
+    "avg_daily_move_30d": 0.5311,
     "rsi_history_7d": [
       45.87,
       45.87,
       45.87,
-      45.01
+      45.01,
+      69.66
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 1911.590028,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $1,911.59"
+    ]
   },
   "TITAN.NS": {
     "trend_7d": "ranging",
@@ -3828,38 +4049,41 @@
     ]
   },
   "ONGC.NS": {
-    "trend_7d": "downtrend",
+    "trend_7d": "uptrend",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 1.3859,
+    "avg_daily_move_30d": 0.9839,
     "rsi_history_7d": [
       31.18,
       31.18,
       31.18,
-      31.1
+      31.1,
+      42.61
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "POWERGRID.NS": {
-    "trend_7d": "downtrend",
+    "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.8758,
+    "avg_daily_move_30d": 0.7741,
     "rsi_history_7d": [
       35.72,
       35.72,
       35.72,
-      34.79
+      34.79,
+      40.94
     ],
     "significant_levels_hit": [
       {
@@ -3882,10 +4106,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -3898,12 +4123,13 @@
   "NTPC.NS": {
     "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.9095,
+    "avg_daily_move_30d": 0.9428,
     "rsi_history_7d": [
       44.44,
       44.44,
       44.44,
-      40.9
+      40.9,
+      38.82
     ],
     "significant_levels_hit": [
       {
@@ -3916,10 +4142,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -3928,14 +4155,15 @@
     ]
   },
   "COALINDIA.NS": {
-    "trend_7d": "ranging",
+    "trend_7d": "downtrend",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.9069,
+    "avg_daily_move_30d": 1.0489,
     "rsi_history_7d": [
       48.53,
       48.53,
       48.53,
-      48.15
+      48.15,
+      35.08
     ],
     "significant_levels_hit": [
       {
@@ -3958,10 +4186,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -3973,13 +4202,14 @@
   },
   "BPCL.NS": {
     "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.6575,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 1.3645,
     "rsi_history_7d": [
       48.22,
       48.22,
       48.22,
-      49.14
+      49.14,
+      57.77
     ],
     "significant_levels_hit": [
       {
@@ -3996,9 +4226,15 @@
         "type": "resistance_reject",
         "level": 309.0,
         "date": "2026-05-31"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 314.800003,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -4006,48 +4242,60 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_green_days": 2,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
       "2026-05-31: rejected resistance level at $309.00",
       "2026-05-31: rejected resistance level at $309.00",
-      "2026-05-31: rejected resistance level at $309.00"
+      "2026-05-31: rejected resistance level at $309.00",
+      "2026-07-08: rejected resistance level at $314.80"
     ]
   },
   "^RUT": {
-    "trend_7d": "uptrend",
+    "trend_7d": "ranging",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.94,
+    "avg_daily_move_30d": 0.9234,
     "rsi_history_7d": [
       63.68,
       63.68,
       63.68,
-      63.68
+      63.68,
+      55.43
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 3015.409912,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $3,015.41"
+    ]
   },
   "^STOXX50E": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.8286,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.6893,
     "rsi_history_7d": [
       60.02,
       60.02,
       60.02,
-      60.02
+      60.02,
+      58.04
     ],
     "significant_levels_hit": [
       {
@@ -4075,10 +4323,11 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
@@ -4090,38 +4339,49 @@
     ]
   },
   "^BSESN": {
-    "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.6976,
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.5992,
     "rsi_history_7d": [
       41.07,
       41.07,
       41.07,
-      41.07
+      41.07,
+      63.54
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_reject",
+        "level": 78384.703125,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
+    "consecutive_red_days": 5,
     "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: rejected resistance level at $78,384.70"
+    ]
   },
   "ZC=F": {
-    "trend_7d": "downtrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 1.062,
+    "trend_7d": "uptrend",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 1.3598,
     "rsi_history_7d": [
       41.46,
       41.46,
       41.46,
-      41.87
+      41.87,
+      68.14
     ],
     "significant_levels_hit": [
       {
@@ -4144,11 +4404,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_green_days": 2,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -4159,16 +4420,24 @@
   },
   "ZS=F": {
     "trend_7d": "ranging",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.8103,
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 0.8673,
     "rsi_history_7d": [
       49.55,
       49.55,
       49.55,
-      50.37
+      50.37,
+      67.07
     ],
-    "significant_levels_hit": [],
+    "significant_levels_hit": [
+      {
+        "type": "resistance_break",
+        "level": 1182.78125,
+        "date": "2026-07-08"
+      }
+    ],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -4176,23 +4445,27 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 1,
+    "consecutive_green_days": 2,
     "last_golden_cross": null,
     "last_death_cross": null,
-    "notes": []
+    "notes": [
+      "2026-07-08: broke above key resistance at $1,182.78"
+    ]
   },
   "PL=F": {
-    "trend_7d": "downtrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 1.8044,
+    "trend_7d": "ranging",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 1.9336,
     "rsi_history_7d": [
       42.99,
       42.99,
       42.99,
-      45.02
+      45.02,
+      40.73
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -4200,119 +4473,25 @@
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "PA=F": {
-    "trend_7d": "ranging",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 2.0149,
-    "rsi_history_7d": [
-      40.99,
-      40.99,
-      40.99,
-      42.76
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "USDCAD=X": {
     "trend_7d": "uptrend",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.1836,
-    "rsi_history_7d": [
-      57.82,
-      57.82,
-      57.82,
-      59.69
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "USDCHF=X": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.3017,
-    "rsi_history_7d": [
-      43.49,
-      43.49,
-      43.49,
-      48.0
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 4,
-    "consecutive_green_days": 0,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "NZDUSD=X": {
-    "trend_7d": "ranging",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.495,
-    "rsi_history_7d": [
-      61.81,
-      61.81,
-      61.81,
-      59.8
-    ],
-    "significant_levels_hit": [],
-    "sentiment_history_7d": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
-    ],
-    "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
-    "last_golden_cross": null,
-    "last_death_cross": null,
-    "notes": []
-  },
-  "EURGBP=X": {
-    "trend_7d": "ranging",
     "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.1555,
+    "avg_daily_move_30d": 1.9822,
     "rsi_history_7d": [
-      51.35,
-      51.35,
-      51.35,
-      48.18
+      40.99,
+      40.99,
+      40.99,
+      42.76,
+      46.77
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -4325,15 +4504,128 @@
     "last_death_cross": null,
     "notes": []
   },
+  "USDCAD=X": {
+    "trend_7d": "uptrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.1742,
+    "rsi_history_7d": [
+      57.82,
+      57.82,
+      57.82,
+      59.69,
+      71.85
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "USDCHF=X": {
+    "trend_7d": "downtrend",
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.3157,
+    "rsi_history_7d": [
+      43.49,
+      43.49,
+      43.49,
+      48.0,
+      62.25
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
+  "NZDUSD=X": {
+    "trend_7d": "uptrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.3935,
+    "rsi_history_7d": [
+      61.81,
+      61.81,
+      61.81,
+      59.8,
+      38.71
+    ],
+    "significant_levels_hit": [
+      {
+        "type": "support_break",
+        "level": 0.56943,
+        "date": "2026-07-08"
+      }
+    ],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": [
+      "2026-07-08: broke key support at $0.57"
+    ]
+  },
+  "EURGBP=X": {
+    "trend_7d": "downtrend",
+    "trend_30d": "downtrend",
+    "avg_daily_move_30d": 0.1284,
+    "rsi_history_7d": [
+      51.35,
+      51.35,
+      51.35,
+      48.18,
+      28.34
+    ],
+    "significant_levels_hit": [],
+    "sentiment_history_7d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sentiment_trend_7d": "stable",
+    "consecutive_red_days": 0,
+    "consecutive_green_days": 1,
+    "last_golden_cross": null,
+    "last_death_cross": null,
+    "notes": []
+  },
   "DIA": {
     "trend_7d": "uptrend",
     "trend_30d": "uptrend",
-    "avg_daily_move_30d": 0.5218,
+    "avg_daily_move_30d": 0.5947,
     "rsi_history_7d": [
       69.07,
       69.07,
       69.07,
-      69.07
+      69.07,
+      68.04
     ],
     "significant_levels_hit": [
       {
@@ -4361,11 +4653,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
@@ -4377,13 +4670,14 @@
   },
   "UNG": {
     "trend_7d": "ranging",
-    "trend_30d": "uptrend",
-    "avg_daily_move_30d": 2.1695,
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 1.8661,
     "rsi_history_7d": [
       61.04,
       61.04,
       61.04,
-      61.04
+      61.04,
+      53.89
     ],
     "significant_levels_hit": [
       {
@@ -4405,59 +4699,69 @@
         "type": "resistance_reject",
         "level": 11.94,
         "date": "2026-06-01"
+      },
+      {
+        "type": "resistance_reject",
+        "level": 11.83,
+        "date": "2026-07-08"
       }
     ],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
     "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_green_days": 5,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
       "2026-05-31: rejected resistance level at $11.94",
       "2026-05-31: rejected resistance level at $11.94",
       "2026-05-31: rejected resistance level at $11.94",
-      "2026-06-01: rejected resistance level at $11.94"
+      "2026-06-01: rejected resistance level at $11.94",
+      "2026-07-08: rejected resistance level at $11.83"
     ]
   },
   "LQD": {
-    "trend_7d": "uptrend",
-    "trend_30d": "downtrend",
-    "avg_daily_move_30d": 0.2833,
+    "trend_7d": "downtrend",
+    "trend_30d": "ranging",
+    "avg_daily_move_30d": 0.2601,
     "rsi_history_7d": [
       58.74,
       58.74,
       58.74,
-      58.74
+      58.74,
+      41.67
     ],
     "significant_levels_hit": [],
     "sentiment_history_7d": [
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": []
   },
   "EMB": {
     "trend_7d": "uptrend",
-    "trend_30d": "ranging",
-    "avg_daily_move_30d": 0.3271,
+    "trend_30d": "uptrend",
+    "avg_daily_move_30d": 0.3048,
     "rsi_history_7d": [
       61.86,
       61.86,
       61.86,
-      61.86
+      61.86,
+      51.32
     ],
     "significant_levels_hit": [
       {
@@ -4485,11 +4789,12 @@
       0.0,
       0.0,
       0.0,
+      0.0,
       0.0
     ],
     "sentiment_trend_7d": "stable",
-    "consecutive_red_days": 0,
-    "consecutive_green_days": 4,
+    "consecutive_red_days": 1,
+    "consecutive_green_days": 0,
     "last_golden_cross": null,
     "last_death_cross": null,
     "notes": [
