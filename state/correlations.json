@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-08T21:15:17.618966+00:00",
+  "last_updated": "2026-07-08T21:45:12.313138+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
       "correlation_30d": -0.8949,
-      "correlation_7d": -0.5343,
+      "correlation_7d": -0.5324,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -27,16 +27,16 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.4826,
-      "correlation_7d": -0.7076,
+      "correlation_30d": 0.4821,
+      "correlation_7d": -0.714,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "BTC diverging from NASDAQ (normally positive) — crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.381,
-      "correlation_7d": -0.7835,
+      "correlation_30d": -0.3804,
+      "correlation_7d": -0.7911,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Gold and VIX decoupling (normally positive in fear) — gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
@@ -51,16 +51,16 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9119,
-      "correlation_7d": 0.4594,
+      "correlation_30d": 0.9121,
+      "correlation_7d": 0.4602,
       "anomaly": true,
       "anomaly_since": "2026-07-08",
       "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.2666,
-      "correlation_7d": -0.3878,
+      "correlation_30d": -0.2662,
+      "correlation_7d": -0.3823,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
