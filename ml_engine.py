@@ -162,9 +162,9 @@ def compute_asset_features(
 
     # BB
     bb_data = asset.get("bb") or asset.get("bollinger_bands") or indicators.calculate_bollinger_bands(close) or {}
-    bb_lower = bb_data.get("lower", price)
-    bb_upper = bb_data.get("upper", price)
-    bb_middle = bb_data.get("middle", price)
+    bb_lower = bb_data.get("lower") or price
+    bb_upper = bb_data.get("upper") or price
+    bb_middle = bb_data.get("middle") or price
     bb_position = float((price - bb_lower) / (bb_upper - bb_lower)) if (bb_upper - bb_lower) != 0 else 0.5
     bb_width = float((bb_upper - bb_lower) / bb_middle) if bb_middle else 0.0
 
