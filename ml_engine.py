@@ -153,9 +153,9 @@ def compute_asset_features(
     price_vs_ema50 = float((price - ema50_val) / ema50_val * 100.0) if ema50_val else 0.0
     price_vs_ema200 = float((price - ema200_val) / ema200_val * 100.0) if ema200_val else 0.0
 
-    ema20_series = indicators.ema(close, 20)
-    ema50_series = indicators.ema(close, 50)
-    ema200_series = indicators.ema(close, 200)
+    ema20_series = indicators.ta.ema(close, 20)
+    ema50_series = indicators.ta.ema(close, 50)
+    ema200_series = indicators.ta.ema(close, 200)
 
     ema_20_50_cross = _check_crossover(ema20_series, ema50_series, 3)
     ema_50_200_cross = _check_crossover(ema50_series, ema200_series, 3)
