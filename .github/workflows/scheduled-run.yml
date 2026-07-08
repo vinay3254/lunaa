@@ -98,7 +98,7 @@ jobs:
           git config user.name "trading-agent[bot]"
           git config user.email "trading-agent@users.noreply.github.com"
           
-          git add reports/ state/ 2>/dev/null || true
+          git add reports/ state/ portfolio.json 2>/dev/null || true
           
           # Only commit if there are staged changes
           if git diff --staged --quiet; then
