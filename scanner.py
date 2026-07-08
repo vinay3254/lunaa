@@ -611,7 +611,14 @@ def generate_tactical_card(asset: dict, score_result: dict, macro_state: dict) -
         stars = "★★☆☆☆ MEDIUM CONFIDENCE"
     else:
         stars = "★☆☆☆☆ LOW CONFIDENCE"
-        
+
+    if confidence >= 0.7:
+        confidence_tier = "HIGH"
+    elif confidence >= 0.5:
+        confidence_tier = "MEDIUM"
+    else:
+        confidence_tier = "LOW"
+
     # 2. Supporting Evidence (Factors Aligned)
     evidence = []
     aligned_count = 0
@@ -748,6 +755,7 @@ def generate_tactical_card(asset: dict, score_result: dict, macro_state: dict) -
         pass
         
     # 5. Entry Zone & Stop Loss Invalidation Zone & Time Horizon
+    stop_val = None
     if price > 0:
         if direction == "bullish":
             entry_zone = f"${0.99*price:.2f} - ${1.01*price:.2f}"
@@ -807,12 +815,14 @@ def generate_tactical_card(asset: dict, score_result: dict, macro_state: dict) -
     return {
         "confidence_score": round(confidence, 2),
         "confidence_stars": stars,
+        "confidence_tier": confidence_tier,
         "aligned_factors": f"{aligned_count}/{total_factors}",
         "evidence": evidence,
         "model_info": model_info,
         "accuracy_info": accuracy_info,
         "backtest_info": backtest_info,
         "entry_zone": entry_zone,
+        "stop_loss": stop_val,
         "stop_invalidation": stop_invalidation,
         "time_horizon": "3-7 days"
     }
