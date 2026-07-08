@@ -60,7 +60,7 @@ _DEFAULT_HEADERS: dict[str, str] = {
     "User-Agent": _USER_AGENT,
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.5",
-    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Encoding": "gzip, deflate",
     "Connection": "keep-alive",
 }
 
@@ -1121,7 +1121,11 @@ def _parse_forexfactory_html(html: str) -> list[dict]:
         # ---- Date row -------------------------------------------------------
         date_cell = row.find("td", class_=re.compile(r"date"))
         if date_cell and date_cell.get_text(strip=True):
-            raw_date = date_cell.get_text(strip=True)
+            # ForexFactory nests the weekday and "Mon DD" in separate <span>s
+            # with no whitespace between the closing/opening tags, so
+            # get_text(strip=True) alone collapses "Mon" and "Jul 6" together
+            # into "MonJul 6" — force a separating space between fragments.
+            raw_date = date_cell.get_text(separator=" ", strip=True)
             # ForexFactory uses e.g. "Mon May 29" — add current year
             try:
                 parsed = datetime.strptime(
@@ -1163,13 +1167,16 @@ def _parse_forexfactory_html(html: str) -> list[dict]:
                 span_classes = " ".join(span_inner.get("class", []))
             else:
                 span_classes = " ".join(impact_span.get("class", []))
+            # ForexFactory's current markup uses abbreviated icon suffixes
+            # (icon--ff-impact-red/-ora/-yel/-gra) rather than full color
+            # words — match both so this survives either variant.
             if "red" in span_classes or "high" in span_classes:
                 impact_str = "High"
-            elif "orange" in span_classes or "medium" in span_classes:
+            elif "ora" in span_classes or "orange" in span_classes or "medium" in span_classes:
                 impact_str = "Medium"
-            elif "yellow" in span_classes or "low" in span_classes:
+            elif "yel" in span_classes or "yellow" in span_classes or "low" in span_classes:
                 impact_str = "Low"
-            elif "gray" in span_classes or "holiday" in span_classes:
+            elif "gra" in span_classes or "gray" in span_classes or "holiday" in span_classes:
                 impact_str = "Holiday"
 
         event_time = time_cell.get_text(strip=True) if time_cell else ""
