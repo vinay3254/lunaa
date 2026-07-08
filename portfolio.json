@@ -1,6 +1,20 @@
 {
-  "positions": [],
+  "positions": [
+    {
+      "asset": "NTPC.NS",
+      "quantity": 114.744613,
+      "entry_price": 348.70001220703125,
+      "stop_loss": 331.27,
+      "take_profit": 383.56,
+      "entry_date": "2026-07-08",
+      "status": "open",
+      "source": "manual_demo_forced",
+      "signal_score": 4.0,
+      "note": "FORCED DEMO TRADE - market showed 0 bullish/0 bearish signals on 2026-07-08; this position was manually opened on the single highest-scoring NEUTRAL asset (NTPC.NS, score 4.0) with a synthetic 5% stop-loss to demonstrate the buy mechanism. Not an automated trading decision.",
+      "uuid": "58e538d6-69f7-4a6c-8520-b525cf563bd0"
+    }
+  ],
   "closed_positions": [],
-  "cash_balance": 100000.0,
+  "cash_balance": 59988.552046208926,
   "currency": "USD"
 }
