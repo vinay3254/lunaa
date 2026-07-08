@@ -100,6 +100,11 @@ def open_new_positions(ranked: dict, portfolio: dict, market_data: dict) -> dict
         dollar_risk = total_portfolio_value * RISK_PER_TRADE_PCT
         qty = round(dollar_risk / risk_per_share, 6)
         if qty <= 0:
+            logger.info(
+                "Paper trader: skipping %s — computed quantity is zero or negative "
+                "(dollar_risk=%.2f, risk_per_share=%.2f).",
+                ticker, dollar_risk, risk_per_share,
+            )
             continue
 
         candidate_risk = risk_per_share * qty

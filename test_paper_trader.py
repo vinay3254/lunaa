@@ -308,3 +308,47 @@ def test_end_to_end_multi_day_simulation(monkeypatch):
     realized_loss = (200.0 * 110.0) - (200.0 * 120.0)
     assert realized_loss == -2000.0
     assert expected_final_cash == 100_000.0 + realized_loss
+
+
+def test_open_new_positions_day1_bootstrap_survives_real_calculate_portfolio_status(monkeypatch, tmp_path):
+    """
+    Regression test for the Day-1 bootstrap staleness bug: on a brand-new
+    account, bootstrap_portfolio() sets cash_balance=100_000.0 in memory,
+    but portfolio.json on disk is still the pristine cash_balance=0.0
+    template (the caller only calls save_portfolio() AFTER
+    open_new_positions() returns). open_new_positions() sources its sizing
+    baseline from portfolio.calculate_portfolio_status(), which does its
+    OWN internal load_portfolio() and ignores the in-memory `portfolio`
+    dict entirely -- so on this very first run it would compute
+    total_portfolio_value=0.0 from the stale disk file if not for the
+    `status.get("total_portfolio_value") or portfolio.get("cash_balance", 0.0)`
+    fallback in paper_trader.open_new_positions().
+
+    Deliberately does NOT monkeypatch calculate_portfolio_status, so this
+    exercises the real disk-reading code path end-to-end.
+    """
+    import json
+    import portfolio as portfolio_module
+
+    fresh_portfolio_file = tmp_path / "portfolio.json"
+    fresh_portfolio_file.write_text(json.dumps({
+        "positions": [], "closed_positions": [], "cash_balance": 0.0, "currency": "USD",
+    }))
+    monkeypatch.setattr(portfolio_module, "PORTFOLIO_PATH", fresh_portfolio_file)
+
+    portfolio = paper_trader.bootstrap_portfolio(
+        {"positions": [], "closed_positions": [], "cash_balance": 0.0, "currency": "USD"}
+    )
+    assert portfolio["cash_balance"] == 100_000.0  # in-memory only; disk file is still 0.0
+
+    ranked = {"bullish": [_opportunity("NVDA", price=120.0, stop_loss=110.0, resistance=[140.0])]}
+    result = paper_trader.open_new_positions(ranked, portfolio, market_data={})
+
+    # This is the assertion that fails today if the `or` fallback is ever
+    # "cleaned up" into a stricter `is not None` check: total_portfolio_value
+    # would resolve to 0.0 from the stale on-disk file, every candidate's
+    # qty would round to 0, and the silent `if qty <= 0: continue` branch
+    # would skip the trade with no log output.
+    assert len(result["positions"]) == 1
+    assert result["positions"][0]["asset"] == "NVDA"
+    assert result["positions"][0]["quantity"] == 200.0
