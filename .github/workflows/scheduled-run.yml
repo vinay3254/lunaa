@@ -107,8 +107,24 @@ jobs:
             MODE="${{ steps.mode.outputs.mode }}"
             TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M UTC')
             git commit -m "[agent] ${MODE} — ${TIMESTAMP}"
-            git push
-            echo "✓ Reports committed and pushed"
+
+            # Another concurrent run (or a manual push) may have landed on
+            # main between our checkout and this push. Rebase onto the
+            # latest remote state and retry instead of failing outright.
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "✓ Reports committed and pushed"
+                break
+              fi
+              if [ "$attempt" -eq 5 ]; then
+                echo "::error::Push failed after 5 attempts"
+                exit 1
+              fi
+              echo "Push rejected (attempt $attempt) — fetching and rebasing onto latest main..."
+              git fetch origin main
+              git rebase origin/main
+              sleep $((RANDOM % 10 + 1))
+            done
           fi
 
       - name: Upload reports as artifacts
