@@ -1,48 +1,48 @@
 {
-  "timestamp": "2026-07-09T11:15:55.519919+00:00",
+  "timestamp": "2026-07-09T13:36:52.229595+00:00",
   "market_data": {
     "global_snapshot": [
       {
         "ticker": "SPY",
         "name": "SPY",
-        "price": 745.4000244140625,
-        "change_24h": -0.3089429713004738,
-        "change_7d": -0.18345609509704883
+        "price": 747.8900146484375,
+        "change_24h": 0.3340475117816517,
+        "change_7d": 0.2856153259655088
       },
       {
         "ticker": "QQQ",
         "name": "QQQ",
-        "price": 711.4400024414062,
-        "change_24h": 0.2833274299615918,
-        "change_7d": -3.3894651201996355
+        "price": 719.9099731445312,
+        "change_24h": 1.1905390017512518,
+        "change_7d": -0.7253485237373208
       },
       {
         "ticker": "^GSPC",
         "name": "^GSPC",
-        "price": 7482.7099609375,
-        "change_24h": -0.2817238676629868,
-        "change_7d": -0.22201764746978078
+        "price": 7506.06005859375,
+        "change_24h": 0.31205402558893913,
+        "change_7d": 0.3050832085153946
       },
       {
         "ticker": "^NDX",
         "name": "^NDX",
-        "price": 29252.560546875,
-        "change_24h": 0.2726526664125256,
-        "change_7d": -3.381481174939881
+        "price": 29597.693359375,
+        "change_24h": 1.1798379562259207,
+        "change_7d": -0.7093044778710906
       },
       {
         "ticker": "^DJI",
         "name": "^DJI",
-        "price": 52348.390625,
-        "change_24h": -1.089761350751998,
-        "change_7d": 0.055794826155401996
+        "price": 52296.109375,
+        "change_24h": -0.0998717427141534,
+        "change_7d": -0.01745313958979222
       },
       {
         "ticker": "^FTSE",
         "name": "^FTSE",
-        "price": 10407.6796875,
-        "change_24h": -0.7752913766803318,
-        "change_7d": -2.30191491643726
+        "price": 10445.23046875,
+        "change_24h": -0.41728983935551534,
+        "change_7d": -1.9494214182060525
       },
       {
         "ticker": "^N225",
@@ -61,30 +61,30 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 62722.3984375,
-        "change_24h": 0.7466147285417519,
-        "change_7d": -0.5799906207853749
+        "price": 62629.46875,
+        "change_24h": 0.5973482518661918,
+        "change_7d": -0.7272915951265234
       },
       {
         "ticker": "GC=F",
         "name": "GC=F",
-        "price": 4111.7998046875,
-        "change_24h": 1.0046894624012392,
-        "change_7d": 1.0692366673373837
+        "price": 4135.2001953125,
+        "change_24h": 1.5795105384863486,
+        "change_7d": 1.6444250837311178
       },
       {
         "ticker": "CL=F",
         "name": "CL=F",
-        "price": 74.05000305175781,
-        "change_24h": 0.720901024063622,
-        "change_7d": 7.976087889554671
+        "price": 73.12999725341797,
+        "change_24h": -0.530467093928,
+        "change_7d": 6.634580491222637
       },
       {
         "ticker": "^TNX",
         "name": "^TNX",
-        "price": 4.568999767303467,
-        "change_24h": 0.8831963694255244,
-        "change_7d": 4.458154814654359
+        "price": 4.565000057220459,
+        "change_24h": -0.08754016823617311,
+        "change_7d": 3.327293540205962
       },
       {
         "ticker": "^VIX",
@@ -96,45 +96,45 @@
       {
         "ticker": "DX-Y.NYB",
         "name": "DX-Y.NYB",
-        "price": 101.01599884033203,
-        "change_24h": -0.033650876198751116,
-        "change_7d": -0.36887321389469346
+        "price": 100.93699645996094,
+        "change_24h": -0.11183234872243697,
+        "change_7d": -0.4467925164360441
       },
       {
         "ticker": "HYG",
         "name": "HYG",
-        "price": 79.66000366210938,
-        "change_24h": -0.12537421193933254,
-        "change_7d": 0.07412688137456196
+        "price": 79.70970153808594,
+        "change_24h": 0.062387488942837584,
+        "change_7d": 0.15040231901395892
       },
       {
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
-        "price": 1.1428571939468384,
-        "change_24h": 0.21714978390601583,
-        "change_7d": 0.44457841272315884
+        "price": 1.1436413526535034,
+        "change_24h": 0.28591266257225434,
+        "change_7d": 0.5134973390044243
       },
       {
         "ticker": "USDINR=X",
         "name": "USDINR=X",
-        "price": 95.58000183105469,
-        "change_24h": -0.014014792789373147,
-        "change_7d": 0.17030258433112277
+        "price": 95.37799835205078,
+        "change_24h": -0.2253300938623987,
+        "change_7d": -0.041402262156277465
       }
     ],
     "top_movers": {
       "gainers": [
         {
+          "ticker": "AMD",
+          "change_24h": 5.815509637859941
+        },
+        {
           "ticker": "AVAX-USD",
-          "change_24h": 4.25123
+          "change_24h": 4.82518
         },
         {
-          "ticker": "ZC=F",
-          "change_24h": 3.9677975848188614
-        },
-        {
-          "ticker": "OXY",
-          "change_24h": 3.6958201163571234
+          "ticker": "INTC",
+          "change_24h": 4.626268661963765
         }
       ],
       "losers": [
@@ -143,12 +143,12 @@
           "change_24h": NaN
         },
         {
-          "ticker": "MRNA",
-          "change_24h": -7.484008828559359
+          "ticker": "PLTR",
+          "change_24h": -4.02359676728789
         },
         {
-          "ticker": "SLV",
-          "change_24h": -2.99301740877683
+          "ticker": "META",
+          "change_24h": -3.5797131574318843
         }
       ]
     }
@@ -156,319 +156,317 @@
   "macro_state": {
     "regime": "RISK-ON",
     "risk_on_score": 5,
-    "risk_off_score": 1,
+    "risk_off_score": 0,
     "risk_on_signals": [
-      "SPY (745.40) above 50 EMA (732.83) \u2014 bullish trend",
-      "VIX at 17.1 \u2014 below 18.0 (low fear)",
-      "HYG rising +0.07% over 5 days \u2014 credit risk appetite healthy",
-      "Crude oil (CL=F) +7.99% over 5 days \u2014 commodity demand rising (risk-on)",
-      "DXY weakening -0.37% over 5 days \u2014 USD weakness supports risk assets"
+      "SPY (747.84) above 50 EMA (733.42) \u2014 bullish trend",
+      "VIX at 16.7 \u2014 below 18.0 (low fear)",
+      "HYG rising +0.14% over 5 days \u2014 credit risk appetite healthy",
+      "Crude oil (CL=F) +6.65% over 5 days \u2014 commodity demand rising (risk-on)",
+      "DXY weakening -0.45% over 5 days \u2014 USD weakness supports risk assets"
     ],
-    "risk_off_signals": [
-      "Gold rising +1.65% while SPY falling -0.18% \u2014 classic risk-off rotation"
-    ],
+    "risk_off_signals": [],
     "regime_changed": false,
-    "vix": 17.09000015258789,
+    "vix": 16.729999542236328,
     "vix_change_pct": 0.0,
     "vix_spiked": false,
-    "vix_status": "VIX at 17.1 \u2014 low fear; complacency / risk-on environment",
+    "vix_status": "VIX at 16.7 \u2014 low fear; complacency / risk-on environment",
     "vix_is_stale": false,
-    "dxy": 101.016,
+    "dxy": 100.934,
     "dxy_trend": "flat",
-    "dxy_change_5d_pct": -0.369,
-    "dxy_change_7d_pct": -0.093,
+    "dxy_change_5d_pct": -0.45,
+    "dxy_change_7d_pct": -0.174,
     "dxy_impact": "USD trading sideways; limited directional macro pressure from the dollar cycle at this time.",
-    "yield_10y": 4.569,
-    "yield_2y": 3.723,
-    "yield_30y": 5.065,
+    "yield_10y": 4.565,
+    "yield_2y": 3.697,
+    "yield_30y": 5.076,
     "yield_curve": "normal",
     "yield_curve_inverted": false,
-    "yield_curve_spread": 84.6,
+    "yield_curve_spread": 86.8,
     "rate_trend": "flat",
     "rates_impact": "Rate environment is stable; bond and equity valuations are not facing incremental rate pressure.",
     "cpi": NaN,
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.13,
+    "btc_dominance": 56.08,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
-      "bonds_vs_stocks": "Both SPY (-0.18%) and TLT (-2.02%) falling \u2014 liquidation / stagflation signals; cash and commodities may outperform.",
-      "gold_vs_usd": "Gold (+1.65%) rising as DXY (-0.37%) weakens \u2014 textbook inverse correlation; bullish for gold and crypto.",
-      "oil_vs_inflation": "Crude oil modestly rising +7.99% over 5 days \u2014 mild upward pressure on energy components of inflation.",
-      "credit_spreads": "HYG outperforming TLT by 2.10pp over 5d \u2014 credit spreads tightening; risk appetite healthy; high yield demand strong.",
+      "bonds_vs_stocks": "SPY 5d: +0.28%, TLT 5d: -1.44% \u2014 no strong directional bond/equity divergence detected.",
+      "gold_vs_usd": "Gold (+2.06%) rising as DXY (-0.45%) weakens \u2014 textbook inverse correlation; bullish for gold and crypto.",
+      "oil_vs_inflation": "Crude oil modestly rising +6.65% over 5 days \u2014 mild upward pressure on energy components of inflation.",
+      "credit_spreads": "HYG outperforming TLT by 1.58pp over 5d \u2014 credit spreads tightening; risk appetite healthy; high yield demand strong.",
       "regime_asset_rankings": [
-        "US Equities (SPY) (+0.33% composite momentum)",
-        "High Yield Bonds (HYG) (+0.29% composite momentum)",
-        "US Dollar (DX-Y.NYB) (+0.22% composite momentum)",
-        "Small Caps (IWM) (+0.03% composite momentum)",
-        "Long Treasuries (TLT) (-1.19% composite momentum)",
-        "Gold (GLD/GC=F) (-1.31% composite momentum)",
-        "Crude Oil (CL=F) (-1.62% composite momentum)"
+        "US Equities (SPY) (+0.86% composite momentum)",
+        "Small Caps (IWM) (+0.79% composite momentum)",
+        "High Yield Bonds (HYG) (+0.32% composite momentum)",
+        "US Dollar (DX-Y.NYB) (+0.14% composite momentum)",
+        "Gold (GLD/GC=F) (-0.05% composite momentum)",
+        "Long Treasuries (TLT) (-1.11% composite momentum)",
+        "Crude Oil (CL=F) (-2.84% composite momentum)"
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-09T11:15:54.964174+00:00",
+      "last_updated": "2026-07-09T13:36:51.767276+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
-          "correlation_30d": -0.8907,
-          "correlation_7d": -0.5805,
+          "correlation_30d": -0.89,
+          "correlation_7d": -0.6095,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (negative correlation)."
         },
         "^TNX_^GSPC": {
           "expected": "negative",
-          "correlation_30d": -0.0174,
-          "correlation_7d": 0.6608,
+          "correlation_30d": 0.0051,
+          "correlation_7d": 0.6414,
           "anomaly": true,
           "anomaly_since": "2026-07-08",
           "interpretation": "10Y yield and S&P 500 moving together (normally inverse) \u2014 yields and stocks decoupling. High yields not currently hurting stock sentiment."
         },
         "CL=F_^GSPC": {
           "expected": "positive",
-          "correlation_30d": 0.2584,
-          "correlation_7d": -0.3557,
+          "correlation_30d": 0.227,
+          "correlation_7d": -0.1869,
           "anomaly": true,
           "anomaly_since": "2026-07-08",
           "interpretation": "Oil and S&P 500 diverging (normally positive) \u2014 rising energy costs might be worrying equity markets, or demand concerns are decoupling them."
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.481,
-          "correlation_7d": -0.7262,
+          "correlation_30d": 0.5056,
+          "correlation_7d": -0.6984,
           "anomaly": true,
           "anomaly_since": "2026-05-31",
           "interpretation": "BTC diverging from NASDAQ (normally positive) \u2014 crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
         },
         "GC=F_^VIX": {
           "expected": "positive",
-          "correlation_30d": -0.3727,
-          "correlation_7d": -0.5351,
+          "correlation_30d": -0.3698,
+          "correlation_7d": -0.5612,
           "anomaly": true,
           "anomaly_since": "2026-05-31",
           "interpretation": "Gold and VIX decoupling (normally positive in fear) \u2014 gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
         },
         "HYG_^GSPC": {
           "expected": "positive",
-          "correlation_30d": 0.5772,
-          "correlation_7d": 0.6827,
+          "correlation_30d": 0.5747,
+          "correlation_7d": 0.7951,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.9101,
-          "correlation_7d": 0.3279,
+          "correlation_30d": 0.9094,
+          "correlation_7d": 0.38,
           "anomaly": true,
           "anomaly_since": "2026-07-08",
           "interpretation": "EUR/USD and Gold decoupling (normally positive) \u2014 gold moves decoupling from general currency dynamics, showing independent strength."
         },
         "^TNX_DX-Y.NYB": {
           "expected": "positive",
-          "correlation_30d": -0.2665,
-          "correlation_7d": -0.3867,
+          "correlation_30d": -0.1641,
+          "correlation_7d": -0.3358,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "CL=F_USDINR=X": {
           "expected": "negative",
-          "correlation_30d": 0.5557,
-          "correlation_7d": 0.6395,
+          "correlation_30d": 0.5653,
+          "correlation_7d": 0.5472,
           "anomaly": true,
           "anomaly_since": "2026-05-31",
           "interpretation": "Oil and INR decoupling (normally inverse) \u2014 rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
         }
       }
     },
-    "macro_summary": "The market regime is currently RISK-ON (risk-on score: 5/6, risk-off score: 1/6). Volatility: VIX at 17.1. USD: DXY flat (-0.37% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.1% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-09T11:15:55.518974+00:00",
+    "macro_summary": "The market regime is currently RISK-ON (risk-on score: 5/6, risk-off score: 0/6). Volatility: VIX at 16.7. USD: DXY flat (-0.45% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.1% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
+    "timestamp": "2026-07-09T13:36:52.228627+00:00",
     "sector_rotation": {
-      "spy_1w": -0.18345609509704883,
-      "spy_1m": 1.3247027620084946,
+      "spy_1w": 0.2789123930763532,
+      "spy_1m": 1.4267327734225543,
       "ranked_1w": [
         {
           "ticker": "XLE",
-          "rel_perf": 4.871834621088274,
+          "rel_perf": 4.578119532710054,
           "name": "Energy"
         },
         {
-          "ticker": "XLF",
-          "rel_perf": 2.7202973464828206,
-          "name": "Financials"
-        },
-        {
-          "ticker": "XLV",
-          "rel_perf": 2.477669700058492,
-          "name": "Health Care"
-        },
-        {
-          "ticker": "XLC",
-          "rel_perf": 2.358385518032649,
-          "name": "Communication Services"
-        },
-        {
-          "ticker": "XLP",
-          "rel_perf": 1.7724770408939983,
-          "name": "Consumer Staples"
-        },
-        {
-          "ticker": "XLRE",
-          "rel_perf": 0.45600378964401567,
-          "name": "Real Estate"
-        },
-        {
           "ticker": "XLU",
-          "rel_perf": 0.2275682646964358,
+          "rel_perf": 1.4186491744071916,
           "name": "Utilities"
         },
         {
-          "ticker": "XLB",
-          "rel_perf": -1.1346669808561751,
-          "name": "Materials"
+          "ticker": "XLV",
+          "rel_perf": 1.338305076621502,
+          "name": "Health Care"
         },
         {
-          "ticker": "XLY",
-          "rel_perf": -1.5048076737874594,
-          "name": "Consumer Discretionary"
+          "ticker": "XLF",
+          "rel_perf": 0.1592067814671505,
+          "name": "Financials"
         },
         {
-          "ticker": "XLI",
-          "rel_perf": -2.4133142280362168,
-          "name": "Industrials"
+          "ticker": "XLRE",
+          "rel_perf": -0.18837161613874515,
+          "name": "Real Estate"
+        },
+        {
+          "ticker": "XLP",
+          "rel_perf": -0.2549068200465641,
+          "name": "Consumer Staples"
         },
         {
           "ticker": "XLK",
-          "rel_perf": -4.603448256917408,
+          "rel_perf": -0.4324456388564701,
           "name": "Technology"
+        },
+        {
+          "ticker": "XLI",
+          "rel_perf": -1.0315328545831535,
+          "name": "Industrials"
+        },
+        {
+          "ticker": "XLB",
+          "rel_perf": -1.8077222172600833,
+          "name": "Materials"
+        },
+        {
+          "ticker": "XLC",
+          "rel_perf": -1.809803898342575,
+          "name": "Communication Services"
+        },
+        {
+          "ticker": "XLY",
+          "rel_perf": -3.1411338836645912,
+          "name": "Consumer Discretionary"
         }
       ],
       "ranked_1m": [
         {
           "ticker": "XLV",
-          "rel_perf": 5.214600115010322,
+          "rel_perf": 5.2454605876567,
           "name": "Health Care"
         },
         {
           "ticker": "XLF",
-          "rel_perf": 4.148647497743323,
+          "rel_perf": 4.812894653283575,
           "name": "Financials"
         },
         {
-          "ticker": "XLI",
-          "rel_perf": 2.512649583341185,
-          "name": "Industrials"
-        },
-        {
           "ticker": "XLU",
-          "rel_perf": 1.605730512903668,
+          "rel_perf": 3.8598732258082227,
           "name": "Utilities"
         },
         {
+          "ticker": "XLI",
+          "rel_perf": 3.640199571130466,
+          "name": "Industrials"
+        },
+        {
+          "ticker": "XLRE",
+          "rel_perf": -0.11513655404149858,
+          "name": "Real Estate"
+        },
+        {
           "ticker": "XLP",
-          "rel_perf": 0.51559497069093,
+          "rel_perf": -0.42983298785644175,
           "name": "Consumer Staples"
         },
         {
+          "ticker": "XLB",
+          "rel_perf": -0.490269767731075,
+          "name": "Materials"
+        },
+        {
           "ticker": "XLK",
-          "rel_perf": -0.5946442671752162,
+          "rel_perf": -0.6796386807910155,
           "name": "Technology"
         },
         {
           "ticker": "XLY",
-          "rel_perf": -0.7415942208380845,
+          "rel_perf": -1.817946156999953,
           "name": "Consumer Discretionary"
         },
         {
-          "ticker": "XLRE",
-          "rel_perf": -1.689620362634594,
-          "name": "Real Estate"
-        },
-        {
-          "ticker": "XLB",
-          "rel_perf": -1.8825679034837932,
-          "name": "Materials"
-        },
-        {
           "ticker": "XLC",
-          "rel_perf": -3.048744913054698,
+          "rel_perf": -3.9011929506062586,
           "name": "Communication Services"
         },
         {
           "ticker": "XLE",
-          "rel_perf": -4.218797593862086,
+          "rel_perf": -5.808094804200399,
           "name": "Energy"
         }
       ],
       "leaders_1w": [
         {
           "ticker": "XLE",
-          "rel_perf": 4.871834621088274,
+          "rel_perf": 4.578119532710054,
           "name": "Energy"
         },
         {
-          "ticker": "XLF",
-          "rel_perf": 2.7202973464828206,
-          "name": "Financials"
+          "ticker": "XLU",
+          "rel_perf": 1.4186491744071916,
+          "name": "Utilities"
         },
         {
           "ticker": "XLV",
-          "rel_perf": 2.477669700058492,
+          "rel_perf": 1.338305076621502,
           "name": "Health Care"
         }
       ],
       "laggards_1w": [
         {
+          "ticker": "XLB",
+          "rel_perf": -1.8077222172600833,
+          "name": "Materials"
+        },
+        {
+          "ticker": "XLC",
+          "rel_perf": -1.809803898342575,
+          "name": "Communication Services"
+        },
+        {
           "ticker": "XLY",
-          "rel_perf": -1.5048076737874594,
+          "rel_perf": -3.1411338836645912,
           "name": "Consumer Discretionary"
-        },
-        {
-          "ticker": "XLI",
-          "rel_perf": -2.4133142280362168,
-          "name": "Industrials"
-        },
-        {
-          "ticker": "XLK",
-          "rel_perf": -4.603448256917408,
-          "name": "Technology"
         }
       ],
       "leaders_1m": [
         {
           "ticker": "XLV",
-          "rel_perf": 5.214600115010322,
+          "rel_perf": 5.2454605876567,
           "name": "Health Care"
         },
         {
           "ticker": "XLF",
-          "rel_perf": 4.148647497743323,
+          "rel_perf": 4.812894653283575,
           "name": "Financials"
         },
         {
-          "ticker": "XLI",
-          "rel_perf": 2.512649583341185,
-          "name": "Industrials"
+          "ticker": "XLU",
+          "rel_perf": 3.8598732258082227,
+          "name": "Utilities"
         }
       ],
       "laggards_1m": [
         {
-          "ticker": "XLB",
-          "rel_perf": -1.8825679034837932,
-          "name": "Materials"
+          "ticker": "XLY",
+          "rel_perf": -1.817946156999953,
+          "name": "Consumer Discretionary"
         },
         {
           "ticker": "XLC",
-          "rel_perf": -3.048744913054698,
+          "rel_perf": -3.9011929506062586,
           "name": "Communication Services"
         },
         {
           "ticker": "XLE",
-          "rel_perf": -4.218797593862086,
+          "rel_perf": -5.808094804200399,
           "name": "Energy"
         }
       ],
@@ -478,19 +476,13 @@
           "name": "Energy",
           "type": "BULLISH_ROTATION",
           "details": "Sector **Energy (XLE)** rotated from 1M Laggard to 1W Leader!"
-        },
-        {
-          "ticker": "XLI",
-          "name": "Industrials",
-          "type": "BEARISH_ROTATION",
-          "details": "Sector **Industrials (XLI)** rotated from 1M Leader to 1W Laggard!"
         }
       ]
     },
     "yields": {
-      "US10Y": 4.569,
-      "US2Y": 3.723,
-      "US30Y": 5.065
+      "US10Y": 4.565,
+      "US2Y": 3.697,
+      "US30Y": 5.076
     }
   },
   "opportunities": [],
@@ -498,6 +490,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-09T16:45:55.520548+05:30"
+    "generated_at": "2026-07-09T19:06:52.230194+05:30"
   }
 }
