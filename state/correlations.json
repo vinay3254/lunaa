@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-09T21:42:01.810966+00:00",
+  "last_updated": "2026-07-09T22:02:26.427757+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8901,
-      "correlation_7d": -0.6064,
+      "correlation_30d": -0.89,
+      "correlation_7d": -0.6057,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -28,7 +28,7 @@
     "BTC_^NDX": {
       "expected": "positive",
       "correlation_30d": 0.504,
-      "correlation_7d": -0.6339,
+      "correlation_7d": -0.6323,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "BTC diverging from NASDAQ (normally positive) — crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
@@ -51,16 +51,16 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9095,
-      "correlation_7d": 0.3726,
+      "correlation_30d": 0.9094,
+      "correlation_7d": 0.3649,
       "anomaly": true,
       "anomaly_since": "2026-07-08",
       "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.1814,
-      "correlation_7d": -0.2939,
+      "correlation_30d": -0.1812,
+      "correlation_7d": -0.2924,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
