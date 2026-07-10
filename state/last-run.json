@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10T22:12:00.628752+00:00",
+  "timestamp": "2026-07-10T22:36:02.588034+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 63973.98046875,
-        "change_24h": 1.235627675715932,
-        "change_7d": 0.6705143230455283
+        "price": 64103.44140625,
+        "change_24h": 1.4404931408826833,
+        "change_7d": 0.8742361966474836
       },
       {
         "ticker": "GC=F",
@@ -148,7 +148,7 @@
         },
         {
           "ticker": "SOL-USD",
-          "change_24h": -0.05125
+          "change_24h": -0.13201
         }
       ]
     }
@@ -186,7 +186,7 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.28,
+    "btc_dominance": 56.3,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
@@ -205,7 +205,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-10T22:12:00.016421+00:00",
+      "last_updated": "2026-07-10T22:36:00.780977+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -233,8 +233,8 @@
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.5355,
-          "correlation_7d": 0.0412,
+          "correlation_30d": 0.5356,
+          "correlation_7d": 0.0552,
           "anomaly": true,
           "anomaly_since": "2026-05-31",
           "interpretation": "BTC diverging from NASDAQ (normally positive) \u2014 crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 15.0. USD: DXY flat (+0.10% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.3% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-10T22:12:00.627650+00:00",
+    "timestamp": "2026-07-10T22:36:02.587125+00:00",
     "sector_rotation": {
       "spy_1w": 1.3655015588639552,
       "spy_1m": 2.6924820733799,
@@ -500,6 +500,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-11T03:42:00.629616+05:30"
+    "generated_at": "2026-07-11T04:06:02.588539+05:30"
   }
 }
