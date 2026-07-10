@@ -55,19 +55,31 @@ jobs:
       - name: Determine run mode
         id: mode
         run: |
-          # Hourly runs use alert-check, daily uses full run, manual uses input
+          # Hourly runs use alert-check, daily uses full run, manual uses input.
+          # GitHub Actions does not guarantee scheduled workflows fire at the
+          # exact time — the 01:00 UTC slot can be delayed or dropped under
+          # load. To self-heal, any trigger that finds no full run recorded
+          # for today (via state/last-full-run-date.txt, written by
+          # run_full_cycle()) runs a catch-up --run instead of --alert-check,
+          # so a missed daily slot never costs a full day without a trading
+          # chance.
           HOUR=$(date -u +%H)
           MINUTE=$(date -u +%M)
-          
+          TODAY=$(date -u +%Y-%m-%d)
+          MARKER="state/last-full-run-date.txt"
+
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
             echo "Running in manual mode: ${{ github.event.inputs.mode }}"
           elif [ "$HOUR" = "01" ] && [ "$MINUTE" -lt "30" ]; then
             echo "mode=--run" >> $GITHUB_OUTPUT
             echo "Running full cycle (daily scheduled run)"
-          else
+          elif [ -f "$MARKER" ] && [ "$(cat "$MARKER")" = "$TODAY" ]; then
             echo "mode=--alert-check" >> $GITHUB_OUTPUT
-            echo "Running alert check (hourly)"
+            echo "Running alert check (hourly) — full run already completed today"
+          else
+            echo "mode=--run" >> $GITHUB_OUTPUT
+            echo "Running full cycle (catch-up — no full run recorded yet today)"
           fi
 
       - name: Run Trading Research Agent

@@ -1133,6 +1133,18 @@ def run_full_cycle(config: dict) -> None:
         )
         _log_done("Save new state", t0)
 
+        # Mark today's full cycle as completed. The CI's mode-determination
+        # step reads this to self-heal when GitHub Actions drops the exact
+        # 01:00 UTC scheduled slot (documented platform behavior — scheduled
+        # workflows aren't guaranteed to fire at the exact time, and can be
+        # skipped under load): the next hourly trigger that finds no full run
+        # recorded for today runs a catch-up --run instead of --alert-check.
+        try:
+            marker_path = STATE_DIR / "last-full-run-date.txt"
+            marker_path.write_text(datetime.now(timezone.utc).strftime("%Y-%m-%d"), encoding="utf-8")
+        except Exception as exc:
+            logger.error("Failed to write full-run marker: %s", exc)
+
         # Update Catalyst Economic Calendar report
         try:
             logger.info("Updating LUNA Economic Calendar schedule...")
