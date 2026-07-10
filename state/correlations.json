@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-10T04:55:55.113388+00:00",
+  "last_updated": "2026-07-10T06:51:45.626860+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8846,
-      "correlation_7d": -0.5808,
+      "correlation_30d": -0.8844,
+      "correlation_7d": -0.5573,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -27,8 +27,8 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.481,
-      "correlation_7d": -0.7262,
+      "correlation_30d": 0.504,
+      "correlation_7d": -0.6339,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "BTC diverging from NASDAQ (normally positive) — crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.905,
-      "correlation_7d": 0.5683,
+      "correlation_30d": 0.9051,
+      "correlation_7d": 0.5511,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -67,8 +67,8 @@
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.4962,
-      "correlation_7d": 0.6334,
+      "correlation_30d": 0.492,
+      "correlation_7d": 0.6799,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
