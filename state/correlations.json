@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-10T21:18:03.468382+00:00",
+  "last_updated": "2026-07-10T22:12:00.016421+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
@@ -27,8 +27,8 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.5354,
-      "correlation_7d": 0.0315,
+      "correlation_30d": 0.5355,
+      "correlation_7d": 0.0412,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "BTC diverging from NASDAQ (normally positive) — crypto moving on its own catalyst, likely ETF flow or on-chain event rather than macro."
