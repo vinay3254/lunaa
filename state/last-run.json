@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-11T20:58:23.403646+00:00",
+  "timestamp": "2026-07-11T21:58:07.564182+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64337.91015625,
-        "change_24h": 0.3286744570173949,
-        "change_7d": 0.5358144347667702
+        "price": 64300.58984375,
+        "change_24h": 0.27047708202723253,
+        "change_7d": 0.47749690466615935
       },
       {
         "ticker": "GC=F",
@@ -126,7 +126,7 @@
       "gainers": [
         {
           "ticker": "UNI-USD",
-          "change_24h": 8.06104
+          "change_24h": 6.55471
         },
         {
           "ticker": "META",
@@ -205,7 +205,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-11T20:58:23.026357+00:00",
+      "last_updated": "2026-07-11T21:58:06.987306+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 15.0. USD: DXY flat (+0.11% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.2% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-11T20:58:23.402620+00:00",
+    "timestamp": "2026-07-11T21:58:07.563111+00:00",
     "sector_rotation": {
       "spy_1w": 1.3655015588639552,
       "spy_1m": 2.6924820733799,
@@ -500,6 +500,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-12T02:28:23.404392+05:30"
+    "generated_at": "2026-07-12T03:28:07.564879+05:30"
   }
 }
