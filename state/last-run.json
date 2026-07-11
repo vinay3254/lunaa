@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-11T19:19:49.416137+00:00",
+  "timestamp": "2026-07-11T20:58:23.403646+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64284.98828125,
-        "change_24h": 0.24614797215590026,
-        "change_7d": 0.4531175645759521
+        "price": 64337.91015625,
+        "change_24h": 0.3286744570173949,
+        "change_7d": 0.5358144347667702
       },
       {
         "ticker": "GC=F",
@@ -125,12 +125,12 @@
     "top_movers": {
       "gainers": [
         {
-          "ticker": "META",
-          "change_24h": 5.9748594842071
+          "ticker": "UNI-USD",
+          "change_24h": 8.06104
         },
         {
-          "ticker": "UNI-USD",
-          "change_24h": 5.66225
+          "ticker": "META",
+          "change_24h": 5.9748594842071
         },
         {
           "ticker": "NVDA",
@@ -186,7 +186,7 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.21,
+    "btc_dominance": 56.23,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
@@ -205,7 +205,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-11T19:19:48.851612+00:00",
+      "last_updated": "2026-07-11T20:58:23.026357+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 15.0. USD: DXY flat (+0.11% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.2% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-11T19:19:49.415158+00:00",
+    "timestamp": "2026-07-11T20:58:23.402620+00:00",
     "sector_rotation": {
       "spy_1w": 1.3655015588639552,
       "spy_1m": 2.6924820733799,
@@ -500,6 +500,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-12T00:49:49.416851+05:30"
+    "generated_at": "2026-07-12T02:28:23.404392+05:30"
   }
 }
