@@ -120,9 +120,18 @@ jobs:
             TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M UTC')
             git commit -m "[agent] ${MODE} — ${TIMESTAMP}"
 
-            # Another concurrent run (or a manual push) may have landed on
-            # main between our checkout and this push. Rebase onto the
-            # latest remote state and retry instead of failing outright.
+            # Another concurrent run (hourly + a market-hours 30-min trigger
+            # can land within minutes of each other) may have pushed to main
+            # between our checkout and this push. A plain rebase can hit a
+            # genuine line-level conflict here — both runs rewrite the same
+            # JSON files with fresh-but-different values, which git can't
+            # auto-merge. But these files (reports/, state/, portfolio.json)
+            # are entirely auto-generated with no meaningful diff semantics
+            # between concurrent runs, so there's nothing to actually merge:
+            # on rejection, reset onto the new remote tip (--mixed leaves the
+            # working tree — this run's freshly computed output — untouched)
+            # and recommit that same content fresh, letting the latest run's
+            # numbers simply win instead of trying to reconcile a diff.
             for attempt in 1 2 3 4 5; do
               if git push; then
                 echo "✓ Reports committed and pushed"
@@ -132,9 +141,11 @@ jobs:
                 echo "::error::Push failed after 5 attempts"
                 exit 1
               fi
-              echo "Push rejected (attempt $attempt) — fetching and rebasing onto latest main..."
+              echo "Push rejected (attempt $attempt) — resetting onto latest main and recommitting current output..."
               git fetch origin main
-              git rebase origin/main
+              git reset --mixed origin/main
+              git add reports/ state/ portfolio.json 2>/dev/null || true
+              git commit -m "[agent] ${MODE} — ${TIMESTAMP}"
               sleep $((RANDOM % 10 + 1))
             done
           fi
