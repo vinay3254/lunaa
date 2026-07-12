@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-11T22:57:15.748737+00:00",
+  "timestamp": "2026-07-12T00:02:24.177022+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64141.78125,
-        "change_24h": 0.022830621882261728,
-        "change_7d": 0.22933915019260534
+        "price": 63860.16015625,
+        "change_24h": -0.41632991296343175,
+        "change_7d": -0.2107280816059649
       },
       {
         "ticker": "GC=F",
@@ -129,12 +129,12 @@
           "change_24h": 5.9748594842071
         },
         {
-          "ticker": "UNI-USD",
-          "change_24h": 5.46972
-        },
-        {
           "ticker": "NVDA",
           "change_24h": 4.033932332484786
+        },
+        {
+          "ticker": "UNI-USD",
+          "change_24h": 3.8224
         }
       ],
       "losers": [
@@ -205,7 +205,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-11T22:57:14.989261+00:00",
+      "last_updated": "2026-07-12T00:02:19.417956+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 15.0. USD: DXY flat (+0.11% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure.",
-    "timestamp": "2026-07-11T22:57:15.747686+00:00",
+    "timestamp": "2026-07-12T00:02:20.035731+00:00",
     "sector_rotation": {
       "spy_1w": 1.3655015588639552,
       "spy_1m": 2.6924820733799,
@@ -500,6 +500,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-12T04:27:15.749467+05:30"
+    "generated_at": "2026-07-12T05:32:24.177625+05:30"
   }
 }
