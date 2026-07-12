@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-12T06:41:25.486728+00:00",
+  "last_updated": "2026-07-12T09:08:54.724546+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
@@ -11,8 +11,8 @@
     },
     "^TNX_^GSPC": {
       "expected": "negative",
-      "correlation_30d": 0.0788,
-      "correlation_7d": 0.4762,
+      "correlation_30d": 0.078,
+      "correlation_7d": 0.3777,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -59,8 +59,8 @@
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.1152,
-      "correlation_7d": -0.4462,
+      "correlation_30d": -0.1148,
+      "correlation_7d": -0.1185,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
