@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-12T03:52:07.350280+00:00",
+  "last_updated": "2026-07-12T04:28:46.668025+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8858,
-      "correlation_7d": -0.5671,
+      "correlation_30d": -0.8856,
+      "correlation_7d": -0.5851,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -35,8 +35,8 @@
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.2954,
-      "correlation_7d": -0.5655,
+      "correlation_30d": -0.2982,
+      "correlation_7d": -0.6444,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9056,
-      "correlation_7d": 0.5607,
+      "correlation_30d": 0.9052,
+      "correlation_7d": 0.5702,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."

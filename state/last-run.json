@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-12T03:52:07.718795+00:00",
+  "timestamp": "2026-07-12T04:28:47.104867+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,16 +61,16 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64150.23828125,
-        "change_24h": 0.03601853446900043,
-        "change_7d": 0.24255429072723195
+        "price": 64061.3515625,
+        "change_24h": -0.10259160452002454,
+        "change_7d": 0.10365797531594867
       },
       {
         "ticker": "GC=F",
         "name": "GC=F",
-        "price": 4104.10009765625,
-        "change_24h": -0.6415532700693153,
-        "change_7d": -0.20911073620323858
+        "price": 4113.7001953125,
+        "change_24h": -0.40913915518810934,
+        "change_7d": 0.02431492577892651
       },
       {
         "ticker": "CL=F",
@@ -125,16 +125,16 @@
     "top_movers": {
       "gainers": [
         {
+          "ticker": "ZC=F",
+          "change_24h": 7.77323202805377
+        },
+        {
           "ticker": "META",
           "change_24h": 5.9748594842071
         },
         {
           "ticker": "UNI-USD",
-          "change_24h": 4.84776
-        },
-        {
-          "ticker": "NVDA",
-          "change_24h": 4.033932332484786
+          "change_24h": 5.20038
         }
       ],
       "losers": [
@@ -186,7 +186,7 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.32,
+    "btc_dominance": 56.31,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
@@ -205,12 +205,12 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-12T03:52:07.350280+00:00",
+      "last_updated": "2026-07-12T04:28:46.668025+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
-          "correlation_30d": -0.8858,
-          "correlation_7d": -0.5671,
+          "correlation_30d": -0.8856,
+          "correlation_7d": -0.5851,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (negative correlation)."
@@ -241,8 +241,8 @@
         },
         "GC=F_^VIX": {
           "expected": "positive",
-          "correlation_30d": -0.2954,
-          "correlation_7d": -0.5655,
+          "correlation_30d": -0.2982,
+          "correlation_7d": -0.6444,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
@@ -257,8 +257,8 @@
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.9056,
-          "correlation_7d": 0.5607,
+          "correlation_30d": 0.9052,
+          "correlation_7d": 0.5702,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 15.0. USD: DXY flat (+0.11% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.3% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-12T03:52:07.717594+00:00",
+    "timestamp": "2026-07-12T04:28:47.102809+00:00",
     "sector_rotation": {
       "spy_1w": 1.3655015588639552,
       "spy_1m": 2.6924820733799,
@@ -500,6 +500,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-12T09:22:07.719495+05:30"
+    "generated_at": "2026-07-12T09:58:47.105466+05:30"
   }
 }
