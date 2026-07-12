@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-12T19:13:09.253225+00:00",
+  "timestamp": "2026-07-12T21:01:10.284500+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64188.3515625,
-        "change_24h": 0.6055046129938441,
-        "change_7d": 1.4075729938775496
+        "price": 64158.640625,
+        "change_24h": 0.5589372251898098,
+        "change_7d": 1.3606343517422377
       },
       {
         "ticker": "GC=F",
@@ -110,9 +110,9 @@
       {
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
-        "price": 1.1411616802215576,
-        "change_24h": -0.1905737816019041,
-        "change_7d": -0.2282312153765596
+        "price": 1.1406410932540894,
+        "change_24h": -0.236105880532614,
+        "change_7d": -0.2737461353486774
       },
       {
         "ticker": "USDINR=X",
@@ -205,7 +205,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-12T19:13:08.628540+00:00",
+      "last_updated": "2026-07-12T21:01:09.692522+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 15.0. USD: DXY flat (+0.11% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.57% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure.",
-    "timestamp": "2026-07-12T19:13:09.252035+00:00",
+    "timestamp": "2026-07-12T21:01:10.283443+00:00",
     "sector_rotation": {
       "spy_1w": 1.3655015588639552,
       "spy_1m": 2.6924820733799,
@@ -500,6 +500,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-13T00:43:09.253966+05:30"
+    "generated_at": "2026-07-13T02:31:10.285091+05:30"
   }
 }
