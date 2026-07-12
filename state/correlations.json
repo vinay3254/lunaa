@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-12T17:06:06.561749+00:00",
+  "last_updated": "2026-07-12T19:13:08.628540+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9052,
-      "correlation_7d": 0.5702,
+      "correlation_30d": 0.9054,
+      "correlation_7d": 0.5462,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
