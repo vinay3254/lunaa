@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-13T21:32:29.262747+00:00",
+  "timestamp": "2026-07-13T22:07:15.572747+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64196.48828125,
-        "change_24h": 0.6873929978635107,
-        "change_7d": 3.1143424504259927
+        "price": 62081.37109375,
+        "change_24h": -2.6300101996654353,
+        "change_7d": -0.28302279234473166
       },
       {
         "ticker": "GC=F",
@@ -96,9 +96,9 @@
       {
         "ticker": "DX-Y.NYB",
         "name": "DX-Y.NYB",
-        "price": 101.28399658203125,
-        "change_24h": 0.3109788625651147,
-        "change_7d": 0.4303402225846574
+        "price": 101.28500366210938,
+        "change_24h": 0.3119762678002832,
+        "change_7d": 0.4313388146455025
       },
       {
         "ticker": "HYG",
@@ -110,9 +110,9 @@
       {
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
-        "price": 1.1390818357467651,
-        "change_24h": -0.37248322287602714,
-        "change_7d": -0.410072023426374
+        "price": 1.1385631561279297,
+        "change_24h": -0.4178484993696197,
+        "change_7d": -0.45542018390237227
       },
       {
         "ticker": "USDINR=X",
@@ -144,11 +144,11 @@
         },
         {
           "ticker": "UNI-USD",
-          "change_24h": -4.73822
+          "change_24h": -3.7713
         },
         {
           "ticker": "ADA-USD",
-          "change_24h": -4.0949
+          "change_24h": -3.40208
         }
       ]
     }
@@ -169,10 +169,10 @@
     "vix_spiked": false,
     "vix_status": "VIX at 17.2 \u2014 low fear; complacency / risk-on environment",
     "vix_is_stale": false,
-    "dxy": 101.284,
+    "dxy": 101.285,
     "dxy_trend": "rising",
-    "dxy_change_5d_pct": 0.43,
-    "dxy_change_7d_pct": -0.105,
+    "dxy_change_5d_pct": 0.431,
+    "dxy_change_7d_pct": -0.104,
     "dxy_impact": "Modestly rising USD creates mild headwinds for commodities and risk assets priced in dollars.",
     "yield_10y": 4.609,
     "yield_2y": 3.728,
@@ -205,12 +205,12 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-13T21:32:28.647549+00:00",
+      "last_updated": "2026-07-13T22:07:15.052650+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
-          "correlation_30d": -0.8789,
-          "correlation_7d": -0.7024,
+          "correlation_30d": -0.879,
+          "correlation_7d": -0.7032,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (negative correlation)."
@@ -233,8 +233,8 @@
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.5226,
-          "correlation_7d": 0.4317,
+          "correlation_30d": 0.5406,
+          "correlation_7d": 0.7048,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
@@ -257,16 +257,16 @@
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.9073,
-          "correlation_7d": 0.6396,
+          "correlation_30d": 0.9077,
+          "correlation_7d": 0.6802,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "^TNX_DX-Y.NYB": {
           "expected": "positive",
-          "correlation_30d": -0.0534,
-          "correlation_7d": 0.8009,
+          "correlation_30d": -0.0533,
+          "correlation_7d": 0.801,
           "anomaly": true,
           "anomaly_since": "2026-07-13",
           "interpretation": "Yields and DXY decoupling (normally positive) \u2014 dollar weakening despite rising yields suggests capital flows favoring other currencies."
@@ -282,7 +282,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 0/6). Volatility: VIX at 17.2. USD: DXY rising (+0.43% over 5 days). Modestly rising USD creates mild headwinds for commodities and risk assets priced in dollars. Rates: 10Y yield at 4.61% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.0% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-13T21:32:29.261698+00:00",
+    "timestamp": "2026-07-13T22:07:15.571764+00:00",
     "sector_rotation": {
       "spy_1w": -0.2808601725635577,
       "spy_1m": 3.5385946609099497,
@@ -494,6 +494,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-14T03:02:29.263604+05:30"
+    "generated_at": "2026-07-14T03:37:15.573346+05:30"
   }
 }

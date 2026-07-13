@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-13T21:32:28.647549+00:00",
+  "last_updated": "2026-07-13T22:07:15.052650+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8789,
-      "correlation_7d": -0.7024,
+      "correlation_30d": -0.879,
+      "correlation_7d": -0.7032,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -27,8 +27,8 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.5226,
-      "correlation_7d": 0.4317,
+      "correlation_30d": 0.5406,
+      "correlation_7d": 0.7048,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -51,16 +51,16 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9073,
-      "correlation_7d": 0.6396,
+      "correlation_30d": 0.9077,
+      "correlation_7d": 0.6802,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.0534,
-      "correlation_7d": 0.8009,
+      "correlation_30d": -0.0533,
+      "correlation_7d": 0.801,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
