@@ -1,50 +1,50 @@
 {
-  "last_updated": "2026-07-13T16:41:05.202722+00:00",
+  "last_updated": "2026-07-13T18:00:48.354619+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
       "correlation_30d": -0.8782,
-      "correlation_7d": -0.6601,
+      "correlation_7d": -0.6748,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
     },
     "^TNX_^GSPC": {
       "expected": "negative",
-      "correlation_30d": 0.1293,
-      "correlation_7d": 0.1855,
+      "correlation_30d": 0.1305,
+      "correlation_7d": 0.1775,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
     },
     "CL=F_^GSPC": {
       "expected": "positive",
-      "correlation_30d": 0.1132,
-      "correlation_7d": 0.0189,
+      "correlation_30d": 0.1174,
+      "correlation_7d": 0.0161,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.5398,
-      "correlation_7d": 0.6961,
+      "correlation_30d": 0.5419,
+      "correlation_7d": 0.7015,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.232,
-      "correlation_7d": -0.5118,
+      "correlation_30d": -0.235,
+      "correlation_7d": -0.5701,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "HYG_^GSPC": {
       "expected": "positive",
-      "correlation_30d": 0.5166,
-      "correlation_7d": 0.2174,
+      "correlation_30d": 0.5136,
+      "correlation_7d": 0.2002,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -52,23 +52,23 @@
     "EURUSD=X_GC=F": {
       "expected": "positive",
       "correlation_30d": 0.9074,
-      "correlation_7d": 0.6505,
+      "correlation_7d": 0.6461,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.06,
-      "correlation_7d": 0.7881,
+      "correlation_30d": -0.0541,
+      "correlation_7d": 0.802,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.446,
-      "correlation_7d": 0.5948,
+      "correlation_30d": 0.4523,
+      "correlation_7d": 0.5311,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
