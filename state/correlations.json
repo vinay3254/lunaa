@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-13T22:34:43.339566+00:00",
+  "last_updated": "2026-07-13T23:59:53.264631+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8789,
-      "correlation_7d": -0.6934,
+      "correlation_30d": -0.8788,
+      "correlation_7d": -0.7036,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -19,24 +19,24 @@
     },
     "CL=F_^GSPC": {
       "expected": "positive",
-      "correlation_30d": 0.1201,
-      "correlation_7d": -0.0428,
+      "correlation_30d": 0.1224,
+      "correlation_7d": -0.0461,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.541,
-      "correlation_7d": 0.7061,
+      "correlation_30d": 0.5394,
+      "correlation_7d": 0.6984,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.2489,
-      "correlation_7d": -0.7159,
+      "correlation_30d": -0.2482,
+      "correlation_7d": -0.7175,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Gold and VIX decoupling (normally positive in fear) — gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
@@ -51,24 +51,24 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9076,
-      "correlation_7d": 0.6723,
-      "anomaly": false,
-      "anomaly_since": null,
-      "interpretation": "Normal aligned relationship (positive correlation)."
+      "correlation_30d": 0.9057,
+      "correlation_7d": 0.4971,
+      "anomaly": true,
+      "anomaly_since": "2026-07-13",
+      "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.0541,
-      "correlation_7d": 0.8002,
+      "correlation_30d": -0.054,
+      "correlation_7d": 0.8003,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.4552,
-      "correlation_7d": 0.513,
+      "correlation_30d": 0.4634,
+      "correlation_7d": 0.013,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
