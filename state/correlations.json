@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-07-13T06:26:17.295037+00:00",
+  "last_updated": "2026-07-13T08:21:51.011814+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8776,
-      "correlation_7d": -0.4749,
+      "correlation_30d": -0.8743,
+      "correlation_7d": 0.0472,
       "anomaly": true,
       "anomaly_since": "2026-07-12",
-      "interpretation": "Gold and DXY decoupled from their standard inverse relationship."
+      "interpretation": "Gold and DXY both falling simultaneously (normally inverse) — market moving away from safe havens into other currencies or equities."
     },
     "^TNX_^GSPC": {
       "expected": "negative",
@@ -35,8 +35,8 @@
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.2954,
-      "correlation_7d": -0.5655,
+      "correlation_30d": -0.2401,
+      "correlation_7d": -0.4985,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -51,11 +51,11 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9062,
-      "correlation_7d": 0.5662,
-      "anomaly": false,
-      "anomaly_since": null,
-      "interpretation": "Normal aligned relationship (positive correlation)."
+      "correlation_30d": 0.9037,
+      "correlation_7d": 0.2657,
+      "anomaly": true,
+      "anomaly_since": "2026-07-13",
+      "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
@@ -67,8 +67,8 @@
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.43,
-      "correlation_7d": 0.7593,
+      "correlation_30d": 0.4387,
+      "correlation_7d": 0.6636,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
