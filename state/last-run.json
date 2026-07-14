@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-14T21:06:14.317885+00:00",
+  "timestamp": "2026-07-14T21:06:17.087526+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -68,9 +68,9 @@
       {
         "ticker": "GC=F",
         "name": "GC=F",
-        "price": 4058.60009765625,
-        "change_24h": 1.5411583101388542,
-        "change_7d": -2.091518373006702
+        "price": 4058.89990234375,
+        "change_24h": 1.5486590528834125,
+        "change_7d": -2.0842859724174616
       },
       {
         "ticker": "CL=F",
@@ -160,7 +160,7 @@
     "risk_on_signals": [
       "SPY (751.83) above 50 EMA (735.64) \u2014 bullish trend",
       "VIX at 16.5 \u2014 below 18.0 (low fear)",
-      "Crude oil (CL=F) +13.32% over 5 days \u2014 commodity demand rising (risk-on)",
+      "Crude oil (CL=F) +13.36% over 5 days \u2014 commodity demand rising (risk-on)",
       "DXY weakening -0.21% over 5 days \u2014 USD weakness supports risk assets"
     ],
     "risk_off_signals": [],
@@ -193,10 +193,10 @@
     "intermarket": {
       "bonds_vs_stocks": "SPY rising +0.55% while TLT falling -0.56% \u2014 risk-on rotation; equities leading, bonds selling off.",
       "gold_vs_usd": "Gold -1.41%, DXY -0.21% \u2014 weak divergence; no actionable gold/USD regime signal.",
-      "oil_vs_inflation": "Crude oil modestly rising +13.32% over 5 days \u2014 mild upward pressure on energy components of inflation.",
+      "oil_vs_inflation": "Crude oil modestly rising +13.36% over 5 days \u2014 mild upward pressure on energy components of inflation.",
       "credit_spreads": "HYG and TLT moving roughly in tandem (spread diff: +0.46pp) \u2014 credit spreads stable; no strong stress signal in high yield.",
       "regime_asset_rankings": [
-        "Crude Oil (CL=F) (+5.61% composite momentum)",
+        "Crude Oil (CL=F) (+5.64% composite momentum)",
         "US Equities (SPY) (+0.98% composite momentum)",
         "US Dollar (DX-Y.NYB) (+0.34% composite momentum)",
         "High Yield Bonds (HYG) (-0.01% composite momentum)",
@@ -206,7 +206,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-14T21:06:13.207117+00:00",
+      "last_updated": "2026-07-14T21:06:15.564167+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -283,7 +283,7 @@
       }
     },
     "macro_summary": "The market regime is currently RISK-ON (risk-on score: 4/6, risk-off score: 0/6). Volatility: VIX at 16.5. USD: DXY flat (-0.21% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.58% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD.",
-    "timestamp": "2026-07-14T21:06:14.316974+00:00",
+    "timestamp": "2026-07-14T21:06:17.086749+00:00",
     "sector_rotation": {
       "spy_1w": 0.5510150989173405,
       "spy_1m": 2.1696609269765434,
@@ -489,6 +489,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-15T02:36:14.318492+05:30"
+    "generated_at": "2026-07-15T02:36:17.087999+05:30"
   }
 }
