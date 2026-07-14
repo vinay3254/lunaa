@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-14T05:37:02.257783+00:00",
+  "last_updated": "2026-07-14T06:17:55.726919+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8634,
-      "correlation_7d": -0.7856,
+      "correlation_30d": -0.8638,
+      "correlation_7d": -0.7938,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9023,
-      "correlation_7d": 0.8745,
+      "correlation_30d": 0.9026,
+      "correlation_7d": 0.8522,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -67,8 +67,8 @@
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.4208,
-      "correlation_7d": 0.4841,
+      "correlation_30d": 0.4176,
+      "correlation_7d": 0.5023,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
