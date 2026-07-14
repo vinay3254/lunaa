@@ -1,74 +1,74 @@
 {
-  "last_updated": "2026-07-14T17:21:25.736074+00:00",
+  "last_updated": "2026-07-14T18:10:34.889362+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.8602,
-      "correlation_7d": -0.6082,
+      "correlation_30d": -0.8606,
+      "correlation_7d": -0.639,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
     },
     "^TNX_^GSPC": {
       "expected": "negative",
-      "correlation_30d": 0.1931,
-      "correlation_7d": -0.0503,
+      "correlation_30d": 0.1942,
+      "correlation_7d": -0.0426,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
     },
     "CL=F_^GSPC": {
       "expected": "positive",
-      "correlation_30d": 0.0844,
-      "correlation_7d": -0.051,
+      "correlation_30d": 0.0838,
+      "correlation_7d": -0.0402,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.53,
-      "correlation_7d": 0.7352,
+      "correlation_30d": 0.5305,
+      "correlation_7d": 0.7422,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.1625,
-      "correlation_7d": -0.7352,
+      "correlation_30d": -0.1628,
+      "correlation_7d": -0.7342,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Gold and VIX decoupling (normally positive in fear) — gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
     },
     "HYG_^GSPC": {
       "expected": "positive",
-      "correlation_30d": 0.5373,
-      "correlation_7d": 0.223,
+      "correlation_30d": 0.5359,
+      "correlation_7d": 0.1991,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9007,
-      "correlation_7d": 0.8198,
+      "correlation_30d": 0.9005,
+      "correlation_7d": 0.7999,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.0618,
-      "correlation_7d": 0.5686,
+      "correlation_30d": -0.0604,
+      "correlation_7d": 0.5921,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.4103,
-      "correlation_7d": 0.4951,
+      "correlation_30d": 0.4091,
+      "correlation_7d": 0.4879,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
