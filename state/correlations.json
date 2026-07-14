@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-14T22:34:23.687074+00:00",
+  "last_updated": "2026-07-14T23:02:43.214466+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
       "correlation_30d": -0.8604,
-      "correlation_7d": -0.6207,
+      "correlation_7d": -0.6202,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (negative correlation)."
@@ -20,22 +20,22 @@
     "CL=F_^GSPC": {
       "expected": "positive",
       "correlation_30d": 0.0876,
-      "correlation_7d": -0.0691,
+      "correlation_7d": -0.0693,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.5237,
-      "correlation_7d": 0.6442,
+      "correlation_30d": 0.5254,
+      "correlation_7d": 0.6676,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": -0.1613,
+      "correlation_30d": -0.1612,
       "correlation_7d": -0.7358,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.9006,
-      "correlation_7d": 0.8071,
+      "correlation_30d": 0.9017,
+      "correlation_7d": 0.7807,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -67,8 +67,8 @@
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.417,
-      "correlation_7d": 0.5342,
+      "correlation_30d": 0.4118,
+      "correlation_7d": 0.5634,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."

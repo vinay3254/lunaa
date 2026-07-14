@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-14T22:34:24.056265+00:00",
+  "timestamp": "2026-07-14T23:02:43.557961+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -40,9 +40,9 @@
       {
         "ticker": "^FTSE",
         "name": "^FTSE",
-        "price": 10529.3896484375,
-        "change_24h": 0.2961417022603828,
-        "change_7d": -1.279880152523164
+        "price": 10498.2998046875,
+        "change_24h": 0.009526259310546285,
+        "change_7d": -1.4410710191196965
       },
       {
         "ticker": "^N225",
@@ -61,23 +61,23 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64948.4296875,
-        "change_24h": 4.353063709991988,
-        "change_7d": 2.777644876700562
+        "price": 64738.55859375,
+        "change_24h": 4.0158624609032145,
+        "change_7d": 2.445534356906523
       },
       {
         "ticker": "GC=F",
         "name": "GC=F",
-        "price": 4055.60009765625,
-        "change_24h": 1.4661020179196897,
-        "change_7d": -2.1638894955153227
+        "price": 4056.10009765625,
+        "change_24h": 1.4786113999562172,
+        "change_7d": -2.151827641763886
       },
       {
         "ticker": "CL=F",
         "name": "CL=F",
-        "price": 79.95999908447266,
-        "change_24h": 2.3291524303048847,
-        "change_7d": 13.515043033942788
+        "price": 79.94999694824219,
+        "change_24h": 2.3163521534830327,
+        "change_7d": 13.500843522466639
       },
       {
         "ticker": "^TNX",
@@ -111,15 +111,15 @@
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
         "price": 1.1423349380493164,
-        "change_24h": 0.16563611858316835,
-        "change_7d": -0.16106381509011353
+        "change_24h": 0.34270616401979004,
+        "change_7d": 0.1713531631342325
       },
       {
         "ticker": "USDINR=X",
         "name": "USDINR=X",
-        "price": 96.19000244140625,
-        "change_24h": 0.907427769060121,
-        "change_7d": 0.6134734324043635
+        "price": 96.29889678955078,
+        "change_24h": 1.0216625989900465,
+        "change_7d": 0.7273754838223655
       }
     ],
     "top_movers": {
@@ -148,7 +148,7 @@
         },
         {
           "ticker": "DOT-USD",
-          "change_24h": 2.17232
+          "change_24h": 2.43752
         }
       ]
     }
@@ -160,7 +160,7 @@
     "risk_on_signals": [
       "SPY (751.83) above 50 EMA (735.64) \u2014 bullish trend",
       "VIX at 16.5 \u2014 below 18.0 (low fear)",
-      "Crude oil (CL=F) +13.52% over 5 days \u2014 commodity demand rising (risk-on)",
+      "Crude oil (CL=F) +13.50% over 5 days \u2014 commodity demand rising (risk-on)",
       "DXY weakening -0.20% over 5 days \u2014 USD weakness supports risk assets"
     ],
     "risk_off_signals": [],
@@ -187,16 +187,16 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.39,
+    "btc_dominance": 56.34,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
       "bonds_vs_stocks": "SPY rising +0.55% while TLT falling -0.56% \u2014 risk-on rotation; equities leading, bonds selling off.",
       "gold_vs_usd": "Gold -1.41%, DXY -0.20% \u2014 weak divergence; no actionable gold/USD regime signal.",
-      "oil_vs_inflation": "Crude oil modestly rising +13.52% over 5 days \u2014 mild upward pressure on energy components of inflation.",
+      "oil_vs_inflation": "Crude oil modestly rising +13.50% over 5 days \u2014 mild upward pressure on energy components of inflation.",
       "credit_spreads": "HYG and TLT moving roughly in tandem (spread diff: +0.46pp) \u2014 credit spreads stable; no strong stress signal in high yield.",
       "regime_asset_rankings": [
-        "Crude Oil (CL=F) (+5.79% composite momentum)",
+        "Crude Oil (CL=F) (+5.78% composite momentum)",
         "US Equities (SPY) (+0.98% composite momentum)",
         "US Dollar (DX-Y.NYB) (+0.36% composite momentum)",
         "High Yield Bonds (HYG) (-0.01% composite momentum)",
@@ -206,12 +206,12 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-14T22:34:23.687074+00:00",
+      "last_updated": "2026-07-14T23:02:43.214466+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
           "correlation_30d": -0.8604,
-          "correlation_7d": -0.6207,
+          "correlation_7d": -0.6202,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (negative correlation)."
@@ -227,22 +227,22 @@
         "CL=F_^GSPC": {
           "expected": "positive",
           "correlation_30d": 0.0876,
-          "correlation_7d": -0.0691,
+          "correlation_7d": -0.0693,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.5237,
-          "correlation_7d": 0.6442,
+          "correlation_30d": 0.5254,
+          "correlation_7d": 0.6676,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "GC=F_^VIX": {
           "expected": "positive",
-          "correlation_30d": -0.1613,
+          "correlation_30d": -0.1612,
           "correlation_7d": -0.7358,
           "anomaly": true,
           "anomaly_since": "2026-07-13",
@@ -258,8 +258,8 @@
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.9006,
-          "correlation_7d": 0.8071,
+          "correlation_30d": 0.9017,
+          "correlation_7d": 0.7807,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
@@ -274,16 +274,16 @@
         },
         "CL=F_USDINR=X": {
           "expected": "negative",
-          "correlation_30d": 0.417,
-          "correlation_7d": 0.5342,
+          "correlation_30d": 0.4118,
+          "correlation_7d": 0.5634,
           "anomaly": true,
           "anomaly_since": "2026-05-31",
           "interpretation": "Oil and INR decoupling (normally inverse) \u2014 rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
         }
       }
     },
-    "macro_summary": "The market regime is currently RISK-ON (risk-on score: 4/6, risk-off score: 0/6). Volatility: VIX at 16.5. USD: DXY flat (-0.20% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.58% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.4% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-14T22:34:24.055342+00:00",
+    "macro_summary": "The market regime is currently RISK-ON (risk-on score: 4/6, risk-off score: 0/6). Volatility: VIX at 16.5. USD: DXY flat (-0.20% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.58% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.3% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
+    "timestamp": "2026-07-14T23:02:43.556602+00:00",
     "sector_rotation": {
       "spy_1w": 0.5510150989173405,
       "spy_1m": 2.1696609269765434,
@@ -489,6 +489,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-15T04:04:24.056886+05:30"
+    "generated_at": "2026-07-15T04:32:43.558548+05:30"
   }
 }
