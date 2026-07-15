@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-15T21:33:32.127774+00:00",
+  "last_updated": "2026-07-15T22:08:30.869947+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.832,
-      "correlation_7d": -0.1425,
+      "correlation_30d": -0.8319,
+      "correlation_7d": -0.1413,
       "anomaly": true,
       "anomaly_since": "2026-07-15",
       "interpretation": "Gold and DXY both falling simultaneously (normally inverse) — market moving away from safe havens into other currencies or equities."
@@ -27,8 +27,8 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.4474,
-      "correlation_7d": 0.556,
+      "correlation_30d": 0.448,
+      "correlation_7d": 0.5595,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -59,8 +59,8 @@
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.0764,
-      "correlation_7d": 0.4274,
+      "correlation_30d": -0.0765,
+      "correlation_7d": 0.4271,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
