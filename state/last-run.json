@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-15T22:08:32.001329+00:00",
+  "timestamp": "2026-07-16T00:05:33.974505+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -40,9 +40,9 @@
       {
         "ticker": "^FTSE",
         "name": "^FTSE",
-        "price": 10515.919921875,
-        "change_24h": -0.1280269364816113,
-        "change_7d": 0.2566490787968348
+        "price": 10529.400390625,
+        "change_24h": 0.29624402537650485,
+        "change_7d": -1.2797794372801317
       },
       {
         "ticker": "^N225",
@@ -61,23 +61,23 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64772.05859375,
-        "change_24h": -0.28335237162831994,
-        "change_7d": 1.0056864573477933
+        "price": 64764.9609375,
+        "change_24h": -0.2942792203750549,
+        "change_7d": 0.9946183570382763
       },
       {
         "ticker": "GC=F",
         "name": "GC=F",
-        "price": 4066.89990234375,
-        "change_24h": 0.14281363541980152,
-        "change_7d": -0.09825837274203351
+        "price": 4063.699951171875,
+        "change_24h": 0.06401845443616208,
+        "change_7d": -0.1768638714926337
       },
       {
         "ticker": "CL=F",
         "name": "CL=F",
-        "price": 80.23999786376953,
-        "change_24h": 1.1343604328465162,
-        "change_7d": 9.14037204507528
+        "price": 80.19000244140625,
+        "change_24h": 1.071346285290519,
+        "change_7d": 9.072369563238937
       },
       {
         "ticker": "^TNX",
@@ -96,9 +96,9 @@
       {
         "ticker": "DX-Y.NYB",
         "name": "DX-Y.NYB",
-        "price": 100.5,
-        "change_24h": -0.4359049244739845,
-        "change_7d": -0.5442880110316285
+        "price": 100.46499633789062,
+        "change_24h": -0.4705826154416402,
+        "change_7d": -0.5789279526963963
       },
       {
         "ticker": "HYG",
@@ -110,31 +110,31 @@
       {
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
-        "price": 1.1469204425811768,
-        "change_24h": 0.7454969029951396,
-        "change_7d": 0.5734560653500321
+        "price": 1.147446870803833,
+        "change_24h": 0.4360218057857642,
+        "change_7d": 0.458977999802745
       },
       {
         "ticker": "USDINR=X",
         "name": "USDINR=X",
-        "price": 96.24500274658203,
-        "change_24h": -0.055965379423326835,
-        "change_7d": 0.6816408928029569
+        "price": 96.42530059814453,
+        "change_24h": 0.13126194879468842,
+        "change_7d": 0.8702499948521973
       }
     ],
     "top_movers": {
       "gainers": [
         {
-          "ticker": "NTPC.NS",
-          "change_24h": NaN
-        },
-        {
-          "ticker": "COALINDIA.NS",
-          "change_24h": NaN
-        },
-        {
           "ticker": "BPCL.NS",
           "change_24h": NaN
+        },
+        {
+          "ticker": "PYPL",
+          "change_24h": 17.204985665290224
+        },
+        {
+          "ticker": "ZC=F",
+          "change_24h": 8.184438040345823
         }
       ],
       "losers": [
@@ -143,12 +143,12 @@
           "change_24h": NaN
         },
         {
-          "ticker": "SLV",
-          "change_24h": -1.805527774182541
+          "ticker": "INTC",
+          "change_24h": -4.426507217799315
         },
         {
-          "ticker": "UNI-USD",
-          "change_24h": -0.91993
+          "ticker": "AMD",
+          "change_24h": -3.4645047826628224
         }
       ]
     }
@@ -161,8 +161,8 @@
       "SPY (754.81) above 50 EMA (736.39) \u2014 bullish trend",
       "VIX at 15.7 \u2014 below 18.0 (low fear)",
       "HYG rising +0.19% over 5 days \u2014 credit risk appetite healthy",
-      "Crude oil (CL=F) +9.14% over 5 days \u2014 commodity demand rising (risk-on)",
-      "DXY weakening -0.54% over 5 days \u2014 USD weakness supports risk assets"
+      "Crude oil (CL=F) +9.07% over 5 days \u2014 commodity demand rising (risk-on)",
+      "DXY weakening -0.58% over 5 days \u2014 USD weakness supports risk assets"
     ],
     "risk_off_signals": [],
     "regime_changed": false,
@@ -171,11 +171,11 @@
     "vix_spiked": false,
     "vix_status": "VIX at 15.7 \u2014 low fear; complacency / risk-on environment",
     "vix_is_stale": false,
-    "dxy": 100.501,
-    "dxy_trend": "flat",
-    "dxy_change_5d_pct": -0.543,
-    "dxy_change_7d_pct": -0.346,
-    "dxy_impact": "USD trading sideways; limited directional macro pressure from the dollar cycle at this time.",
+    "dxy": 100.465,
+    "dxy_trend": "falling",
+    "dxy_change_5d_pct": -0.579,
+    "dxy_change_7d_pct": -0.382,
+    "dxy_impact": "Weakening USD is broadly supportive of commodities, gold, and international equities; may lift inflation expectations.",
     "yield_10y": 4.545,
     "yield_2y": 3.688,
     "yield_30y": 5.083,
@@ -193,26 +193,26 @@
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
       "bonds_vs_stocks": "SPY 5d: +1.26%, TLT 5d: -0.14% \u2014 no strong directional bond/equity divergence detected.",
-      "gold_vs_usd": "Gold -0.56%, DXY -0.54% \u2014 weak divergence; no actionable gold/USD regime signal.",
-      "oil_vs_inflation": "Crude oil modestly rising +9.14% over 5 days \u2014 mild upward pressure on energy components of inflation.",
+      "gold_vs_usd": "Gold -0.56%, DXY -0.58% \u2014 weak divergence; no actionable gold/USD regime signal.",
+      "oil_vs_inflation": "Crude oil modestly rising +9.07% over 5 days \u2014 mild upward pressure on energy components of inflation.",
       "credit_spreads": "HYG and TLT moving roughly in tandem (spread diff: +0.33pp) \u2014 credit spreads stable; no strong stress signal in high yield.",
       "regime_asset_rankings": [
-        "Crude Oil (CL=F) (+5.23% composite momentum)",
+        "Crude Oil (CL=F) (+5.17% composite momentum)",
         "US Equities (SPY) (+0.86% composite momentum)",
         "Small Caps (IWM) (+0.62% composite momentum)",
         "High Yield Bonds (HYG) (+0.18% composite momentum)",
-        "US Dollar (DX-Y.NYB) (+0.02% composite momentum)",
+        "US Dollar (DX-Y.NYB) (-0.01% composite momentum)",
         "Long Treasuries (TLT) (-0.63% composite momentum)",
         "Gold (GLD/GC=F) (-2.78% composite momentum)"
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-15T22:08:30.869947+00:00",
+      "last_updated": "2026-07-16T00:05:26.833569+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
-          "correlation_30d": -0.8319,
-          "correlation_7d": -0.1413,
+          "correlation_30d": -0.8299,
+          "correlation_7d": -0.1078,
           "anomaly": true,
           "anomaly_since": "2026-07-15",
           "interpretation": "Gold and DXY both falling simultaneously (normally inverse) \u2014 market moving away from safe havens into other currencies or equities."
@@ -227,24 +227,24 @@
         },
         "CL=F_^GSPC": {
           "expected": "positive",
-          "correlation_30d": 0.018,
-          "correlation_7d": 0.2586,
+          "correlation_30d": 0.0177,
+          "correlation_7d": 0.257,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.448,
-          "correlation_7d": 0.5595,
+          "correlation_30d": 0.5236,
+          "correlation_7d": 0.6434,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "GC=F_^VIX": {
           "expected": "positive",
-          "correlation_30d": -0.0905,
-          "correlation_7d": -0.6128,
+          "correlation_30d": -0.0898,
+          "correlation_7d": -0.6042,
           "anomaly": true,
           "anomaly_since": "2026-07-13",
           "interpretation": "Gold and VIX decoupling (normally positive in fear) \u2014 gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
@@ -259,32 +259,32 @@
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.8842,
-          "correlation_7d": 0.3872,
-          "anomaly": true,
-          "anomaly_since": "2026-07-15",
-          "interpretation": "EUR/USD and Gold decoupling (normally positive) \u2014 gold moves decoupling from general currency dynamics, showing independent strength."
+          "correlation_30d": 0.8913,
+          "correlation_7d": 0.6614,
+          "anomaly": false,
+          "anomaly_since": null,
+          "interpretation": "Normal aligned relationship (positive correlation)."
         },
         "^TNX_DX-Y.NYB": {
           "expected": "positive",
-          "correlation_30d": -0.0765,
-          "correlation_7d": 0.4271,
+          "correlation_30d": -0.078,
+          "correlation_7d": 0.4229,
           "anomaly": true,
           "anomaly_since": "2026-07-13",
           "interpretation": "Yields and DXY decoupling (normally positive) \u2014 dollar weakening despite rising yields suggests capital flows favoring other currencies."
         },
         "CL=F_USDINR=X": {
           "expected": "negative",
-          "correlation_30d": 0.4323,
-          "correlation_7d": 0.5742,
+          "correlation_30d": 0.4249,
+          "correlation_7d": 0.6067,
           "anomaly": true,
           "anomaly_since": "2026-05-31",
           "interpretation": "Oil and INR decoupling (normally inverse) \u2014 rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
         }
       }
     },
-    "macro_summary": "The market regime is currently RISK-ON (risk-on score: 5/6, risk-off score: 0/6). Volatility: VIX at 15.7. USD: DXY flat (-0.54% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.2% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-15T22:08:31.999733+00:00",
+    "macro_summary": "The market regime is currently RISK-ON (risk-on score: 5/6, risk-off score: 0/6). Volatility: VIX at 15.7. USD: DXY falling (-0.58% over 5 days). Weakening USD is broadly supportive of commodities, gold, and international equities; may lift inflation expectations. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend flat. Rate environment is stable; bond and equity valuations are not facing incremental rate pressure. Crypto: BTC dominance at 56.2% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
+    "timestamp": "2026-07-16T00:05:27.456869+00:00",
     "sector_rotation": {
       "spy_1w": 1.2624058004194674,
       "spy_1m": 2.0228593509571837,
@@ -490,6 +490,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-16T03:38:32.002696+05:30"
+    "generated_at": "2026-07-16T05:35:33.975085+05:30"
   }
 }
