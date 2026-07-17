@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-17T10:53:55.248274+00:00",
+  "last_updated": "2026-07-17T11:56:22.338996+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.7524,
-      "correlation_7d": 0.0525,
+      "correlation_30d": -0.7505,
+      "correlation_7d": 0.0729,
       "anomaly": true,
       "anomaly_since": "2026-07-15",
       "interpretation": "Gold and DXY decoupled from their standard inverse relationship."
@@ -35,8 +35,8 @@
     },
     "GC=F_^VIX": {
       "expected": "positive",
-      "correlation_30d": 0.0478,
-      "correlation_7d": -0.7532,
+      "correlation_30d": 0.048,
+      "correlation_7d": -0.7564,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Gold and VIX decoupling (normally positive in fear) — gold rising without a VIX spike suggests steady institutional accumulation rather than panic."
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.8345,
-      "correlation_7d": -0.2664,
+      "correlation_30d": 0.8331,
+      "correlation_7d": -0.2849,
       "anomaly": true,
       "anomaly_since": "2026-07-16",
       "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
@@ -67,8 +67,8 @@
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.431,
-      "correlation_7d": 0.6363,
+      "correlation_30d": 0.4319,
+      "correlation_7d": 0.6366,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
