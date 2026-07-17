@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-17T22:00:17.329599+00:00",
+  "timestamp": "2026-07-17T22:04:55.508466+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64083.51171875,
-        "change_24h": 0.4612537764720464,
-        "change_7d": 0.5101977049037305
+        "price": 64032.0,
+        "change_24h": 0.38050083845395266,
+        "change_7d": 0.42940542469279697
       },
       {
         "ticker": "GC=F",
@@ -144,7 +144,7 @@
         },
         {
           "ticker": "UNI-USD",
-          "change_24h": -3.33323
+          "change_24h": -3.20298
         },
         {
           "ticker": "^N225",
@@ -207,7 +207,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-17T22:00:16.956781+00:00",
+      "last_updated": "2026-07-17T22:04:55.154697+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -235,8 +235,8 @@
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.2395,
-          "correlation_7d": 0.1065,
+          "correlation_30d": 0.2416,
+          "correlation_7d": 0.1247,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
@@ -284,7 +284,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 1/6). Volatility: VIX at 18.8. USD: DXY flat (-0.21% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.5% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-17T22:00:17.328511+00:00",
+    "timestamp": "2026-07-17T22:04:55.507433+00:00",
     "sector_rotation": {
       "spy_1w": -1.5444776463544116,
       "spy_1m": -0.6830553185506423,
@@ -483,6 +483,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-18T03:30:17.330358+05:30"
+    "generated_at": "2026-07-18T03:34:55.509163+05:30"
   }
 }
