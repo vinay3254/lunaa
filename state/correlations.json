@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-17T23:00:27.836825+00:00",
+  "last_updated": "2026-07-18T00:00:11.492935+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
@@ -27,8 +27,8 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.2454,
-      "correlation_7d": 0.1582,
+      "correlation_30d": 0.3337,
+      "correlation_7d": 0.4065,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
