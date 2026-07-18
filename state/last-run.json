@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-18T00:00:12.059992+00:00",
+  "timestamp": "2026-07-18T03:23:17.592363+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -40,30 +40,30 @@
       {
         "ticker": "^FTSE",
         "name": "^FTSE",
-        "price": 10572.2001953125,
-        "change_24h": 0.5353778810770372,
-        "change_7d": 0.9520190528765815
+        "price": 10600.400390625,
+        "change_24h": 0.26673913463162946,
+        "change_7d": 0.9821629167098868
       },
       {
         "ticker": "^N225",
         "name": "^N225",
-        "price": 66835.5390625,
-        "change_24h": -2.7868025167175308,
-        "change_7d": -1.3408043372939864
+        "price": 64141.12109375,
+        "change_24h": -4.031415032398207,
+        "change_7d": -6.442170255928256
       },
       {
         "ticker": "^NSEI",
         "name": "^NSEI",
-        "price": 24072.75,
-        "change_24h": -0.023880225097078305,
-        "change_7d": 0.458832920883068
+        "price": 24334.30078125,
+        "change_24h": 1.0865014643113065,
+        "change_7d": 0.5262978265252846
       },
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 63893.98828125,
-        "change_24h": 0.16414518113103838,
-        "change_7d": 0.21294436060449068
+        "price": 63924.171875,
+        "change_24h": 0.21146283882921163,
+        "change_7d": 0.260285071091325
       },
       {
         "ticker": "GC=F",
@@ -188,9 +188,9 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": NaN,
-    "btc_dominance_trend": "unknown",
-    "btc_dominance_impact": "BTC dominance data unavailable; CoinGecko may be rate-limiting.",
+    "btc_dominance": 56.38,
+    "btc_dominance_trend": "rising",
+    "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
       "bonds_vs_stocks": "SPY 5d: -1.54%, TLT 5d: +0.06% \u2014 no strong directional bond/equity divergence detected.",
       "gold_vs_usd": "Gold -2.28%, DXY -0.21% \u2014 weak divergence; no actionable gold/USD regime signal.",
@@ -207,7 +207,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-18T00:00:11.492935+00:00",
+      "last_updated": "2026-07-18T03:23:09.895698+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -283,8 +283,8 @@
         }
       }
     },
-    "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 1/6). Volatility: VIX at 18.8. USD: DXY flat (-0.21% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD.",
-    "timestamp": "2026-07-18T00:00:12.059092+00:00",
+    "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 1/6). Volatility: VIX at 18.8. USD: DXY flat (-0.21% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.4% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
+    "timestamp": "2026-07-18T03:23:10.237914+00:00",
     "sector_rotation": {
       "spy_1w": -1.5444776463544116,
       "spy_1m": -0.6830553185506423,
@@ -483,6 +483,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-18T05:30:12.060589+05:30"
+    "generated_at": "2026-07-18T08:53:17.593134+05:30"
   }
 }
