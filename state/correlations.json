@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-18T03:23:09.895698+00:00",
+  "last_updated": "2026-07-18T03:58:55.283966+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
@@ -67,8 +67,8 @@
     },
     "CL=F_USDINR=X": {
       "expected": "negative",
-      "correlation_30d": 0.4424,
-      "correlation_7d": 0.6306,
+      "correlation_30d": 0.4378,
+      "correlation_7d": 0.7011,
       "anomaly": true,
       "anomaly_since": "2026-05-31",
       "interpretation": "Oil and INR decoupling (normally inverse) — rupee showing resilience despite rising oil import costs, indicating strong macro inflows."
