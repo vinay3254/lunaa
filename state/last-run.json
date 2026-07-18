@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-18T18:00:52.849954+00:00",
+  "timestamp": "2026-07-18T19:19:52.596797+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64438.76953125,
-        "change_24h": 0.8439955295984378,
-        "change_7d": 3.5341894275574637
+        "price": 64517.76171875,
+        "change_24h": 0.9676150192483773,
+        "change_7d": 3.6611066881354453
       },
       {
         "ticker": "GC=F",
@@ -207,7 +207,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-18T18:00:52.474859+00:00",
+      "last_updated": "2026-07-18T19:19:52.035507+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -284,7 +284,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 1/6). Volatility: VIX at 18.8. USD: DXY flat (-0.22% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.5% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-18T18:00:52.848998+00:00",
+    "timestamp": "2026-07-18T19:19:52.595837+00:00",
     "sector_rotation": {
       "spy_1w": -1.5444776463544116,
       "spy_1m": -0.6830553185506423,
@@ -483,6 +483,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-18T23:30:52.850583+05:30"
+    "generated_at": "2026-07-19T00:49:52.597433+05:30"
   }
 }
