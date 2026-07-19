@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-19T16:08:04.630354+00:00",
+  "timestamp": "2026-07-19T18:03:19.156797+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64467.078125,
-        "change_24h": -0.5085504942449118,
-        "change_7d": -0.7528701018987279
+        "price": 64468.48828125,
+        "change_24h": -0.5063742130573254,
+        "change_7d": -0.7506991649710607
       },
       {
         "ticker": "GC=F",
@@ -188,7 +188,7 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.47,
+    "btc_dominance": 56.49,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
@@ -207,7 +207,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-19T16:08:03.679958+00:00",
+      "last_updated": "2026-07-19T18:03:18.639152+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -284,7 +284,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 1/6). Volatility: VIX at 18.8. USD: DXY flat (-0.22% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.5% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-19T16:08:04.629423+00:00",
+    "timestamp": "2026-07-19T18:03:19.155769+00:00",
     "sector_rotation": {
       "spy_1w": -1.5444776463544116,
       "spy_1m": -0.6830553185506423,
@@ -483,6 +483,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-19T21:38:04.630979+05:30"
+    "generated_at": "2026-07-19T23:33:19.157435+05:30"
   }
 }
