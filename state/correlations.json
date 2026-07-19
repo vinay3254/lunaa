@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-19T18:03:18.639152+00:00",
+  "last_updated": "2026-07-19T20:11:30.037422+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
@@ -51,8 +51,8 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.8326,
-      "correlation_7d": -0.2992,
+      "correlation_30d": 0.8329,
+      "correlation_7d": -0.2973,
       "anomaly": true,
       "anomaly_since": "2026-07-16",
       "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."

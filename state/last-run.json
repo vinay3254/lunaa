@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-19T18:03:19.156797+00:00",
+  "timestamp": "2026-07-19T20:11:30.521548+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 64468.48828125,
-        "change_24h": -0.5063742130573254,
-        "change_7d": -0.7506991649710607
+        "price": 64468.26953125,
+        "change_24h": -0.5067118079229898,
+        "change_7d": -0.7510359308102555
       },
       {
         "ticker": "GC=F",
@@ -110,9 +110,9 @@
       {
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
-        "price": 1.1445575952529907,
-        "change_24h": -0.21518507163308895,
-        "change_7d": 0.10644314128317317
+        "price": 1.1431183815002441,
+        "change_24h": -0.11774416185197484,
+        "change_7d": 0.23433235557222437
       },
       {
         "ticker": "USDINR=X",
@@ -188,7 +188,7 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.49,
+    "btc_dominance": 56.48,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
@@ -207,7 +207,7 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-19T18:03:18.639152+00:00",
+      "last_updated": "2026-07-19T20:11:30.037422+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
@@ -259,8 +259,8 @@
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.8326,
-          "correlation_7d": -0.2992,
+          "correlation_30d": 0.8329,
+          "correlation_7d": -0.2973,
           "anomaly": true,
           "anomaly_since": "2026-07-16",
           "interpretation": "EUR/USD and Gold decoupling (normally positive) \u2014 gold moves decoupling from general currency dynamics, showing independent strength."
@@ -284,7 +284,7 @@
       }
     },
     "macro_summary": "The market regime is currently TRANSITIONING (risk-on score: 3/6, risk-off score: 1/6). Volatility: VIX at 18.8. USD: DXY flat (-0.22% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.54% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.5% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-19T18:03:19.155769+00:00",
+    "timestamp": "2026-07-19T20:11:30.520577+00:00",
     "sector_rotation": {
       "spy_1w": -1.5444776463544116,
       "spy_1m": -0.6830553185506423,
@@ -483,6 +483,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-19T23:33:19.157435+05:30"
+    "generated_at": "2026-07-20T01:41:30.522179+05:30"
   }
 }
