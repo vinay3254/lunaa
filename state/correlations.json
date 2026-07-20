@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-19T23:04:50.780892+00:00",
+  "last_updated": "2026-07-20T03:35:11.807693+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.6993,
-      "correlation_7d": -0.0028,
+      "correlation_30d": -0.6979,
+      "correlation_7d": -0.002,
       "anomaly": true,
       "anomaly_since": "2026-07-15",
       "interpretation": "Gold and DXY both falling simultaneously (normally inverse) — market moving away from safe havens into other currencies or equities."
