@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-20T21:47:04.110873+00:00",
+  "timestamp": "2026-07-20T22:07:04.490986+00:00",
   "market_data": {
     "global_snapshot": [
       {
@@ -61,9 +61,9 @@
       {
         "ticker": "BTC-USD",
         "name": "BTC-USD",
-        "price": 65310.83984375,
-        "change_24h": 0.958459489328021,
-        "change_7d": 0.9248074170512208
+        "price": 65132.76171875,
+        "change_24h": 0.6831836972579782,
+        "change_7d": 0.6496233815402386
       },
       {
         "ticker": "GC=F",
@@ -96,9 +96,9 @@
       {
         "ticker": "DX-Y.NYB",
         "name": "DX-Y.NYB",
-        "price": 100.99600219726562,
-        "change_24h": 0.2441709154001241,
-        "change_7d": -0.2804073711040596
+        "price": 100.99400329589844,
+        "change_24h": 0.24218689419199754,
+        "change_7d": -0.28238100991851434
       },
       {
         "ticker": "HYG",
@@ -110,9 +110,9 @@
       {
         "ticker": "EURUSD=X",
         "name": "EURUSD=X",
-        "price": 1.1415525674819946,
-        "change_24h": -0.2545602947187202,
-        "change_7d": 0.09703395739035414
+        "price": 1.141291856765747,
+        "change_24h": -0.27734041520441277,
+        "change_7d": 0.07417353890358214
       },
       {
         "ticker": "USDINR=X",
@@ -148,7 +148,7 @@
         },
         {
           "ticker": "BNB-USD",
-          "change_24h": 0.49924
+          "change_24h": 0.28269
         }
       ]
     }
@@ -172,10 +172,10 @@
     "vix_spiked": false,
     "vix_status": "VIX at 18.6 \u2014 moderate uncertainty; market on edge",
     "vix_is_stale": false,
-    "dxy": 100.996,
+    "dxy": 100.994,
     "dxy_trend": "flat",
-    "dxy_change_5d_pct": -0.28,
-    "dxy_change_7d_pct": 0.055,
+    "dxy_change_5d_pct": -0.282,
+    "dxy_change_7d_pct": 0.053,
     "dxy_impact": "USD trading sideways; limited directional macro pressure from the dollar cycle at this time.",
     "yield_10y": 4.598,
     "yield_2y": 3.705,
@@ -189,7 +189,7 @@
     "pce": NaN,
     "inflation_trend": "unknown",
     "inflation_impact": "Inflation data unavailable; analysis skipped.",
-    "btc_dominance": 56.58,
+    "btc_dominance": 56.56,
     "btc_dominance_trend": "rising",
     "btc_dominance_impact": "High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
     "intermarket": {
@@ -208,12 +208,12 @@
       ]
     },
     "correlations": {
-      "last_updated": "2026-07-20T21:47:03.548529+00:00",
+      "last_updated": "2026-07-20T22:07:03.356678+00:00",
       "pairs": {
         "GC=F_DX-Y.NYB": {
           "expected": "negative",
-          "correlation_30d": -0.7076,
-          "correlation_7d": -0.0517,
+          "correlation_30d": -0.7075,
+          "correlation_7d": -0.0511,
           "anomaly": true,
           "anomaly_since": "2026-07-15",
           "interpretation": "Gold and DXY decoupled from their standard inverse relationship."
@@ -236,8 +236,8 @@
         },
         "BTC_^NDX": {
           "expected": "positive",
-          "correlation_30d": 0.1248,
-          "correlation_7d": -0.045,
+          "correlation_30d": 0.1307,
+          "correlation_7d": -0.0091,
           "anomaly": false,
           "anomaly_since": null,
           "interpretation": "Normal aligned relationship (positive correlation)."
@@ -260,16 +260,16 @@
         },
         "EURUSD=X_GC=F": {
           "expected": "positive",
-          "correlation_30d": 0.8177,
-          "correlation_7d": -0.3091,
+          "correlation_30d": 0.8183,
+          "correlation_7d": -0.3001,
           "anomaly": true,
           "anomaly_since": "2026-07-16",
           "interpretation": "EUR/USD and Gold decoupling (normally positive) \u2014 gold moves decoupling from general currency dynamics, showing independent strength."
         },
         "^TNX_DX-Y.NYB": {
           "expected": "positive",
-          "correlation_30d": -0.1112,
-          "correlation_7d": 0.8713,
+          "correlation_30d": -0.1114,
+          "correlation_7d": 0.8705,
           "anomaly": true,
           "anomaly_since": "2026-07-13",
           "interpretation": "Yields and DXY decoupling (normally positive) \u2014 dollar weakening despite rising yields suggests capital flows favoring other currencies."
@@ -285,7 +285,7 @@
       }
     },
     "macro_summary": "The market regime is currently RISK-ON (risk-on score: 4/6, risk-off score: 1/6). Volatility: VIX at 18.6. USD: DXY flat (-0.28% over 5 days). USD trading sideways; limited directional macro pressure from the dollar cycle at this time. Rates: 10Y yield at 4.60% \u2014 curve is normal, trend rising. Rising rates are a headwind for growth stocks and bonds; supportive of banks and the USD. Crypto: BTC dominance at 56.6% (rising). High BTC dominance signals risk-off within crypto; capital rotating from altcoins into Bitcoin as a relative safe haven.",
-    "timestamp": "2026-07-20T21:47:04.109831+00:00",
+    "timestamp": "2026-07-20T22:07:04.490103+00:00",
     "sector_rotation": {
       "spy_1w": -0.9450400064329005,
       "spy_1m": 0.41052321579849976,
@@ -491,6 +491,6 @@
   "meta": {
     "agent": "trading-research-agent",
     "version": "1.0.0",
-    "generated_at": "2026-07-21T03:17:04.111601+05:30"
+    "generated_at": "2026-07-21T03:37:04.491562+05:30"
   }
 }
