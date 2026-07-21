@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-07-21T21:43:42.225332+00:00",
+  "last_updated": "2026-07-21T22:08:07.698991+00:00",
   "pairs": {
     "GC=F_DX-Y.NYB": {
       "expected": "negative",
-      "correlation_30d": -0.6952,
-      "correlation_7d": 0.1235,
+      "correlation_30d": -0.6953,
+      "correlation_7d": 0.1123,
       "anomaly": true,
       "anomaly_since": "2026-07-15",
       "interpretation": "Gold and DXY both rising simultaneously (normally inverse) — unusual dollar AND gold strength suggests flight to safety from something specific. Watch for geopolitical catalyst."
@@ -27,8 +27,8 @@
     },
     "BTC_^NDX": {
       "expected": "positive",
-      "correlation_30d": 0.0506,
-      "correlation_7d": 0.0107,
+      "correlation_30d": 0.0508,
+      "correlation_7d": 0.0105,
       "anomaly": false,
       "anomaly_since": null,
       "interpretation": "Normal aligned relationship (positive correlation)."
@@ -51,16 +51,16 @@
     },
     "EURUSD=X_GC=F": {
       "expected": "positive",
-      "correlation_30d": 0.7902,
-      "correlation_7d": -0.6675,
+      "correlation_30d": 0.7901,
+      "correlation_7d": -0.6758,
       "anomaly": true,
       "anomaly_since": "2026-07-16",
       "interpretation": "EUR/USD and Gold decoupling (normally positive) — gold moves decoupling from general currency dynamics, showing independent strength."
     },
     "^TNX_DX-Y.NYB": {
       "expected": "positive",
-      "correlation_30d": -0.0392,
-      "correlation_7d": 0.9089,
+      "correlation_30d": -0.0405,
+      "correlation_7d": 0.905,
       "anomaly": true,
       "anomaly_since": "2026-07-13",
       "interpretation": "Yields and DXY decoupling (normally positive) — dollar weakening despite rising yields suggests capital flows favoring other currencies."
